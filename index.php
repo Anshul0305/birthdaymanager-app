@@ -27,8 +27,8 @@ $first_name = $_POST["signup-first-name"];
 $last_name = $_POST["signup-last-name"];
 $signup_email = $_POST["signup-email"];
 $signup_password = $_POST["signup-password"];
-$official_dob = $_POST["official_dob"];
-$official_dob = '2000-01-01';
+$official_dob = $_POST["signup-official-dob"];
+//$official_dob = '2000-01-01';
 $signup_post_data = "first_name=".$first_name."&last_name=".$last_name."&official_dob=".$official_dob."&email=".$signup_email."&password=".$signup_password;
 
 if(isset($signup_email)&&isset($signup_password)){
@@ -145,11 +145,11 @@ if(isset($signup_email)&&isset($signup_password)){
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 					
-<!--					<p class="fieldset">-->
-<!--						<label class="image-replace cd-username" for="signup-team-name">Team Name</label>-->
-<!--						<input class="full-width has-padding has-border" id="signup-team-name" type="text" placeholder="Team Name">-->
-<!--						<span class="cd-error-message">Error message here!</span>-->
-<!--					</p>-->
+					<p class="fieldset">
+						<label class="image-replace cd-username" >Date of Birth</label>
+						<input class="full-width has-padding has-border" id="signup-official-dob" onfocus="(this.type='date')" onblur="(this.type='text')" type="text" name="signup-official-dob" placeholder="Date of Birth">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
 
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signup-email">E-mail</label>
@@ -203,7 +203,6 @@ if(isset($signup_email)&&isset($signup_password)){
 			<div class="row">
 				<div class="col-lg-6">
 					<?php
-
 					// Handle Login
 					if(isset($signin_email)&&isset($signin_password)) {
 						if ($login_http_code == 200 && $signin_email != "" && $signin_password != "") {
@@ -213,7 +212,6 @@ if(isset($signup_email)&&isset($signup_password)){
 							echo "<div class=\"alert alert-danger\" role=\"alert\">Login Failed! Please Try Again...</div>";
 						}
 					}
-
 					// Handle Register
 					if(isset($signup_email)&&isset($signup_password)){
 						if($register_http_code == 200 && $signup_email!= "" && $signup_password!= ""){
@@ -226,7 +224,6 @@ if(isset($signup_email)&&isset($signup_password)){
 							echo "<div class=\"alert alert-danger\" role=\"alert\">Registration Failed! Please Try Again...</div>";
 						}
 					}
-
 					?>
 					<h1>Birthday Manager</h1>
 					<h2 class="subtitle">Always believe something wonderful is about to happen...</h2>
