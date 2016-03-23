@@ -1,20 +1,43 @@
 <?php include_once ($_SERVER["DOCUMENT_ROOT"]."/birthdaymanager/app/helper.php"); ?>
 <?php
 session_start();
-$ch = curl_init();
 $api_host = get_api_host();
-$endpoint = $api_host."/login";
-$email = $_POST["signin-email"];
-$password = $_POST["signin-password"];
-$post_data = "email=".$email."&password=".$password;
 
-if(isset($email)&&isset($password)){
-	curl_setopt($ch, CURLOPT_URL,$endpoint);
+// Login Handler
+$ch = curl_init();
+$login_endpoint = $api_host."/login";
+$signin_email = $_POST["signin-email"];
+$signin_password = $_POST["signin-password"];
+$signin_post_data = "email=".$signin_email."&password=".$signin_password;
+
+if(isset($signin_email)&&isset($signin_password)){
+	curl_setopt($ch, CURLOPT_URL,$login_endpoint);
 	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $signin_post_data);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	$server_output = curl_exec ($ch);
-	$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	$login_output = curl_exec ($ch);
+	$login_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	curl_close ($ch);
+}
+
+// Registration Handler
+$ch = curl_init();
+$register_endpoint = $api_host."/register";
+$first_name = $_POST["signup-first-name"];
+$last_name = $_POST["signup-last-name"];
+$signup_email = $_POST["signup-email"];
+$signup_password = $_POST["signup-password"];
+$official_dob = $_POST["official_dob"];
+$official_dob = '2000-01-01';
+$signup_post_data = "first_name=".$first_name."&last_name=".$last_name."&official_dob=".$official_dob."&email=".$signup_email."&password=".$signup_password;
+
+if(isset($signup_email)&&isset($signup_password)){
+	curl_setopt($ch, CURLOPT_URL,$register_endpoint);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $signup_post_data);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$register_output = curl_exec ($ch);
+	$register_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 	curl_close ($ch);
 }
 
@@ -109,34 +132,34 @@ if(isset($email)&&isset($password)){
 			</div> <!-- cd-login -->
 
 			<div id="cd-signup"> <!-- sign up form -->
-				<form class="cd-form" id="register">
+				<form class="cd-form" id="register" method="POST" action="/birthdaymanager/app/index.php">
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-first-name">First Name</label>
-						<input class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="First Name">
+						<input class="full-width has-padding has-border" name="signup-first-name" id="signup-first-name" type="text" placeholder="First Name">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 					
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-last-name">Last Name</label>
-						<input class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="Last Name">
+						<input class="full-width has-padding has-border" name="signup-last-name" id="signup-last-name" type="text" placeholder="Last Name">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 					
-					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-team-name">Team Name</label>
-						<input class="full-width has-padding has-border" id="signup-team-name" type="text" placeholder="Team Name">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
+<!--					<p class="fieldset">-->
+<!--						<label class="image-replace cd-username" for="signup-team-name">Team Name</label>-->
+<!--						<input class="full-width has-padding has-border" id="signup-team-name" type="text" placeholder="Team Name">-->
+<!--						<span class="cd-error-message">Error message here!</span>-->
+<!--					</p>-->
 
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+						<input class="full-width has-padding has-border" name="signup-email" id="signup-email" type="email" placeholder="E-mail">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+						<input class="full-width has-padding has-border" name="signup-password" id="signup-password" type="text"  placeholder="Password">
 						<a href="#0" class="hide-password">Hide</a>
 						<span class="cd-error-message">Error message here!</span>
 					</p>
@@ -180,14 +203,30 @@ if(isset($email)&&isset($password)){
 			<div class="row">
 				<div class="col-lg-6">
 					<?php
-					if(isset($email)&&isset($password)) {
-						if ($http_code == 200 && $email != "" && $password != "") {
-							$_SESSION["member_id"] = json_decode($server_output)->member_id;
+
+					// Handle Login
+					if(isset($signin_email)&&isset($signin_password)) {
+						if ($login_http_code == 200 && $signin_email != "" && $signin_password != "") {
+							$_SESSION["member_id"] = json_decode($login_output)->member_id;
 							echo("<script>location.href = 'http://localhost:8888/birthdaymanager/app/dashboard'</script>");
 						} else {
 							echo "<div class=\"alert alert-danger\" role=\"alert\">Login Failed! Please Try Again...</div>";
 						}
 					}
+
+					// Handle Register
+					if(isset($signup_email)&&isset($signup_password)){
+						if($register_http_code == 200 && $signup_email!= "" && $signup_password!= ""){
+							echo "<div class=\"alert alert-success\" role=\"alert\">Registered Successfully! Please login...</div>";
+						}
+						elseif($register_http_code == 409 && $signup_email!= "" && $signup_password!= "") {
+							echo "<div class=\"alert alert-warning\" role=\"alert\">This user is already registered! Please Try with different email id...</div>";
+						}
+						else{
+							echo "<div class=\"alert alert-danger\" role=\"alert\">Registration Failed! Please Try Again...</div>";
+						}
+					}
+
 					?>
 					<h1>Birthday Manager</h1>
 					<h2 class="subtitle">Always believe something wonderful is about to happen...</h2>
