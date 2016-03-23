@@ -25,10 +25,10 @@
                             <a href="#"><i class="fa fa-indent nav_icon"></i>Teams<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="create-team">Create Team</a>
+                                    <a href="view-teams">View Teams</a>
                                 </li>
                                 <li>
-                                    <a href="view-teams">View Teams</a>
+                                    <a href="create-team">Create Team</a>
                                 </li>
                                 <li>
                                     <a href="search-teams">Search Team</a>

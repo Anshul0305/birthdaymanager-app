@@ -31,8 +31,8 @@ $json = json_decode(file_get_contents($endpoint));
 
             <script type="text/javascript">
                 function logout() {
-                    $.get("http://localhost:8888/birthdaymanager/app/helper.php?action=logout");
-                    location.href = 'http://localhost:8888/birthdaymanager/app/';
+                    $.get( <?php echo "'http://".get_website_host()."/birthdaymanager/app/helper.php?action=logout'"?> );
+                    location.href = <?php echo "'http://".get_website_host()."/birthdaymanager/app/'"?>;
                     return false;
                 }
             </script>

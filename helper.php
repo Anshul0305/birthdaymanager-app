@@ -18,7 +18,7 @@ function get_logged_in_member_id(){
 
 function is_member_logged_in(){
     if(!isset($_SESSION["member_id"])){
-        echo("<script>location.href = 'http://localhost:8888/birthdaymanager/app/'</script>");
+        echo "<script>location.href = 'http://".get_website_host()."/birthdaymanager/app/'</script>";
     }
 }
 

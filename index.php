@@ -207,7 +207,7 @@ if(isset($signup_email)&&isset($signup_password)){
 					if(isset($signin_email)&&isset($signin_password)) {
 						if ($login_http_code == 200 && $signin_email != "" && $signin_password != "") {
 							$_SESSION["member_id"] = json_decode($login_output)->member_id;
-							echo("<script>location.href = 'http://localhost:8888/birthdaymanager/app/dashboard'</script>");
+							echo "<script>location.href = 'http://".get_website_host()."/birthdaymanager/app/dashboard'</script>";
 						} else {
 							echo "<div class=\"alert alert-danger\" role=\"alert\">Login Failed! Please Try Again...</div>";
 						}
