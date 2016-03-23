@@ -1,4 +1,4 @@
-<?php include_once ($_SERVER["DOCUMENT_ROOT"]."/birthdaymanager/app/helper.php"); ?>
+<?php include_once ($_SERVER["DOCUMENT_ROOT"].json_decode(file_get_contents('./././env.json'))->website_relative_path."/helper.php"); ?>
 <div class="col_3">
     <?php
         $api_host = get_api_host();

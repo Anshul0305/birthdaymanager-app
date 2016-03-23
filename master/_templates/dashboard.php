@@ -13,7 +13,7 @@
               </thead>
               <tbody>
               <?php
-              session_start();
+              //session_start();
               is_member_logged_in();
               $api_host = get_api_host();
               $logged_in_member_id = get_logged_in_member_id();

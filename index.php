@@ -1,4 +1,4 @@
-<?php include_once ($_SERVER["DOCUMENT_ROOT"]."/birthdaymanager/app/helper.php"); ?>
+<?php include_once ($_SERVER["DOCUMENT_ROOT"].json_decode(file_get_contents("env.json"))->website_relative_path. "/helper.php"); ?>
 <?php
 session_start();
 $api_host = get_api_host();
@@ -103,7 +103,7 @@ if(isset($signup_email)&&isset($signup_password)){
 			</ul>
 
 			<div id="cd-login"> <!-- log in form -->
-				<form class="cd-form" method="POST" action="/birthdaymanager/app/index.php"?>
+				<form class="cd-form" method="POST" action="<?php echo json_decode(file_get_contents("env.json"))->website_relative_path.'/index.php'?>"/>
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signin-email">E-mail</label>
 						<input class="full-width has-padding has-border" name="signin-email" id="signin-email" type="email" placeholder="E-mail">
@@ -132,7 +132,7 @@ if(isset($signup_email)&&isset($signup_password)){
 			</div> <!-- cd-login -->
 
 			<div id="cd-signup"> <!-- sign up form -->
-				<form class="cd-form" id="register" method="POST" action="/birthdaymanager/app/index.php">
+				<form class="cd-form" id="register" method="POST" action="<?php echo json_decode(file_get_contents("env.json"))->website_relative_path.'/index.php'?>">
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-first-name">First Name</label>
 						<input class="full-width has-padding has-border" name="signup-first-name" id="signup-first-name" type="text" placeholder="First Name">
@@ -166,7 +166,7 @@ if(isset($signup_email)&&isset($signup_password)){
 
 					<p class="fieldset">
 						<input type="checkbox" id="accept-terms">
-						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+						<label for="accept-terms">I agree to the <a href="#">Terms</a></label>
 					</p>
 
 					<p class="fieldset">
@@ -207,7 +207,7 @@ if(isset($signup_email)&&isset($signup_password)){
 					if(isset($signin_email)&&isset($signin_password)) {
 						if ($login_http_code == 200 && $signin_email != "" && $signin_password != "") {
 							$_SESSION["member_id"] = json_decode($login_output)->member_id;
-							echo "<script>location.href = 'http://".get_website_host()."/birthdaymanager/app/dashboard'</script>";
+							echo "<script>location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/dashboard'</script>";
 						} else {
 							echo "<div class=\"alert alert-danger\" role=\"alert\">Login Failed! Please Try Again...</div>";
 						}

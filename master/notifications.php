@@ -1,5 +1,5 @@
 <!-- /.navbar-header -->
-<?php include_once ($_SERVER["DOCUMENT_ROOT"]."/birthdaymanager/app/helper.php"); ?>
+<?php include_once ($_SERVER["DOCUMENT_ROOT"].json_decode(file_get_contents('./././env.json'))->website_relative_path."/helper.php"); ?>
 <ul class="nav navbar-nav navbar-right">
 <?php
 $api_host = get_api_host();
@@ -31,8 +31,8 @@ $json = json_decode(file_get_contents($endpoint));
 
             <script type="text/javascript">
                 function logout() {
-                    $.get( <?php echo "'http://".get_website_host()."/birthdaymanager/app/helper.php?action=logout'"?> );
-                    location.href = <?php echo "'http://".get_website_host()."/birthdaymanager/app/'"?>;
+                    $.get(<?php echo "'http://".get_website_host().json_decode(file_get_contents('./././env.json'))->website_relative_path."/helper.php?action=logout'"?>);
+                    location.href = <?php echo "'http://".get_website_host().json_decode(file_get_contents('./././env.json'))->website_relative_path."/'"?>;
                     return false;
                 }
             </script>
