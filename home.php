@@ -1,6 +1,7 @@
+<?php session_start(); ?>
+<?php include("master/header.php"); ?>
 <!DOCTYPE HTML>
 <html>
-<?php include("master/header.php"); ?>
 <?php $page = $_GET["page"];?>
 <body>
 <div id="wrapper">
