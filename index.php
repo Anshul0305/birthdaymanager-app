@@ -231,7 +231,7 @@ if(isset($signup_email)&&isset($signup_password)){
 					  <div class="form-group">
 					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
 					  </div>
-					  <button type="submit" class="btn btn-theme">Get it now</button>
+					  <button type="submit" class="btn btn-theme">Subscribe Us</button>
 					</form>					
 				</div>
 				<div class="col-lg-4 col-lg-offset-2">
