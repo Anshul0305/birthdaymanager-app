@@ -26,28 +26,43 @@
 
     if(isset($_POST["fund_amount"])){
         if($_POST["fund_amount"]!="") {
-            $ch = curl_init();
-            $fund_endpoint = $api_host . "/funds";
-            $fund_amount = $_POST["fund_amount"];
-            $fund_post_data = "team_id=" . $team_id . "&member_id=" . $member_id . "&fund=" . $fund_amount;
-
-            curl_setopt($ch, CURLOPT_URL, $fund_endpoint);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $fund_post_data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $server_output = curl_exec($ch);
-            curl_close($ch);
-            if ($server_output == true) {
-                echo '<div class="alert alert-success">';
-                echo '<strong>Success!</strong> Fund Added Successfully!</div>';
-            } else {
+            if(!is_numeric($_POST["fund_amount"]))
+            {
                 echo '<div class="alert alert-danger">';
                 echo '<strong>Sorry!</strong> That Entry Was Invalid! Please Try Again...</div>';
             }
+            else {
+                $ch = curl_init();
+                $fund_endpoint = $api_host . "/funds";
+                $fund_amount = $_POST["fund_amount"];
+                $fund_post_data = "team_id=" . $team_id . "&member_id=" . $member_id . "&fund=" . $fund_amount;
+
+                curl_setopt($ch, CURLOPT_URL, $fund_endpoint);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fund_post_data);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $server_output = curl_exec($ch);
+
+                $info = curl_getinfo($ch);
+                $http_code = $info["http_code"];
+
+                if ($http_code = 200) {
+                    echo $http_code;
+                    echo '<div class="alert alert-success">';
+                    echo '<strong>Success!</strong> Fund Added Successfully!</div>';
+                } else {
+                    echo $http_code;
+                    echo '<div class="alert alert-danger">';
+                    echo '<strong>Sorry!</strong> That Entry Was Invalid! Please Try Again...</div>';
+                }
+                curl_close($ch);
+            }
+
         }else{
             echo '<div class="alert alert-danger">';
             echo '<strong>Oops!</strong> Looks Like You Have Not Entered Any Fund...</div>';
         }
+
 
     }else{
 

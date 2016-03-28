@@ -16,15 +16,20 @@
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $server_output = curl_exec($ch);
-            curl_close($ch);
-            if($server_output) {
+
+            $info = curl_getinfo($ch);
+            $http_code = $info["http_code"];
+
+            if($http_code = 200) {
                 echo '<div class="alert alert-success">';
                 echo '<strong>Success!</strong> Team Created Successfully!</div>';
             }
             else{
+                print_r( $server_output);
                 echo '<div class="alert alert-danger">';
-                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again..</div>';
+                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>'.$server_output."ot";
             }
+            curl_close($ch);
         }
         else{
             echo '<div class="alert alert-danger">';
