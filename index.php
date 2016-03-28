@@ -82,7 +82,7 @@ if(isset($signup_email)&&isset($signup_password)){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Birthday Manager</a>
+          <a class="navbar-brand" href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>">Birthday Manager</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right main-nav">
