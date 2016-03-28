@@ -47,11 +47,9 @@
                 $http_code = $info["http_code"];
 
                 if ($http_code = 200) {
-                    echo $http_code;
                     echo '<div class="alert alert-success">';
                     echo '<strong>Success!</strong> Fund Added Successfully!</div>';
                 } else {
-                    echo $http_code;
                     echo '<div class="alert alert-danger">';
                     echo '<strong>Sorry!</strong> That Entry Was Invalid! Please Try Again...</div>';
                 }
