@@ -24,20 +24,33 @@
         die();
     }
 
-    if(isset($_POST["fund_amount"])&&$_POST["fund_amount"]!=""){
-        $ch = curl_init();
-        $fund_endpoint = $api_host."/funds";
-        $fund_amount = $_POST["fund_amount"];
-        $fund_post_data = "team_id=".$team_id."&member_id=".$member_id."&fund=".$fund_amount;
+    if(isset($_POST["fund_amount"])){
+        if($_POST["fund_amount"]!="") {
+            $ch = curl_init();
+            $fund_endpoint = $api_host . "/funds";
+            $fund_amount = $_POST["fund_amount"];
+            $fund_post_data = "team_id=" . $team_id . "&member_id=" . $member_id . "&fund=" . $fund_amount;
 
-        curl_setopt($ch, CURLOPT_URL,$fund_endpoint);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fund_post_data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $server_output = curl_exec ($ch);
-        curl_close ($ch);
-        echo '<div class="alert alert-success">';
-        echo '<strong>Success!</strong> Fund Added Successfully!</div>';
+            curl_setopt($ch, CURLOPT_URL, $fund_endpoint);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fund_post_data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $server_output = curl_exec($ch);
+            curl_close($ch);
+            if ($server_output == true) {
+                echo '<div class="alert alert-success">';
+                echo '<strong>Success!</strong> Fund Added Successfully!</div>';
+            } else {
+                echo '<div class="alert alert-danger">';
+                echo '<strong>Sorry!</strong> That Entry Was Invalid! Please Try Again...</div>';
+            }
+        }else{
+            echo '<div class="alert alert-danger">';
+            echo '<strong>Oops!</strong> Looks Like You Have Not Entered Any Fund...</div>';
+        }
+
+    }else{
+
     }
 ?>
 

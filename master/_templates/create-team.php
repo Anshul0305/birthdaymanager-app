@@ -10,15 +10,28 @@
     $post_data = "team_name=".$team_name."&team_admin_id=".$logged_in_member_id;
 
     if(isset($team_name)){
-        curl_setopt($ch, CURLOPT_URL,$endpoint);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $server_output = curl_exec ($ch);
-        curl_close ($ch);
-        echo '<div class="alert alert-success">';
-        echo '<strong>Success!</strong> Team Created Successfully!</div>';
+        if($team_name!="") {
+            curl_setopt($ch, CURLOPT_URL, $endpoint);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $server_output = curl_exec($ch);
+            curl_close($ch);
+            if($server_output) {
+                echo '<div class="alert alert-success">';
+                echo '<strong>Success!</strong> Team Created Successfully!</div>';
+            }
+            else{
+                echo '<div class="alert alert-danger">';
+                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again..</div>';
+            }
+        }
+        else{
+            echo '<div class="alert alert-danger">';
+            echo '<strong>Oops!</strong> Looks Like You Have Not Entered Any Team Name!</div>';
+        }
     }
+
 
     ?>
 

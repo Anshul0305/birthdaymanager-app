@@ -5,22 +5,33 @@
         $logged_in_member_id = get_logged_in_member_id();
         $endpoint = $api_host."/members/".$logged_in_member_id;
         $json = json_decode(file_get_contents($endpoint));
+
+        $admin_count = 0;
+        $member_count = 0;
+        foreach($json[0]->teams as $team){
+            if($team->is_admin == "true"){
+                $admin_count++;
+            }else{
+                $member_count++;
+            }
+
+        }
     ?>
         	<div class="col-md-3 widget widget1">
         		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-thumbs-up icon-rounded"></i>
+                    <a href="#admin-section"> <i class="pull-left fa fa-thumbs-up icon-rounded"></i></a>
                     <div class="stats">
-                      <h5><strong><?php echo count($json[0]->teams)?></strong></h5>
-                      <span>Teams</span>
+                      <h5><strong><?php echo $admin_count?></strong></h5>
+                      <span>Team Admin</span>
                     </div>
                 </div>
         	</div>
         	<div class="col-md-3 widget widget1">
         		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-users user1 icon-rounded"></i>
+                   <a href="#member-section"> <i class="pull-left fa fa-users user1 icon-rounded"></i></a>
                     <div class="stats">
-                      <h5><strong>120</strong></h5>
-                      <span>Members</span>
+                      <h5><strong><?php echo $member_count?></strong></h5>
+                      <span>Team Member</span>
                     </div>
                 </div>
         	</div>
@@ -28,7 +39,7 @@
         		<div class="r3_counter_box">
                     <i class="pull-left fa fa-gift user3 icon-rounded"></i>
                     <div class="stats">
-                      <h5><strong>8</strong></h5>
+                      <h5><strong>0</strong></h5>
                       <span>Celebrations</span>
                     </div>
                 </div>

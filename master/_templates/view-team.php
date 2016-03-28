@@ -7,6 +7,7 @@
           <div class="bs-example1" data-example-id="contextual-table">
               <div style="text-align: center; font-weight: 500; font-size: x-large; color: #0b2c89; background: #06D995 ">My Teams</div>
              </br>
+              <a name="admin-section"></a>
               <div style="text-align: left; font-weight: 500">I am Admin</div>
               <hr noshade style="height: 2px">
 
@@ -53,6 +54,7 @@
                       location.href="http://localhost:8888/birthdaymanager/app/view-team-details?team-id="+team_id;
                   }
               </script>
+              <a name="member-section"></a>
               <div style="text-align: left; font-weight: 500">I am a Member</div>
               <hr noshade style="height: 2px">
 
