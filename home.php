@@ -34,7 +34,7 @@
               }
               break;
               default:{
-                  include("master/_templates/dashboard.php");
+                  include("master/_templates/blank.php");
               }
               break;
           }

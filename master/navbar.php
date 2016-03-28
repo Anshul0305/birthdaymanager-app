@@ -8,10 +8,10 @@
                             <a href="#"><i class="fa fa-laptop nav_icon"></i>Celebrations<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="grids.html">Celebrate Birthday</a>
+                                    <a href="celebrate">Celebrate Birthday</a>
                                 </li>
                                 <li>
-                                    <a href="grids.html">View Celebrations</a>
+                                    <a href="view-celebration">View Celebrations</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -50,7 +50,7 @@
                             <a href="#"><i class="fa fa-table nav_icon"></i>Settings<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="basic_tables.html">Basic Tables</a>
+                                    <a href="email-settings">Email Settings</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
