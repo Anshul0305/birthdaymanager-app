@@ -14,6 +14,9 @@
     $team_endpoint = $api_host."/teams/".$team_id;
     $json_team = json_decode(file_get_contents($team_endpoint));
 
+    $fund_amount = $_POST["fund_amount"];
+    $member_id = $_POST["member_id"];
+
     if(!$is_valid_team_id){
         echo "<div class=\"alert alert-danger\">
                          <strong>Sorry!</strong> You Are Not Allowed To View This Team.
@@ -22,7 +25,19 @@
     }
 
     if(isset($_POST["fund_amount"])&&$_POST["fund_amount"]!=""){
-        echo "add fund";
+        $ch = curl_init();
+        $fund_endpoint = $api_host."/funds";
+        $fund_amount = $_POST["fund_amount"];
+        $fund_post_data = "team_id=".$team_id."&member_id=".$member_id."&fund=".$fund_amount;
+
+        curl_setopt($ch, CURLOPT_URL,$fund_endpoint);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $fund_post_data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec ($ch);
+        curl_close ($ch);
+        echo '<div class="alert alert-success">';
+        echo '<strong>Success!</strong> Fund Added Successfully!</div>';
     }
 ?>
 
@@ -78,7 +93,7 @@
                       echo "<td>£" . $member_fund_balance . "</td>";
                       if ($is_admin)
                           echo "<td> <button class='btn-info'>Edit</button>&nbsp;<button class='btn-danger'>Delete</button>&nbsp;&nbsp;
-                                <button class='btn-group' data-toggle=\"modal\" data-target=\"#myModal\" >Add Fund</button></td>";
+                                <button class='btn-group' data-toggle=\"modal\" data-target=\"#myModal\" data-id='".$member_json[0]->id."' >Add Fund</button></td>";
                       echo "</tr>";
                   }
 
@@ -100,6 +115,15 @@
         <div class="clearfix"> </div>
         </div>
 
+<script>
+$(document).ready(function(){
+    $('button[data-toggle=modal]').click(function(){
+        var member_id = $(this).data('id');
+        $(".modal-body #member_id").val( member_id );
+    });
+});
+</script>
+
 <div class="container">
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -115,6 +139,7 @@
                             <label for="focusedinput" class="col-sm-2 control-label"></label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control1" name="fund_amount" id="fund_amount" placeholder="Enter Fund Amount">
+                                <input type="hidden" name="member_id" id="member_id" value="">
                             </div>
                             <div class="col-sm-2">
                                 <p class="help-block"></p>
