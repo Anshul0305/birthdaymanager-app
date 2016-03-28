@@ -5,11 +5,8 @@
                             <a href="dashboard"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Birthdays<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Celebrations<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="grids.html">Upcoming Birthday</a>
-                                </li>
                                 <li>
                                     <a href="grids.html">Celebrate Birthday</a>
                                 </li>
@@ -34,18 +31,17 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-envelope nav_icon"></i>Funds<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="inbox.html">View Funds</a>
-                                </li>
-                                <li>
-                                    <a href="compose.html">Add Funds</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+<!--                        <li>-->
+<!--                            <a href="#"><i class="fa fa-envelope nav_icon"></i>Funds<span class="fa arrow"></span></a>-->
+<!--                            <ul class="nav nav-second-level">-->
+<!--                                <li>-->
+<!--                                    <a href="inbox.html">View Funds</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="compose.html">Add Funds</a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
                         <!-- <li>
                             <a href="widgets.html"><i class="fa fa-flask nav_icon"></i>Celebrations</a>
                         </li> -->
