@@ -57,7 +57,7 @@
 
               <script>
                   function redirect(team_id){
-                      location.href="http://localhost:8888/birthdaymanager/app/view-team-details?team-id="+team_id;
+                      location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
                   }
               </script>
               <a name="member-section"></a>
