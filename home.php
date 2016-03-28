@@ -25,6 +25,10 @@
                   include("master/_templates/view-team.php");
               }
               break;
+              case "view-team-details":{
+                  include("master/_templates/view-team-details.php");
+              }
+                  break;
               case "create-team":{
                   include("master/_templates/create-team.php");
               }

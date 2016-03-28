@@ -8,7 +8,7 @@
                   <th>#</th>
                   <th>Team Name</th>
                   <th>Admin Name</th>
-                  <th>Fund Balance</th>
+                  <th>My Fund Balance</th>
                 </tr>
               </thead>
               <tbody>
@@ -26,7 +26,7 @@
                       echo "<th scope='row'>" . ($i + 1) . "</th>";
                       echo "<td>" . $json[0]->teams[$i]->name . "</td>";
                       echo "<td>" . $json[0]->teams[$i]->admin_name . "</td>";
-                      echo "<td>£" . $json[0]->teams[$i]->fund_balance . "</td>";
+                      echo "<td>£" . $json[0]->teams[$i]->member_fund_balance . "</td>";
                       echo "</tr>";
                   }
               }

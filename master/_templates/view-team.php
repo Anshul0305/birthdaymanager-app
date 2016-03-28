@@ -1,4 +1,7 @@
 <?php include_once "./././helper.php"?>
+<?php
+
+?>
 <div class="content_bottom">
      <div class="col-md-12 span_3">
           <div class="bs-example1" data-example-id="contextual-table">
@@ -21,6 +24,7 @@
                   echo "<th>Team Name</th>";
                   echo "<th>Total Members</th>";
                   echo "<th>My Fund Balance</th>";
+                  echo "<th>Action</th>";
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
@@ -30,11 +34,11 @@
                           echo "<tr class='info'>";
                           echo "<td>" . $json[0]->teams[$i]->name . "</td>";
                           echo "<td>" . count($json[0]->teams[$i]->members) . "</td>";
-                          echo "<td>£" . $json[0]->teams[$i]->fund_balance . "</td>";
+                          echo "<td>£" . $json[0]->teams[$i]->member_fund_balance . "</td>";
+                          echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
                           echo "</tr>";
                       }
                   }
-
                   echo "</tbody>";
                   echo "</table>";
               }
@@ -44,6 +48,11 @@
               }
               ?>
 
+              <script>
+                  function redirect(team_id){
+                      location.href="http://localhost:8888/birthdaymanager/app/view-team-details?team-id="+team_id;
+                  }
+              </script>
               <div style="text-align: left; font-weight: 500">I am a Member</div>
               <hr noshade style="height: 2px">
 
@@ -57,6 +66,7 @@
                   echo "<th>Admin Name</th>";
                   echo "<th>Total Members</th>";
                   echo "<th>My Fund Balance</th>";
+                  echo "<th>Action</th>";
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
@@ -69,7 +79,8 @@
                           echo "<td>".$json[0]->teams[$i]->name."</td>";
                           echo "<td>".$json[0]->teams[$i]->admin_name."</td>";
                           echo "<td>".count($json[0]->teams[$i]->members)."</td>";
-                          echo "<td>£".$json[0]->teams[$i]->fund_balance."</td>";
+                          echo "<td>£".$json[0]->teams[$i]->member_fund_balance."</td>";
+                          echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
                           echo "</tr>";
                       }
                   }

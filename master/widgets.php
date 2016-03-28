@@ -40,7 +40,7 @@
                         <?php
                         $fund = 0;
                         for($i=0;$i<count($json[0]->teams);$i++){
-                          $fund += $json[0]->teams[$i]->fund_balance;
+                          $fund += $json[0]->teams[$i]->member_fund_balance;
                         }
                         echo "<h5><strong>£".$fund."</strong></h5>";
                         ?>
