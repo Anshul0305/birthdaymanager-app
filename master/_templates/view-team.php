@@ -30,8 +30,10 @@
                   echo "</thead>";
                   echo "<tbody>";
 
+                  $admin_count = 0;
                   for ($i = 0; $i < count($json[0]->teams); $i++) {
                       if ($json[0]->teams[$i]->is_admin == "true") {
+                          $admin_count++;
                           echo "<tr class='info'>";
                           echo "<td>" . $json[0]->teams[$i]->name . "</td>";
                           echo "<td>" . count($json[0]->teams[$i]->members) . "</td>";
@@ -40,6 +42,10 @@
                           echo "</tr>";
                       }
                   }
+                  if($admin_count==0){
+                      echo "You are Not Admin of Any Team </br></br>";
+                  }
+
                   echo "</tbody>";
                   echo "</table>";
               }
@@ -72,11 +78,12 @@
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
+                  $member_count = 0;
 
                   for($i=0;$i<count($json[0]->teams);$i++){
-
                       if($json[0]->teams[$i]->is_admin == "false")
                       {
+                          $member_count++;
                           echo "<tr class='info'>";
                           echo "<td>".$json[0]->teams[$i]->name."</td>";
                           echo "<td>".$json[0]->teams[$i]->admin_name."</td>";
@@ -85,6 +92,9 @@
                           echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
                           echo "</tr>";
                       }
+                  }
+                  if($member_count==0){
+                      echo "You are Not Member of Any Team </br></br>";
                   }
               }
               else{
@@ -97,6 +107,7 @@
 
               <div style="text-align: left; font-weight: 500">Request Pending</div>
               <hr noshade style="height: 2px">
+               <p>No Request Pending </br></br></p>
 
            </div>
        </div>
