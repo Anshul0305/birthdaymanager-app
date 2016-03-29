@@ -106,13 +106,11 @@
                       $member_endpoint = $api_host . "/members/" . $json_team[0]->member_id[$i];
                       $member_json = json_decode(file_get_contents($member_endpoint));
                       $teams_list = $member_json[0]->teams;
-
                       foreach ($teams_list as $team) {
                           if ($team->id == $team_id) {
                               $member_fund_balance = $team->member_fund_balance;
                           }
                       }
-
                       echo "<tr class='info'>";
                       echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
                       echo "<td>" . date("d-m-Y", strtotime($member_json[0]->dob)) . "</td>";

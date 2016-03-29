@@ -30,7 +30,7 @@
     ?>
 
     <div class="bs-example1" data-example-id="contextual-table">
-    <div><button class="btn-info" onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/view-teams"?>'">Back to All Teams</button></div></br>
+    <div><button class="btn-info" onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/view-team-details?team-id=".$team_id?>'">Back to Team - <?php echo $team_name?> </button></div></br>
     <div style="text-align: center; font-weight: 500; font-size: x-large; color: floralwhite; background: #06D995 ">Add Member to Team - <?php echo $team_name?></div>
     </br>
     <div class="tab-content">
