@@ -29,6 +29,10 @@
                   include("master/_templates/search-team.php");
               }
               break;
+              case "search-member":{
+                  include("master/_templates/search-member.php");
+              }
+              break;
               case "view-team-details":{
                   include("master/_templates/view-team-details.php");
               }

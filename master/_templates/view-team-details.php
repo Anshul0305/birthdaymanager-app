@@ -122,16 +122,19 @@
                                 <button class='btn-group' data-toggle=\"modal\" data-target=\"#myModal\" data-id='".$member_json[0]->id."' >Add Fund</button></td>";
                       echo "</tr>";
                   }
-
                   echo "</tbody>";
                   echo "</table>";
 
-                  if ($is_admin) echo "<div align=\"middle\"><button class='btn-group'>Add Member</button></div>";
               } else {
                   echo "You are Not Admin of Any Team </br></br>";
               }
+              ?>
 
-
+              <?php
+              if($is_admin){ ?>
+                  <div align="middle"><button class='btn-group' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button></div>
+              <?php
+              }
               ?>
 
 
