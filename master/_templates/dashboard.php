@@ -35,6 +35,11 @@
                   echo "<td colspan='4'>You are not part of any Team. Please <a href='http://"?><?php echo get_website_host()?><?php get_website_relative_path()?><?php echo "/create-team'>Create</a> or <a href='#'>Join</a> a Team!</td>";
                   echo "</tr>";
               }
+
+
+              $upcoming_birthday_endpoint = $api_host."/members/upcoming-birthdays";
+              $json_birthday = json_decode(file_get_contents($upcoming_birthday_endpoint));
+
               ?>
 
               </tbody>
@@ -45,43 +50,22 @@
          <div class="col_2">
              <div style="text-align:center;font-weight: 500;margin-bottom: 10px">Upcoming Birthdays</div>
           <div class="box_1">
+              <?php
+                $head_color = array("red1","tiles_blue1", "fb1", "tw1");
+                $body_color = array("red","blue1", "fb2","tw2");
 
-           <div class="col-md-6 col_1_of_2 span_1_of_2">
-
-             <a class="tiles_info">
-                <div class="tiles-head red1">
-                    <div class="text-center">Ankit</div>
-                </div>
-                <div class="tiles-body red">May 01</div>
-             </a>
-           </div>
-           <div class="col-md-6 col_1_of_2 span_1_of_2">
-              <a class="tiles_info tiles_blue">
-                <div class="tiles-head tiles_blue1">
-                    <div class="text-center">Anshul</div>
-                </div>
-                <div class="tiles-body blue1">May 03</div>
-              </a>
-           </div>
-           <div class="clearfix"> </div>
-         </div>
-         <div class="box_1">
-           <div class="col-md-6 col_1_of_2 span_1_of_2">
-             <a class="tiles_info">
-                <div class="tiles-head fb1">
-                    <div class="text-center">Rahul</div>
-                </div>
-                <div class="tiles-body fb2">June 31</div>
-             </a>
-           </div>
-           <div class="col-md-6 col_1_of_2 span_1_of_2">
-              <a class="tiles_info tiles_blue">
-                <div class="tiles-head tw1">
-                    <div class="text-center">Amitabh</div>
-                </div>
-                <div class="tiles-body tw2">Oct 13</div>
-              </a>
-           </div>
+                foreach($json_birthday as $birthday){
+                    $index = rand(0,3);
+                    echo '<div class="col-md-6 col_1_of_2 span_1_of_2">';
+                    echo '<a class="tiles_info">';
+                    echo '<div class="tiles-head '.$head_color[$index].'" >';
+                    echo '<div class="text-center">'.$birthday->first_name.'</div>';
+                    echo '</div>';
+                    echo '<div class="tiles-body '.$body_color[$index].'">'.date("M",strtotime($birthday->dob)).' '.date("d",strtotime($birthday->dob)).'</div>';
+                    echo '</a>';
+                    echo '</div>';
+                }
+              ?>
            <div class="clearfix"> </div>
            </div>
           </div>
