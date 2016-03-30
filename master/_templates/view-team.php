@@ -10,7 +10,6 @@
               <a name="admin-section"></a>
               <div style="text-align: left; font-weight: 500">I am Admin</div>
               <hr noshade style="height: 2px">
-
               <?php
               is_member_logged_in();
               $api_host = get_api_host();
@@ -43,7 +42,7 @@
                       }
                   }
                   if($admin_count==0){
-                      echo "You are Not Admin of Any Team </br></br>";
+                      echo "<td>You are Not Admin of Any Team </td> </br></br>";
                   }
 
                   echo "</tbody>";
