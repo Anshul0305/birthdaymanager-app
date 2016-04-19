@@ -45,7 +45,10 @@ is_member_logged_in();
                       echo "<tr class='info'>";
                       echo "<td>" . $json[$i]->transaction_date . "</td>";
                       echo "<td>" . $json[$i]->transaction_type  . "</td>";
-                      echo "<td>" . $json[$i]->transaction_amount  . "</td>";
+                      if ($json[$i]->transaction_type == "debit")
+                      echo "<td> -" . $json[$i]->transaction_amount . "</td>";
+                      else
+                      echo "<td>" . $json[$i]->transaction_amount . "</td>";
                       echo "<td>" . $json[$i]->team_name  . "</td>";
                       echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
                       echo "</tr>";
