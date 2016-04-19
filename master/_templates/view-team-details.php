@@ -90,7 +90,7 @@
 
               <?php
 
-              if (count($json_team[0]->member_id) > 0) {
+              if (count($json_team[0]->members) > 0) {
                   echo "<table class=\"table\">";
                   echo "<thead>";
                   echo "<tr>";
@@ -102,8 +102,8 @@
                   echo "</thead>";
                   echo "<tbody>";
 
-                  for ($i = 0; $i < count($json_team[0]->member_id); $i++) {
-                      $member_endpoint = $api_host . "/members/" . $json_team[0]->member_id[$i];
+                  for ($i = 0; $i < count($json_team[0]->members); $i++) {
+                      $member_endpoint = $api_host . "/members/" . $json_team[0]->members[$i]->id;
                       $member_json = json_decode(file_get_contents($member_endpoint));
                       $teams_list = $member_json[0]->teams;
                       foreach ($teams_list as $team) {
