@@ -45,16 +45,25 @@
                         <!-- <li>
                             <a href="widgets.html"><i class="fa fa-flask nav_icon"></i>Celebrations</a>
                         </li> -->
-
                         <li>
-                            <a href="#"><i class="fa fa-table nav_icon"></i>Settings<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-indent nav_icon"></i>My Account<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="email-settings">Email Settings</a>
+                                    <a href="profile-settings">Profile Settings</a>
+                                </li>
+<!--                                <li>-->
+<!--                                    <a href="email-settings">Email Settings</a>-->
+<!--                                </li>-->
+                                <li>
+                                    <a href="transactions">My Transactions</a>
+                                </li>
+                                <li>
+                                    <a href="logout">Logout</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
                        <!--  <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw nav_icon"></i>Options<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

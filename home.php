@@ -45,6 +45,14 @@
                   include("master/_templates/celebrate-birthday.php");
               }
               break;
+              case "view-celebration":{
+                  include("master/_templates/view-celebration.php");
+              }
+              break;
+              case "transactions":{
+                  include("master/_templates/transactions.php");
+              }
+              break;
               default:{
                   include("master/_templates/blank.php");
               }
