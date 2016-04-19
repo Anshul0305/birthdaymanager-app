@@ -41,6 +41,10 @@
                   include("master/_templates/create-team.php");
               }
               break;
+              case "celebrate":{
+                  include("master/_templates/celebrate-birthday.php");
+              }
+              break;
               default:{
                   include("master/_templates/blank.php");
               }
