@@ -8,18 +8,18 @@ is_member_logged_in();
               <div style="text-align: center; font-weight: 500; font-size: x-large; color: #0b2c89; background: #06D995 ">My Transactions</div>
               </br>
 
-              <form class="form-horizontal" method="post" action="">
-                  <div class="form-group">
-                      <label for="selector1" class="col-sm-2 control-label">Select Team</label>
-                      <div class="col-sm-8"><select name="select-team" id="select-team" class="form-control1">
-                              <option>--- Select ---</option>
-                                          <option value="1">Mindtree Team</option>
-                                          <option value="2">BBC Team</option>
-                                          <option value="3">40 Lime Court Team</option>
-                                          <option value="4">London Team</option>
-                          </select></div>
-                  </div>
-                  </form>
+<!--              <form class="form-horizontal" method="post" action="">-->
+<!--                  <div class="form-group">-->
+<!--                      <label for="selector1" class="col-sm-2 control-label">Select Team</label>-->
+<!--                      <div class="col-sm-8"><select name="select-team" id="select-team" class="form-control1">-->
+<!--                              <option>--- Select ---</option>-->
+<!--                                          <option value="1">Mindtree Team</option>-->
+<!--                                          <option value="2">BBC Team</option>-->
+<!--                                          <option value="3">40 Lime Court Team</option>-->
+<!--                                          <option value="4">London Team</option>-->
+<!--                          </select></div>-->
+<!--                  </div>-->
+<!--                  </form>-->
 
               <?php
               is_member_logged_in();
