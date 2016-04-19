@@ -114,7 +114,7 @@ is_member_logged_in();
                 <div class="form-group">
                     <label for="focusedinput" class="col-sm-2 control-label">Cake Amount</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control1" name="cake-amt" id="cake-amt" placeholder="Total Expense on Cake">
+                        <input type="number" min="0" step="0.01" class="form-control1" name="cake-amt" id="cake-amt" placeholder="Total Expense on Cake">
                     </div>
                     <div class="col-sm-2">
                         <p class="help-block">How Much You Paid For Cake!</p>
@@ -123,7 +123,7 @@ is_member_logged_in();
                 <div class="form-group">
                     <label for="focusedinput" class="col-sm-2 control-label">Other Expense</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control1" name="other-exp" id="other-exp" placeholder="Total Other Expense">
+                        <input type="number" min="0" step="0.01" class="form-control1" name="other-exp" id="other-exp" placeholder="Total Other Expense">
                     </div>
                     <div class="col-sm-2">
                         <p class="help-block">Anything Else You Spend Money On!</p>
@@ -150,7 +150,7 @@ is_member_logged_in();
             function(data) {
                 var select_team = document.getElementById("select-team");
                 data[0].teams.forEach(function(entry) {
-                    if(entry.is_admin){
+                    if(entry.is_admin == "true"){
                         var option = document.createElement("option");
                         option.text = entry.name;
                         option.value = entry.id;
