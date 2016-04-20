@@ -96,8 +96,8 @@
                   echo "<tr>";
                   echo "<th>Member Name</th>";
                   echo "<th>Date of Birth</th>";
-                  echo "<th>Member Fund Balance</th>";
-                  if ($is_admin) echo "<th>Action</th>";
+                  echo "<th style='text-align: center'>Member Fund Balance</th>";
+                  if ($is_admin) echo "<th style='text-align: center'>Action</th>";
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
@@ -114,10 +114,15 @@
                       echo "<tr class='info'>";
                       echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
                       echo "<td>" . date("d-m-Y", strtotime($member_json[0]->dob)) . "</td>";
-                      echo "<td>£" . $member_fund_balance . "</td>";
+                      echo "<td style='text-align: center'>£ " . $member_fund_balance . "</td>";
                       if ($is_admin)
-                          echo "<td> <button class='btn-info'>Edit</button>&nbsp;<button class='btn-danger'>Delete</button>&nbsp;&nbsp;
-                                <button class='btn-group' data-toggle=\"modal\" data-target=\"#myModal\" data-id='".$member_json[0]->id."' >Add Fund</button></td>";
+                          echo "<td style='text-align: center'> 
+                                    <button class='btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='".$member_json[0]->id."' >Add Fund</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button class='btn-info'>Edit</button>
+                                    &nbsp;
+                                    <button class='btn-danger'>Delete</button>
+                                </td>";
                       echo "</tr>";
                   }
                   echo "</tbody>";
