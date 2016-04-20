@@ -107,6 +107,7 @@
                       $member_json = json_decode(file_get_contents($member_endpoint));
                       $teams_list = $member_json[0]->teams;
                       foreach ($teams_list as $team) {
+
                           if ($team->id == $team_id) {
                               $member_fund_balance = $team->member_fund_balance;
                           }
@@ -170,7 +171,7 @@ $(document).ready(function(){
                         <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label"></label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control1" name="fund_amount" id="fund_amount" placeholder="Enter Fund Amount">
+                                <input type="number" step="0.01" min="-10000" max="10000" class="form-control1" name="fund_amount" id="fund_amount" placeholder="Enter Fund Amount">
                                 <input type="hidden" name="member_id" id="member_id" value="">
                             </div>
                             <div class="col-sm-2">
