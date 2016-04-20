@@ -24,7 +24,8 @@
                   for ($i = 0; $i < count($json[0]->teams); $i++) {
                       echo "<tr class='info'>";
                       echo "<th scope='row'>" . ($i + 1) . "</th>";
-                      echo "<td>" . $json[0]->teams[$i]->name . "</td>";
+                      echo "<td><a style='text-decoration: none' href='http://".get_website_host();
+                      echo get_website_relative_path()."/view-team-details?team-id=".$json[0]->teams[$i]->id."'>" . $json[0]->teams[$i]->name . "</a></td>";
                       echo "<td>" . $json[0]->teams[$i]->admin_name . "</td>";
                       echo "<td>£" . $json[0]->teams[$i]->member_fund_balance . "</td>";
                       echo "</tr>";
