@@ -20,14 +20,13 @@
             $info = curl_getinfo($ch);
             $http_code = $info["http_code"];
 
-            if($http_code = 200) {
+            if($http_code == 200) {
                 echo '<div class="alert alert-success">';
                 echo '<strong>Success!</strong> Team Created Successfully!</div>';
             }
             else{
-                print_r( $server_output);
                 echo '<div class="alert alert-danger">';
-                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>'.$server_output."ot";
+                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>';
             }
             curl_close($ch);
         }
