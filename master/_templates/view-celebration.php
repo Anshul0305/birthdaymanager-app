@@ -31,7 +31,7 @@ is_member_logged_in();
                       echo "<td>" . $json[$i]->team_name . "</td>";
                       echo "<td>" . $json[$i]->birthday_of_member_name . "</td>";
                       echo "<td>" . $json[$i]->perhead_contribution . "</td>";
-                      echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
+                      echo "<td> <button onclick='redirect(".$json[$i]->celebration_id.")' class='btn-info'>View Details</button></td></td>";
                       echo "</tr>";
                   }
 
@@ -45,8 +45,8 @@ is_member_logged_in();
               ?>
 
               <script>
-                  function redirect(team_id){
-                      location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
+                  function redirect(celebration_id){
+                      location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-celebration-details?celebration-id="+celebration_id;
                   }
               </script>
 

@@ -32,6 +32,18 @@ function is_member_of_given_team($member_id, $team_id){
     return false;
 }
 
+function is_member_of_given_celebration($member_id, $celebration_id){
+    $endpoint = get_api_host()."/celebrations/".$celebration_id;
+    $json = json_decode(file_get_contents($endpoint));
+    foreach($json[0]->attendees as $attendee){
+        if($attendee->id == $member_id) return true;
+    }
+    if($json[0]->birthday_of_member_id == $member_id){
+        return true;
+    }
+    return false;
+}
+
 function get_api_host(){
     return json_decode(file_get_contents("env.json"))->api_host;
 }

@@ -36,7 +36,7 @@ is_member_logged_in();
                   echo "<th>Transaction Type</th>";
                   echo "<th>Amount</th>";
                   echo "<th>Team Name</th>";
-                  echo "<th>Action</th>";
+                  echo "<th>Comments</th>";
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
@@ -46,11 +46,15 @@ is_member_logged_in();
                       echo "<td>" . $json[$i]->transaction_date . "</td>";
                       echo "<td>" . $json[$i]->transaction_type  . "</td>";
                       if ($json[$i]->transaction_type == "debit")
-                      echo "<td> -" . $json[$i]->transaction_amount . "</td>";
+                      echo "<td>£ -" . $json[$i]->transaction_amount . "</td>";
                       else
-                      echo "<td>" . $json[$i]->transaction_amount . "</td>";
+                      echo "<td>£ " . $json[$i]->transaction_amount . "</td>";
                       echo "<td>" . $json[$i]->team_name  . "</td>";
-                      echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
+                      if ($json[$i]->birthday_celebration_of != null )
+                      echo "<td> Birthday Of " . $json[$i]->birthday_celebration_of  . "</td>";
+                      else
+                      echo "<td>New Topup</td>";
+                      //  echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
                       echo "</tr>";
                   }
 

@@ -49,6 +49,10 @@
                   include("master/_templates/view-celebration.php");
               }
               break;
+              case "view-celebration-details":{
+                  include("master/_templates/view-celebration-details.php");
+              }
+              break;
               case "transactions":{
                   include("master/_templates/transactions.php");
               }
