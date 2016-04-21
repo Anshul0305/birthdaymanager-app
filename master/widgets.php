@@ -6,6 +6,10 @@
         $endpoint = $api_host."/members/".$logged_in_member_id;
         $json = json_decode(file_get_contents($endpoint));
 
+        $celebrations_endpoint = $api_host."/members/".$logged_in_member_id."/celebrations";
+        $celebrations_json = json_decode(file_get_contents($celebrations_endpoint));
+        $celebration_count = count($celebrations_json);
+
         $admin_count = 0;
         $member_count = 0;
         foreach($json[0]->teams as $team){
@@ -39,7 +43,7 @@
         		<div class="r3_counter_box">
                     <i class="pull-left fa fa-gift user3 icon-rounded"></i>
                     <div class="stats">
-                      <h5><strong>0</strong></h5>
+                      <h5><strong><?php echo $celebration_count?></strong></h5>
                       <span>Celebrations</span>
                     </div>
                 </div>
