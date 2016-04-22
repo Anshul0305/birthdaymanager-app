@@ -116,7 +116,7 @@
                   echo "<tr>";
                   echo "<th>Attendee's Name</th>";
                   echo "<th>Date of Birth</th>";
-                  echo "<th style='text-align: center'>Fund Balance in ".$json_celebrations[0]->team_name." </th>";
+                  echo "<th style='text-align: center'>Current Fund Balance in ".$json_celebrations[0]->team_name." </th>";
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
