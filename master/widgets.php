@@ -50,7 +50,7 @@
         	</div>
         	<div class="col-md-3 widget">
         		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-gbp dollar1 icon-rounded"></i>
+                    <a href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/view-teams"><i class="pull-left fa fa-gbp dollar1 icon-rounded"></i></a>
                     <div class="stats">
                         <?php
                         $fund = 0;
