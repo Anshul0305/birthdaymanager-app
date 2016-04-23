@@ -57,10 +57,10 @@
                     echo "<td>" . $json[$i]->admin_name . "</td>";
                     echo "<td>" . count($json[$i]->member_id) . "</td>";
                     echo "<td>£" . $json[$i]->fund_balance . "</td>";
-                    if(!in_array($logged_in_member_id, $json[$i]->member_id)){
-                        echo "<td> <button onclick='join_team(".$json[$i]->id.",".$logged_in_member_id .")' class='btn-info'>Join Team</button></td></td>";
-                    }else{
+                    if(is_member_of_given_team($logged_in_member_id, $json[$i]->id)){
                         echo "<td> Member</td>";
+                    }else{
+                        echo "<td> <button onclick='join_team(".$json[$i]->id.",".$logged_in_member_id .")' class='btn-info'>Join Team</button></td></td>";
                     }
                     echo "</tr>";
                 }
