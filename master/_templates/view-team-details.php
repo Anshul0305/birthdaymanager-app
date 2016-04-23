@@ -119,10 +119,8 @@
                       if ($is_admin)
                           echo "<td style='text-align: center'> 
                                     <button class='btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='".$member_json[0]->id."' >Add Fund</button>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button class='btn-info'>Edit</button>
                                     &nbsp;
-                                    <button class='btn-danger'>Delete</button>
+                                    <button class='btn-danger'>Remove Member</button>
                                 </td>";
                       echo "</tr>";
                   }
@@ -136,7 +134,8 @@
 
               <?php
               if($is_admin){ ?>
-                  <div align="middle"><button class='btn-group' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button></div>
+                  <div align="middle"><button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button>
+                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Bulk Invite Member</button></div>
               <?php
               }
               ?>
