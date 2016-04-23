@@ -24,7 +24,7 @@ is_member_logged_in();
                   echo "<th>Team Name</th>";
                   echo "<th>Total Members</th>";
                   echo "<th>My Fund Balance</th>";
-                  echo "<th>Action</th>";
+                  echo "<th style='text-align: center'>Action</th>";
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
@@ -37,7 +37,7 @@ is_member_logged_in();
                           echo "<td>" . $json[0]->teams[$i]->name . "</td>";
                           echo "<td>" . count($json[0]->teams[$i]->members) . "</td>";
                           echo "<td>£" . $json[0]->teams[$i]->member_fund_balance . "</td>";
-                          echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
+                          echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='' class='btn-danger'>Delete Team</button></td>";
                           echo "</tr>";
                       }
                   }
@@ -70,10 +70,9 @@ is_member_logged_in();
                   echo "<thead>";
                   echo "<tr>";
                   echo "<th>Team Name</th>";
-                  echo "<th>Admin Name</th>";
                   echo "<th>Total Members</th>";
                   echo "<th>My Fund Balance</th>";
-                  echo "<th>Action</th>";
+                  echo "<th style='text-align: center'>Action</th>";
                   echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
@@ -85,10 +84,9 @@ is_member_logged_in();
                           $member_count++;
                           echo "<tr class='info'>";
                           echo "<td>".$json[0]->teams[$i]->name."</td>";
-                          echo "<td>".$json[0]->teams[$i]->admin_name."</td>";
                           echo "<td>".count($json[0]->teams[$i]->members)."</td>";
                           echo "<td>£".$json[0]->teams[$i]->member_fund_balance."</td>";
-                          echo "<td> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button></td></td>";
+                          echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='' class='btn-danger'>Leave Team</button></td>";
                           echo "</tr>";
                       }
                   }
