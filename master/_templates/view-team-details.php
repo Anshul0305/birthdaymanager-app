@@ -107,7 +107,6 @@
                       $member_json = json_decode(file_get_contents($member_endpoint));
                       $teams_list = $member_json[0]->teams;
                       foreach ($teams_list as $team) {
-
                           if ($team->id == $team_id) {
                               $member_fund_balance = $team->member_fund_balance;
                           }
@@ -117,11 +116,17 @@
                       echo "<td>" . format_date($member_json[0]->dob) . "</td>";
                       echo "<td style='text-align: center'>£ " . $member_fund_balance . "</td>";
                       if ($is_admin)
-                          echo "<td style='text-align: center'> 
-                                    <button class='btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='".$member_json[0]->id."' >Add Fund</button>
+                          if($member_json[0]->id == $logged_in_member_id){
+                              echo "<td style='text-align: center'> 
+                                    <button style='width: 65%;' class='btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='" . $member_json[0]->id . "' >Add Fund</button>
+                                    &nbsp;";
+                          }else {
+                              echo "<td style='text-align: center'> 
+                                    <button class='btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='" . $member_json[0]->id . "' >Add Fund</button>
                                     &nbsp;
-                                    <button class='btn-danger'>Remove Member</button>
+                                    <button class='btn-danger' onclick='leave_team(" . $json_team[0]->id . "," . $member_json[0]->id . ")'>Remove Member</button>
                                 </td>";
+                          }
                       echo "</tr>";
                   }
                   echo "</tbody>";
@@ -154,6 +159,20 @@ $(document).ready(function(){
         $(".modal-body #member_id").val( member_id );
     });
 });
+
+function leave_team(team_id,member_id){
+    if(confirm("Are You Sure You Want To Remove This Member From The Team! \n\nIf This Member has any Remaining Fund, Please Make Sure to Return it to The Team Member!")){
+        $.post('<?php echo  get_api_host()."/leave-team"?>',
+            {
+                team_id: team_id,
+                member_id: member_id
+            });
+        alert("Member Removed From Team Successfully!");
+        location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
+    }else{
+
+    }
+}
 </script>
 
 <div class="container">
