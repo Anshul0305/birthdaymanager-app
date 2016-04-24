@@ -1,10 +1,26 @@
 <?php
 $action = $_GET["action"];
+$team_id = $_GET["team-id"];
+$member_id = $_GET["member-id"];
 
 switch($action){
     case "logout":{
         session_destroy();
     }
+    case "delete-team": {
+        $ch = curl_init();
+        $api_host = get_api_host();
+        $endpoint = $api_host."/teams/".$team_id;
+        curl_setopt($ch, CURLOPT_URL, $endpoint);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+    }
+    
+}
+
+function format_date($date){
+    return date("d-m-Y", strtotime($date));
 }
 
 function get_logged_in_member_id(){

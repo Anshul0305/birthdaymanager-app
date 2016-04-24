@@ -87,7 +87,7 @@
               </tr>
               <tr class="active">
                   <td><strong>Celebration Date:</strong></td>
-                  <td><?php echo $json_celebrations[0]->celebration_date?></td>
+                  <td><?php echo format_date($json_celebrations[0]->celebration_date)?></td>
               </tr>
               <tr class="active">
                   <td width="20%"><strong>Cake Amount:</strong></td>
@@ -125,16 +125,17 @@
                       $member_endpoint = $api_host . "/members/" . $json_celebrations[0]->attendees[$i]->id;
                       $member_json = json_decode(file_get_contents($member_endpoint));
                       $teams_list = $member_json[0]->teams;
-                      foreach ($teams_list as $team) {
 
+                      $member_fund_balance = "Team Deleted!";
+                      foreach ($teams_list as $team) {
                           if ($team->id == $json_celebrations[0]->team_id) {
-                              $member_fund_balance = $team->member_fund_balance;
+                              $member_fund_balance = "£ ". $team->member_fund_balance;
                           }
                       }
                       echo "<tr class='info'>";
                       echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
                       echo "<td>" . date("d-m-Y", strtotime($member_json[0]->dob)) . "</td>";
-                      echo "<td style='text-align: center'>£ " . $member_fund_balance . "</td>";
+                      echo "<td style='text-align: center'>" . $member_fund_balance . "</td>";
                       echo "</tr>";
                   }
                   echo "</tbody>";

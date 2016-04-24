@@ -114,7 +114,7 @@
                       }
                       echo "<tr class='info'>";
                       echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
-                      echo "<td>" . date("d-m-Y", strtotime($member_json[0]->dob)) . "</td>";
+                      echo "<td>" . format_date($member_json[0]->dob) . "</td>";
                       echo "<td style='text-align: center'>£ " . $member_fund_balance . "</td>";
                       if ($is_admin)
                           echo "<td style='text-align: center'> 

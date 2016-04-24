@@ -37,7 +37,7 @@ is_member_logged_in();
                           echo "<td>" . $json[0]->teams[$i]->name . "</td>";
                           echo "<td>" . count($json[0]->teams[$i]->members) . "</td>";
                           echo "<td>£" . $json[0]->teams[$i]->member_fund_balance . "</td>";
-                          echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='' class='btn-danger'>Delete Team</button></td>";
+                          echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='delete_team(".$json[0]->teams[$i]->id .")' class='btn-danger'>Delete Team</button></td>";
                           echo "</tr>";
                       }
                   }
@@ -57,6 +57,29 @@ is_member_logged_in();
               <script>
                   function redirect(team_id){
                       location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
+                  }
+
+                  function delete_team(team_id){
+                      if(confirm("Are You Sure You Want To Delete This Team!")){
+                          $.get(<?php echo "'http://".get_website_host().json_decode(file_get_contents('./././env.json'))->website_relative_path."/helper.php?action=delete-team&team-id='"?>+team_id);
+                          location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-teams";
+                      }else{
+
+                      }
+                  }
+
+                  function leave_team(team_id,member_id){
+                      if(confirm("Are You Sure You Want To Leave This Team! \n\nIf You have any Remaining Fund, Please Make Sure to Collect it from The Team Admin!")){
+                              $.post('<?php echo  get_api_host()."/leave-team"?>',
+                                  {
+                                      team_id: team_id,
+                                      member_id: member_id
+                                  });
+                              alert("Removed From Team Successfully!");
+                              location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-teams";
+                      }else{
+
+                      }
                   }
               </script>
               <a name="member-section"></a>
@@ -86,7 +109,7 @@ is_member_logged_in();
                           echo "<td>".$json[0]->teams[$i]->name."</td>";
                           echo "<td>".count($json[0]->teams[$i]->members)."</td>";
                           echo "<td>£".$json[0]->teams[$i]->member_fund_balance."</td>";
-                          echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='' class='btn-danger'>Leave Team</button></td>";
+                          echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='leave_team(".$json[0]->teams[$i]->id .",".$logged_in_member_id.")' class='btn-danger'>Leave Team</button></td>";
                           echo "</tr>";
                       }
                   }
