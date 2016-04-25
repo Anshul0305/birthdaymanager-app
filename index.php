@@ -41,6 +41,11 @@ if(isset($signup_email)&&isset($signup_password)){
 	curl_close ($ch);
 }
 
+
+// Forgot Password Handler
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -180,7 +185,7 @@ if(isset($signup_email)&&isset($signup_password)){
 			<div id="cd-reset-password"> <!-- reset password form -->
 				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
 
-				<form class="cd-form">
+				<form class="cd-form" id="forgot-password" method="POST" action="<?php echo json_decode(file_get_contents("env.json"))->website_relative_path.'/index.php'?>">
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="reset-email">E-mail</label>
 						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
