@@ -25,17 +25,18 @@ is_member_logged_in();
             $team_id = $_POST['select-team'];
             $attendees_member_id = $_POST['attendee'];
 
-            $post_data = "birthday_of_member_id=".$birthday_of_member_id.
+
+            if(isset($birthday_of_member_id) && isset($attendees_member_id)){
+                $post_data = "birthday_of_member_id=".$birthday_of_member_id.
                     "&cake_amount=".$cake_amount.
                     "&other_expense=".$other_expense.
                     "&celebration_date=".$celebration_date.
                     "&team_id=".$team_id;
 
-            foreach ($attendees_member_id as $attendee){
-                $post_data = $post_data. "&attendees_member_id[]=".$attendee;
-            }
-
-            if(isset($birthday_of_member_id)){
+                foreach ($attendees_member_id as $attendee){
+                    $post_data = $post_data. "&attendees_member_id[]=".$attendee;
+                }
+                
                 if($cake_amount!="" && $other_expense !="") {
                     curl_setopt($ch, CURLOPT_URL, $post_celebration_endpoint);
                     curl_setopt($ch, CURLOPT_POST, 1);
