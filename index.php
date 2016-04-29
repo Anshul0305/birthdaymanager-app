@@ -43,7 +43,20 @@ if(isset($signup_email)&&isset($signup_password)){
 
 
 // Forgot Password Handler
+$ch = curl_init();
+$reset_endpoint = $api_host."/reset-password-link";
+$reset_email = $_POST["reset-email"];
+$reset_post_data = "email=".$reset_email;
 
+if(isset($reset_email)){
+	curl_setopt($ch, CURLOPT_URL,$reset_endpoint);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $reset_post_data);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$reset_output = curl_exec ($ch);
+	$reset_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	curl_close ($ch);
+}
 
 
 ?>
@@ -188,7 +201,7 @@ if(isset($signup_email)&&isset($signup_password)){
 				<form class="cd-form" id="forgot-password" method="POST" action="<?php echo json_decode(file_get_contents("env.json"))->website_relative_path.'/index.php'?>">
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="reset-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<input class="full-width has-padding has-border" name="reset-email" id="reset-email" type="email" placeholder="E-mail">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
@@ -227,6 +240,15 @@ if(isset($signup_email)&&isset($signup_password)){
 						}
 						else{
 							echo "<div class=\"alert alert-danger\" role=\"alert\">Registration Failed! Please Try Again...</div>";
+						}
+					}
+					// Handle Reset Password
+					if(isset($reset_email)){
+						if($reset_http_code == 200 && $reset_email!= ""){
+							echo "<div class=\"alert alert-success\" role=\"alert\">Email Sent Successfully! Please Change Your Password and Login...</div>";
+						}
+						else{
+							echo "<div class=\"alert alert-danger\" role=\"alert\">Reset Password Failed! Please Try Again...</div>";
 						}
 					}
 					?>
