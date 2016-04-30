@@ -62,46 +62,51 @@
 
     if(isset($member_email)){
         if($member_email!="") {
-            if(count($json)>0){
-                echo "<table class=\"table\">";
-                echo "<thead>";
-                echo "<tr>";
-                echo "<th>Member Name</th>";
-                echo "<th>Email</th>";
-                echo "<th>Date of Birth</th>";
-                echo "<th>Action</th>";
-                echo "</tr>";
-                echo "</thead>";
-                echo "<tbody>";
-                for ($i = 0; $i < count($json); $i++) {
-                    echo "<tr class='info'>";
-                    echo "<td>" . $json[$i]->first_name ." ". $json[$i]->last_name. "</td>";
-                    echo "<td>" . $json[$i]->email . "</td>";
-                    echo "<td>" . date("d-m-Y",strtotime($json[$i]->dob))  . "</td>";
-                    $is_member = false;
-                    foreach($json[$i]->teams as $team){
-                        if($team->id == $team_id){
-                            $is_member = true;
-                        }
-                    }
-                    if(!$is_member){
-                        echo "<td> <button onclick='join_team(".$team_id.",".$json[$i]->id .")' class='btn-info'>Add Member</button></td></td>";
-                    }else{
-                        echo "<td> Member</td>";
-                    }
+            if (!filter_var($member_email, FILTER_VALIDATE_EMAIL) === false) {
+                if (count($json) > 0) {
+                    echo "<table class=\"table\">";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Member Name</th>";
+                    echo "<th>Email</th>";
+                    echo "<th>Date of Birth</th>";
+                    echo "<th>Action</th>";
                     echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($json); $i++) {
+                        echo "<tr class='info'>";
+                        echo "<td>" . $json[$i]->first_name . " " . $json[$i]->last_name . "</td>";
+                        echo "<td>" . $json[$i]->email . "</td>";
+                        echo "<td>" . date("d-m-Y", strtotime($json[$i]->dob)) . "</td>";
+                        $is_member = false;
+                        foreach ($json[$i]->teams as $team) {
+                            if ($team->id == $team_id) {
+                                $is_member = true;
+                            }
+                        }
+                        if (!$is_member) {
+                            echo "<td> <button onclick='join_team(" . $team_id . "," . $json[$i]->id . ")' class='btn-info'>Add Member</button></td></td>";
+                        } else {
+                            echo "<td> Member</td>";
+                        }
+                        echo "</tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                } else {
+                    echo '<div class="alert alert-warning">';
+                    echo '<strong>Sorry!</strong> No Member Found With That Email Id! <a style="text-decoration: none" href="#"> Send Invitation</a></div>';
                 }
-                echo "</tbody>";
-                echo "</table>";
             }
             else{
-                echo '<div class="alert alert-warning">';
-                echo '<strong>Sorry!</strong> No Member Found With That Email Id! <a style="text-decoration: none" href="#"> Send Invitation</a></div>';
+                echo '<div class="alert alert-danger">';
+                echo '<strong>Oops!</strong> Looks Like You Have Not Entered a Valid Email Id!</div>';
             }
         }
         else{
             echo '<div class="alert alert-danger">';
-            echo '<strong>Oops!</strong> Looks Like You Have Not Entered a Valid Email Id!</div>';
+            echo '<strong>Sorry!</strong> Please Enter a Valid Email Id!</div>';
         }
     }
     ?>
