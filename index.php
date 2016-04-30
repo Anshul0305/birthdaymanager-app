@@ -21,15 +21,22 @@ if(isset($signin_email)&&isset($signin_password)){
 }
 
 // Registration Handler
-$ch = curl_init();
-$register_endpoint = $api_host."/register";
-$first_name = $_POST["signup-first-name"];
-$last_name = $_POST["signup-last-name"];
-$signup_email = $_POST["signup-email"];
-$signup_password = $_POST["signup-password"];
-$official_dob = $_POST["signup-official-dob"];
-//$official_dob = '2000-01-01';
-$signup_post_data = "first_name=".$first_name."&last_name=".$last_name."&official_dob=".$official_dob."&email=".$signup_email."&password=".$signup_password;
+if(isset($_POST["signup-email"])) {
+	$ch = curl_init();
+	$register_endpoint = $api_host . "/register";
+	$first_name = $_POST["signup-first-name"];
+	$last_name = $_POST["signup-last-name"];
+	$signup_email = $_POST["signup-email"];
+	$signup_password = $_POST["signup-password"];
+	$official_dob = $_POST["signup-official-dob"];
+	$team_id = $_GET["team-id"];
+	$team_name = $_GET["team-name"];
+	if (isset($team_id)) {
+		$signup_post_data = "first_name=" . $first_name . "&last_name=" . $last_name . "&official_dob=" . $official_dob . "&email=" . $signup_email . "&password=" . $signup_password . "&team_id=" . $team_id."&team_name=".$team_name;
+	} else {
+		$signup_post_data = "first_name=" . $first_name . "&last_name=" . $last_name . "&official_dob=" . $official_dob . "&email=" . $signup_email . "&password=" . $signup_password;
+	}
+}
 
 if(isset($signup_email)&&isset($signup_password)){
 	curl_setopt($ch, CURLOPT_URL,$register_endpoint);
@@ -43,12 +50,13 @@ if(isset($signup_email)&&isset($signup_password)){
 
 
 // Forgot Password Handler
-$ch = curl_init();
-$reset_endpoint = $api_host."/reset-password-link";
-$reset_email = $_POST["reset-email"];
-$reset_post_data = "email=".$reset_email;
 
-if(isset($reset_email)){
+if(isset($_POST["reset-email"])){
+	$ch = curl_init();
+	$reset_endpoint = $api_host."/reset-password-link";
+	$reset_email = $_POST["reset-email"];
+	$reset_post_data = "email=".$reset_email;
+
 	curl_setopt($ch, CURLOPT_URL,$reset_endpoint);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $reset_post_data);
@@ -150,7 +158,7 @@ if(isset($reset_email)){
 			</div> <!-- cd-login -->
 
 			<div id="cd-signup"> <!-- sign up form -->
-				<form class="cd-form" id="register" method="POST" action="<?php echo json_decode(file_get_contents("env.json"))->website_relative_path.'/index.php'?>">
+				<form class="cd-form" id="register" method="POST" action="">
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-first-name">First Name</label>
 						<input class="full-width has-padding has-border" name="signup-first-name" id="signup-first-name" type="text" placeholder="First Name">
@@ -192,7 +200,6 @@ if(isset($reset_email)){
 					</p>
 				</form>
 
-				<!-- <a href="#0" class="cd-close-form">Close</a> -->
 			</div> <!-- cd-signup -->
 
 			<div id="cd-reset-password"> <!-- reset password form -->
