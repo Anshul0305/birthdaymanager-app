@@ -38,7 +38,7 @@
               }
 
 
-              $upcoming_birthday_endpoint = $api_host."/members/upcoming-birthdays";
+              $upcoming_birthday_endpoint = $api_host."/members/".$logged_in_member_id."/upcoming-birthdays";
               $json_birthday = json_decode(file_get_contents($upcoming_birthday_endpoint));
 
               ?>
@@ -73,13 +73,17 @@
           <div class="cloud">
             <div class="grid-date">
                 <div class="date">
-                    <p class="date-in">New York</p>
-                    <span class="date-on">°F °C </span>
+                    <p style="text-align: center;color: white">Today's Date</p>
+                    <span class="date-on"> </span>
                     <div class="clearfix"> </div>                           
                 </div>
-                <h4>30°<i class="fa fa-cloud-upload"> </i></h4>
             </div>
-            <p class="monday">Monday 10 July</p>
+              <?php
+              $mydate=getdate(date("U"));
+              $date = "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
+
+              ?>
+            <p class="monday"><?php echo $date?></p>
           </div>
         </div>
         <div class="clearfix"> </div>
