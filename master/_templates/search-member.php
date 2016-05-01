@@ -96,7 +96,7 @@
                     echo "</table>";
                 } else {
                     echo '<div class="alert alert-warning">';
-                    echo '<strong>Sorry!</strong> No Member Found With That Email Id! <a style="text-decoration: none" href="#"> Send Invitation</a></div>';
+                    echo '<strong>Sorry!</strong> No Member Found With That Email Id! <a onclick="invite('.$team_id.",'".$member_email. "'". ')" style="text-decoration: none" href="#"> Send Invitation</a></div>';
                 }
             }
             else{
@@ -120,6 +120,14 @@
                 });
             alert("Joined Team Successfully!");
             location.reload();
+        }
+        function invite(team_id,member_email){
+            $.post('<?php echo  get_api_host()."/invite"?>',
+                {
+                    team_id: team_id,
+                    email: member_email
+                });
+            alert("Invitation Sent Successfully to " + member_email + "!");
         }
     </script>
 </div>

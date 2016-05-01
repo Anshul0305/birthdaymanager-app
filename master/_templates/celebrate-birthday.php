@@ -1,6 +1,9 @@
 <?php include_once "./././helper.php"?>
 <?php
 is_member_logged_in();
+if(isset($_GET["team-id"])){
+    $team_id = $_GET["team-id"];
+}
 ?>
 <div class="content_bottom">
     <div class="col-md-12 span_3">
