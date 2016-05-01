@@ -140,7 +140,7 @@
               <?php
               if($is_admin){ ?>
                   <div align="middle"><button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button>
-                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Bulk Invite Member</button></div>
+                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/celebrate?team-id=".$team_id?>'" >Celebrate Birthday</button></div>
               <?php
               }
               ?>
