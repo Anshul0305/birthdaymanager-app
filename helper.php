@@ -20,7 +20,7 @@ switch($action){
 }
 
 function format_date($date){
-    return date("d-m-Y", strtotime($date));
+    return date("d M", strtotime($date));
 }
 
 function get_logged_in_member_id(){
