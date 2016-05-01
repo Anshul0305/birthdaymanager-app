@@ -23,7 +23,7 @@
     ?>
         	<div class="col-md-3 widget widget1">
         		<div class="r3_counter_box">
-                    <a href="#admin-section"> <i class="pull-left fa fa-thumbs-up icon-rounded"></i></a>
+                    <a href="<?php echo get_website_relative_path()?>/view-teams#admin-section"> <i class="pull-left fa fa-thumbs-up icon-rounded"></i></a>
                     <div class="stats">
                       <h5><strong><?php echo $admin_count?></strong></h5>
                       <span>Team Admin</span>
@@ -32,7 +32,7 @@
         	</div>
         	<div class="col-md-3 widget widget1">
         		<div class="r3_counter_box">
-                   <a href="#member-section"> <i class="pull-left fa fa-users user1 icon-rounded"></i></a>
+                   <a href="<?php echo get_website_relative_path()?>/view-teams#member-section"> <i class="pull-left fa fa-users user1 icon-rounded"></i></a>
                     <div class="stats">
                       <h5><strong><?php echo $member_count?></strong></h5>
                       <span>Team Member</span>
@@ -41,7 +41,7 @@
         	</div>
         	<div class="col-md-3 widget widget1">
         		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-gift user3 icon-rounded"></i>
+                    <a href="<?php echo get_website_relative_path()?>/view-celebration"> <i class="pull-left fa fa-gift user3 icon-rounded"></i></a>
                     <div class="stats">
                       <h5><strong><?php echo $celebration_count?></strong></h5>
                       <span>Celebrations</span>
