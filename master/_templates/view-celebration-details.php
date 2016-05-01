@@ -87,7 +87,7 @@
               </tr>
               <tr class="active">
                   <td><strong>Celebration Date:</strong></td>
-                  <td><?php echo format_date($json_celebrations[0]->celebration_date)?></td>
+                  <td><?php echo format_date($json_celebrations[0]->celebration_date,"DMY")?></td>
               </tr>
               <tr class="active">
                   <td width="20%"><strong>Cake Amount:</strong></td>
@@ -134,7 +134,7 @@
                       }
                       echo "<tr class='info'>";
                       echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
-                      echo "<td>" . date("d-m-Y", strtotime($member_json[0]->dob)) . "</td>";
+                      echo "<td>" . format_date($member_json[0]->dob,"DM") . "</td>";
                       echo "<td style='text-align: center'>" . $member_fund_balance . "</td>";
                       echo "</tr>";
                   }

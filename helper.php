@@ -19,8 +19,18 @@ switch($action){
     
 }
 
-function format_date($date){
-    return date("d M", strtotime($date));
+function format_date($date,$type){
+    switch($type){
+        case "DM":{
+            return date("d M", strtotime($date));
+        }
+        break;
+        case "DMY":{
+            return date("d M Y", strtotime($date));
+        }
+        break;
+    }
+
 }
 
 function get_logged_in_member_id(){

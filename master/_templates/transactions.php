@@ -43,7 +43,7 @@ is_member_logged_in();
 
                   for ($i = 0; $i < count($json); $i++) {
                       echo "<tr class='info'>";
-                      echo "<td>" . format_date( $json[$i]->transaction_date ) . "</td>";
+                      echo "<td>" . format_date( $json[$i]->transaction_date,"DMY" ) . "</td>";
                       echo "<td>" . ucfirst($json[$i]->transaction_type)  . "</td>";
                       if ($json[$i]->transaction_type == "debit")
                       echo "<td>£ -" . $json[$i]->transaction_amount . "</td>";
