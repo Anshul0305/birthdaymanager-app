@@ -96,6 +96,8 @@ if(isset($password1)&&isset($password2)){
             <div class="form-group">
               <button type="submit" class="btn btn-primary">Submit</button>
               <button type="reset" class="btn btn-default">Reset</button>
+                <div><br></div>
+                <div><button type="reset" onclick="window.location='http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>'" class="btn btn-default">Back to Home Page</button></div>
             </div>
           </fieldset>
         </form>
