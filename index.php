@@ -190,10 +190,10 @@ if(isset($_POST["reset-email"])){
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
-					<p class="fieldset">
-						<input type="checkbox" id="accept-terms">
-						<label for="accept-terms">I agree to the <a href="#">Terms</a></label>
-					</p>
+<!--					<p class="fieldset">-->
+<!--						<input type="checkbox" id="accept-terms">-->
+<!--						<label for="accept-terms">I agree to the <a href="#">Terms</a></label>-->
+<!--					</p>-->
 
 					<p class="fieldset">
 						<input class="full-width has-padding" type="submit" value="Create account">
