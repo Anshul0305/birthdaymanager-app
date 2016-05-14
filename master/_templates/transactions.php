@@ -59,7 +59,8 @@ is_member_logged_in();
                   }
 
                   echo "</tbody>";
-                  echo "</table>";
+                  echo "</table><br>";
+                  echo "<input type=button name=print value=\"Print Page\"onClick=\"window.print()\">";
               }
               else
               {
