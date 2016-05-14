@@ -58,7 +58,7 @@
                                     <a href="transactions">My Transactions</a>
                                 </li>
                                 <li>
-                                    <a href="logout">Logout</a>
+                                    <a href="#" onclick="logout();">Logout</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
