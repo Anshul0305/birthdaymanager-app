@@ -261,12 +261,12 @@ if(isset($_POST["reset-email"])){
 					?>
 					<h1>Birthday Manager</h1>
 					<h2 class="subtitle">Always believe something wonderful is about to happen...</h2>
-					<form class="form-inline signup" role="form">
-					  <div class="form-group">
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
-					  </div>
-					  <button type="submit" class="btn btn-theme">Subscribe Us</button>
-					</form>					
+<!--					<form class="form-inline signup" role="form">-->
+<!--					  <div class="form-group">-->
+<!--					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">-->
+<!--					  </div>-->
+<!--					  <button type="submit" class="btn btn-theme">Subscribe Us</button>-->
+<!--					</form>					-->
 				</div>
 				<div class="col-lg-4 col-lg-offset-2">
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
