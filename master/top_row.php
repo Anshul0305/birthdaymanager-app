@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/dashboard">Birthday Manager</a>
+        <a class="navbar-brand" href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/dashboard">Online Birthday Manager - Beta</a>
     </div>
 
 <!--    <form class="navbar-form navbar-right">-->
