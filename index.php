@@ -173,7 +173,7 @@ if(isset($_POST["reset-email"])){
 					
 					<p class="fieldset">
 						<label class="image-replace cd-username" >Date of Birth</label>
-						<input class="full-width has-padding has-border" id="signup-official-dob" onfocus="(this.type='date')" onblur="(this.type='text')" type="text" name="signup-official-dob" placeholder="Date of Birth">
+						<input class="full-width has-padding has-border" id="signup-official-dob" name="signup-official-dob" type="text" placeholder="Date of Birth">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
@@ -314,7 +314,8 @@ if(isset($_POST["reset-email"])){
 			$("#signup-official-dob").datepicker({
 				changeMonth: true,
 				changeYear: true,
-				yearRange: "1950:2030"
+				yearRange: "1950:2030",
+				dateFormat: "yy-mm-dd"
 			});
 		});
 	</script>
