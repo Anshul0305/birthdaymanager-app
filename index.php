@@ -303,8 +303,22 @@ if(isset($_POST["reset-email"])){
 		</div>		
 	</div>	
 	</div>
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		$(function() {
+			$("#signup-official-dob").datepicker({
+				changeMonth: true,
+				changeYear: true,
+				yearRange: "1950:2030"
+			});
+		});
+	</script>
+
     <script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/main.js"></script>
   </body>
