@@ -93,11 +93,16 @@ if(isset($_POST["reset-email"])){
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+
     <![endif]-->
   </head>
 
-  <body>
 
+  <body>
+  <script src="assets/js/main.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -305,8 +310,8 @@ if(isset($_POST["reset-email"])){
 	</div>	
 	</div>
 	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
 
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/main.js"></script>
@@ -321,7 +326,9 @@ if(isset($_POST["reset-email"])){
 		});
 	</script>
 
+
+
     <script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/main.js"></script>
+
   </body>
 </html>
