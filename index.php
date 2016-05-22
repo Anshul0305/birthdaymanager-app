@@ -296,7 +296,7 @@ if(isset($_POST["reset-email"])){
 	<div id="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3">
+			<div class="col-lg-12 col-lg-offset-3">
 <!--					<p class="copyright">Copyright &copy; 2016 - Designed by <a href="http://axlewebtech.com" target="_blank">Axle Web Technologies | </a>-->
 				<p>Copyright &copy; 2016 All Rights Reserved | Designed and Developed by <a href="https://www.facebook.com/anshulshr" target="_blank">Anshul Shrivastava</a> &amp; <a href="https://www.facebook.com/AnkitSkJain" target="_blank">Ankit Jain</a> </p>
 				<a href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
