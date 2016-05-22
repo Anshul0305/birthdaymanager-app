@@ -117,8 +117,8 @@ if(isset($_POST["reset-email"])){
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right main-nav">
-			 <li><a class="cd-signin" href="#">Sign in</a></li>
-            <li><a class="cd-signup" href="#">Sign up</a></li>
+			 <li><a class="cd-signin" href="#" style="width: 80px">Sign in</a></li>
+            <li><a class="cd-signup" href="#" style="width: 85px">Sign up</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
