@@ -102,7 +102,7 @@ if(isset($_POST["reset-email"])){
   <body>
   <script src="assets/js/main.js"></script>
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -309,7 +309,7 @@ if(isset($_POST["reset-email"])){
 		</div>		
 	</div>	
 	</div>
-	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
 
 
 
@@ -320,7 +320,7 @@ if(isset($_POST["reset-email"])){
 			$("#signup-official-dob").datepicker({
 				changeMonth: true,
 				changeYear: true,
-				yearRange: "1950:2030",
+				yearRange: "1950:+nn",
 				dateFormat: "yy-mm-dd"
 			});
 		});
