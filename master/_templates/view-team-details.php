@@ -142,6 +142,28 @@
                   <div align="middle"><button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button>
                   <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/celebrate?team-id=".$team_id?>'" >Celebrate Birthday</button></div>
               <?php
+              }else{
+                  ?>
+                  <div align="middle">
+                  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+                      <input type="hidden" name="cmd" value="_s-xclick">
+                      <table>
+                          <tr><td><input type="hidden" name="on0" value="Fund Amount">Add Fund Amount</td></tr><tr><td><br><select name="os0">
+                                      <option value="Pay">Pay £2.00 GBP</option>
+                                      <option value="Pay">Pay £5.00 GBP</option>
+                                      <option value="Pay">Pay £10.00 GBP</option>
+                                  </select> </td></tr>
+                      </table>
+                      <input type="hidden" name="currency_code" value="GBP">
+                      <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+                      </br>
+                      <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+                      <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+</div>
+
+                  <?php
               }
               ?>
 
