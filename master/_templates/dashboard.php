@@ -1,4 +1,9 @@
 <?php include_once("./././helper.php") ?>
+<script>
+    $(function() {
+        $( document ).tooltip();
+    });
+</script>
 <div class="content_bottom">
      <div class="col-md-8 span_3">
           <div class="bs-example1" data-example-id="contextual-table">
@@ -58,7 +63,7 @@
                 foreach($json_birthday as $birthday){
                     $index = rand(0,3);
                     echo '<div class="col-md-6 col_1_of_2 span_1_of_2">';
-                    echo '<a class="tiles_info">';
+                    echo '<a class="tiles_info" title="'.$birthday->first_name.' '.$birthday->last_name.'\'s Birthday">';
                     echo '<div class="tiles-head '.$head_color[$index].'" >';
                     echo '<div class="text-center">'.$birthday->first_name.'</div>';
                     echo '</div>';
