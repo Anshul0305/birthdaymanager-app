@@ -91,7 +91,7 @@
               <?php
 
               if (count($json_team[0]->members) > 0) {
-                  echo "<table class=\"table\">";
+                  echo "<table id='myTable' class=\"table\">";
                   echo "<thead>";
                   echo "<tr>";
                   echo "<th>Member Name</th>";
@@ -153,6 +153,12 @@
         </div>
 
 <script>
+    $(document).ready(function(){
+        $('#myTable').DataTable({
+
+        });
+    });
+
 $(document).ready(function(){
     $('button[data-toggle=modal]').click(function(){
         var member_id = $(this).data('id');
