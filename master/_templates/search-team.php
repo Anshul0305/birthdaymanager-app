@@ -5,7 +5,7 @@
     $api_host = get_api_host();
     $logged_in_member_id = get_logged_in_member_id();
     $team_name = $_POST["team_name"];
-    $endpoint = $api_host."/teams/search/".$team_name;
+    $endpoint = $api_host."/teams/search?subquery=".$team_name;
     $json = json_decode(file_get_contents($endpoint));
 
     ?>
