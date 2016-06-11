@@ -112,7 +112,7 @@ if(isset($_GET["team-id"])){
                 <div class="form-group">
                     <label for="checkbox" class="col-sm-2 control-label">Celebration Date</label>
                     <div class="col-sm-8">
-                        <label><input type="date" name="celebration-date" id="celebration-date" value="<?php echo date('Y-m-d'); ?>"></label>
+                        <label><input type="text" name="celebration-date" id="celebration-date" value="<?php echo date('Y-m-d'); ?>"></label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -146,6 +146,17 @@ if(isset($_GET["team-id"])){
     </div>
     <div class="clearfix"> </div>
 </div>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link href="http://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
+<script>
+    $(function() {
+        $("#celebration-date").datepicker({
+            changeMonth: true,
+            dateFormat: "yy-mm-dd"
+        });
+    });
+</script>
 
 <script type = "text/javascript" language = "javascript">
     // Populate Team Dropdown
