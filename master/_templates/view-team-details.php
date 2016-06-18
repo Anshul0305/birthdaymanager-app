@@ -14,6 +14,8 @@
     $team_endpoint = $api_host."/teams/".$team_id;
     $json_team = json_decode(file_get_contents($team_endpoint));
 
+    $team_name = $json_team[0]->name;
+
     $fund_amount = $_POST["fund_amount"];
     $member_id = $_POST["member_id"];
 
@@ -137,13 +139,16 @@
               }
               ?>
 
+              <div align="middle">
               <?php
               if($is_admin){ ?>
-                  <div align="middle"><button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button>
-                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/celebrate?team-id=".$team_id?>'" >Celebrate Birthday</button></div>
+                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button>
+                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/celebrate?team-id=".$team_id?>'" >Celebrate Birthday</button>
               <?php
               }
               ?>
+                  <button class='btn-info' data-toggle="modal" data-target="#linkModal">Team Invitation Link</button>
+              </div>
 
 
            </div>
@@ -182,7 +187,7 @@ function leave_team(team_id,member_id){
 </script>
 
 <div class="container">
-    <!-- Modal -->
+
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -210,6 +215,27 @@ function leave_team(team_id,member_id){
                             </div>
                         </div>
                         </br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="linkModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Copy Team Invitation Link</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-12">
+                                <input type="text" onClick="this.select();" class="form-control1" id="team_link" value=" <?php echo json_decode(file_get_contents("env.json"))->website_host."/index.php?team-id=" . $team_id . "&team-name=" . urlencode($team_name);?> "><br>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
