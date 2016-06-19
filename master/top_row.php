@@ -1,4 +1,16 @@
 <?php include_once ($_SERVER["DOCUMENT_ROOT"].json_decode(file_get_contents('./././env.json'))->website_relative_path."/helper.php"); ?>
+<script type="text/javascript">
+    (function(p,u,s,h){
+        p._pcq=p._pcq||[];
+        p._pcq.push(['_currentTime',Date.now()]);
+        s=u.createElement('script');
+        s.type='text/javascript';
+        s.async=true;
+        s.src='https://cdn.pushcrew.com/js/dc21705845f0e9dcdda55f5e20112326.js';
+        h=u.getElementsByTagName('script')[0];
+        h.parentNode.insertBefore(s,h);
+    })(window,document);
+</script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
