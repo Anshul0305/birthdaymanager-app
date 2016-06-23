@@ -112,7 +112,7 @@ function get_currency_font(){
             break;
         }
         case "GB":{
-            $symbol = "fa-gpb";
+            $symbol = "fa-gbp";
             break;
         }
         default:{

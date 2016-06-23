@@ -91,11 +91,11 @@
               </tr>
               <tr class="active">
                   <td width="20%"><strong>Cake Amount:</strong></td>
-                  <td><?php echo $json_celebrations[0]->cake_amount?></td>
+                  <td><?php echo get_currency_symbol(). $json_celebrations[0]->cake_amount?></td>
               </tr>
               <tr class="active">
                   <td><strong>Other Expense:</strong></td>
-                  <td><?php echo $json_celebrations[0]->other_expense?></td>
+                  <td><?php echo get_currency_symbol(). $json_celebrations[0]->other_expense?></td>
               </tr>
               <tr class="active">
                   <td><strong>Total Attendees:</strong></td>
@@ -103,7 +103,7 @@
               </tr>
               <tr class="active">
                   <td><strong>Perhead Contribution:</strong></td>
-                  <td><?php echo $json_celebrations[0]->perhead_contribution?></td>
+                  <td><?php echo get_currency_symbol(). $json_celebrations[0]->perhead_contribution?></td>
               </tr>
               </tbody>
               </table>
@@ -135,7 +135,7 @@
                       echo "<tr class='info'>";
                       echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
                       echo "<td>" . format_date($member_json[0]->dob,"DM") . "</td>";
-                      echo "<td style='text-align: center'>" . $member_fund_balance . "</td>";
+                      echo "<td style='text-align: center'>". $member_fund_balance . "</td>";
                       echo "</tr>";
                   }
                   echo "</tbody>";
