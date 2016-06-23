@@ -32,7 +32,7 @@ is_member_logged_in();
                       echo "<td>" . $json[$i]->team_name . "</td>";
                       echo "<td>" . $json[$i]->birthday_of_member_name . "</td>";
                       echo "<td>" . format_date($json[$i]->celebration_date,"DMY") . "</td>";
-                      echo "<td>" . $json[$i]->perhead_contribution . "</td>";
+                      echo "<td>". get_currency_symbol() . $json[$i]->perhead_contribution . "</td>";
                       echo "<td> <button onclick='redirect(".$json[$i]->celebration_id.")' class='btn-info'>View Details</button></td></td>";
                       echo "</tr>";
                   }
