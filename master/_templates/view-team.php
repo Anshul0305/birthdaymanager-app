@@ -36,7 +36,7 @@ is_member_logged_in();
                           echo "<tr class='info'>";
                           echo "<td>" . $json[0]->teams[$i]->name . "</td>";
                           echo "<td>" . count($json[0]->teams[$i]->members) . "</td>";
-                          echo "<td>£" . $json[0]->teams[$i]->member_fund_balance . "</td>";
+                          echo "<td>".get_currency_symbol() . $json[0]->teams[$i]->member_fund_balance . "</td>";
                           echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='delete_team(".$json[0]->teams[$i]->id .")' class='btn-danger'>Delete Team</button></td>";
                           echo "</tr>";
                       }
@@ -108,7 +108,7 @@ is_member_logged_in();
                           echo "<tr class='info'>";
                           echo "<td>".$json[0]->teams[$i]->name."</td>";
                           echo "<td>".count($json[0]->teams[$i]->members)."</td>";
-                          echo "<td>£".$json[0]->teams[$i]->member_fund_balance."</td>";
+                          echo "<td>".get_currency_symbol().$json[0]->teams[$i]->member_fund_balance."</td>";
                           echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='leave_team(".$json[0]->teams[$i]->id .",".$logged_in_member_id.")' class='btn-danger'>Leave Team</button></td>";
                           echo "</tr>";
                       }

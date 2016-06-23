@@ -3,6 +3,15 @@
 session_start();
 $api_host = get_api_host();
 
+// Localisation Handler
+$ip_address= $_SERVER['REMOTE_ADDR'];
+$ip_endpoint = "http://ip-api.com/json/".$ip_address;
+$json_ip = file_get_contents($ip_endpoint);
+
+$_SESSION["country"] = json_decode($json_ip)->country;
+$_SESSION["region"] = json_decode($json_ip)->region;
+$_SESSION["country_code"] = json_decode($json_ip)->countryCode;
+
 // Login Handler
 $ch = curl_init();
 $login_endpoint = $api_host."/login";
@@ -233,6 +242,7 @@ if(isset($_POST["reset-email"])){
 			<div class="row">
 				<div class="col-lg-6">
 					<?php
+
 					// Handle Login
 					if(isset($signin_email)&&isset($signin_password)) {
 						if ($login_http_code == 200 && $signin_email != "" && $signin_password != "") {
@@ -264,6 +274,7 @@ if(isset($_POST["reset-email"])){
 						}
 					}
 					?>
+					<h3><?php echo $_SESSION["country"];?></h3>
 					<h1>Birthday Manager</h1>
 					<h2 class="subtitle">Always believe something wonderful is about to happen...</h2>
 <!--					<form class="form-inline signup" role="form">-->

@@ -81,7 +81,7 @@
               <tbody>
               <tr class="active">
                   <td width="20%"><strong>Team Fund:</strong></td>
-                  <td>£<?php echo $json_team[0]->fund_balance?></td>
+                  <td><?php echo get_currency_symbol(). $json_team[0]->fund_balance?></td>
               </tr>
               <tr class="active">
                   <td><strong>Admin Name:</strong></td>
@@ -116,7 +116,7 @@
                       echo "<tr class='info'>";
                       echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
                       echo "<td>" . format_date($member_json[0]->dob,"DM") . "</td>";
-                      echo "<td style='text-align: center'>£ " . $member_fund_balance . "</td>";
+                      echo "<td style='text-align: center'>". get_currency_symbol() . $member_fund_balance . "</td>";
                       if ($is_admin)
                           if($member_json[0]->id == $logged_in_member_id){
                               echo "<td style='text-align: center'> 

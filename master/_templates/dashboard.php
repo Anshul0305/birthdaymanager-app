@@ -32,7 +32,7 @@
                       echo "<td><a style='text-decoration: none' href='http://".get_website_host();
                       echo get_website_relative_path()."/view-team-details?team-id=".$json[0]->teams[$i]->id."'>" . $json[0]->teams[$i]->name . "</a></td>";
                       echo "<td>" . $json[0]->teams[$i]->admin_name . "</td>";
-                      echo "<td>£" . $json[0]->teams[$i]->member_fund_balance . "</td>";
+                      echo "<td>". get_currency_symbol() . $json[0]->teams[$i]->member_fund_balance . "</td>";
                       echo "</tr>";
                   }
               }
@@ -84,11 +84,12 @@
                 </div>
             </div>
               <?php
+              date_default_timezone_set(get_timezone($_SESSION["country_code"]));
               $mydate=getdate(date("U"));
-              $date = "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
+              $date = "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year], $mydate[hours]:$mydate[minutes]";
 
               ?>
-            <p class="monday"><?php echo $date?></p>
+            <p class="monday"><?php echo $date. "<br>Your Timezone is: ". date_default_timezone_get();?></p>
           </div>
         </div>
         <div class="clearfix"> </div>

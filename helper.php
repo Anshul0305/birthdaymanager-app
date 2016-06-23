@@ -81,3 +81,43 @@ function get_website_host(){
 function get_website_relative_path(){
     echo json_decode(file_get_contents("env.json"))->website_relative_path;
 }
+
+function get_timezone($country_code){
+    $timezone = file_get_contents("http://api.timezonedb.com/v2/list-time-zone?key=SMNEML4RWRJ6&format=json&country=".$country_code);
+    return json_decode($timezone)->zones[0]->zoneName;
+}
+
+function get_currency_symbol(){
+    $country_code  = $_SESSION["country_code"];
+    switch ($country_code){
+        case "IN":{
+            $symbol = "₹";
+            break;
+        }
+        case "GB":{
+            $symbol = "£";
+            break;
+        }
+        default:{
+            $symbol = "$";
+        }
+    }
+    return $symbol;
+}
+function get_currency_font(){
+    $country_code  = $_SESSION["country_code"];
+    switch ($country_code){
+        case "IN":{
+            $symbol = "fa-inr";
+            break;
+        }
+        case "GB":{
+            $symbol = "fa-gpb";
+            break;
+        }
+        default:{
+            $symbol = "fa-usd";
+        }
+    }
+    return $symbol;
+}

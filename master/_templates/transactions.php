@@ -46,9 +46,9 @@ is_member_logged_in();
                       echo "<td>" . format_date( $json[$i]->transaction_date,"DMY" ) . "</td>";
                       echo "<td>" . ucfirst($json[$i]->transaction_type)  . "</td>";
                       if ($json[$i]->transaction_type == "debit")
-                      echo "<td>£ -" . $json[$i]->transaction_amount . "</td>";
+                      echo "<td>". get_currency_symbol(). " -" . $json[$i]->transaction_amount . "</td>";
                       else
-                      echo "<td>£ " . $json[$i]->transaction_amount . "</td>";
+                      echo "<td>".get_currency_symbol() . $json[$i]->transaction_amount . "</td>";
                       echo "<td>" . $json[$i]->team_name  . "</td>";
                       if ($json[$i]->birthday_celebration_of != null )
                       echo "<td> Birthday Of " . $json[$i]->birthday_celebration_of  . "</td>";

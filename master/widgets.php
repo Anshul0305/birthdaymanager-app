@@ -50,14 +50,14 @@
         	</div>
         	<div class="col-md-3 widget">
         		<div class="r3_counter_box">
-                    <a href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/view-teams"><i class="pull-left fa fa-gbp dollar1 icon-rounded"></i></a>
+                    <a href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/view-teams"><i class="pull-left fa <?php echo get_currency_font(); ?> dollar1 icon-rounded"></i></a>
                     <div class="stats">
                         <?php
                         $fund = 0;
                         for($i=0;$i<count($json[0]->teams);$i++){
                           $fund += $json[0]->teams[$i]->member_fund_balance;
                         }
-                        echo "<h5><strong>£".$fund."</strong></h5>";
+                        echo "<h5><strong>".get_currency_symbol().$fund."</strong></h5>";
                         ?>
                       <span>Total Fund</span>
                     </div>

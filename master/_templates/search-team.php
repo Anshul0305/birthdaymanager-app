@@ -56,7 +56,7 @@
                     echo "<td>" . $json[$i]->name . "</td>";
                     echo "<td>" . $json[$i]->admin_name . "</td>";
                     echo "<td>" . count($json[$i]->member_id) . "</td>";
-                    echo "<td>£" . $json[$i]->fund_balance . "</td>";
+                    echo "<td>".get_currency_symbol() . $json[$i]->fund_balance . "</td>";
                     if(is_member_of_given_team($logged_in_member_id, $json[$i]->id)){
                         echo "<td> Member</td>";
                     }else{

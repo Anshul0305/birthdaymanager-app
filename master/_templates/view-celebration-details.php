@@ -129,7 +129,7 @@
                       $member_fund_balance = "Team Deleted!";
                       foreach ($teams_list as $team) {
                           if ($team->id == $json_celebrations[0]->team_id) {
-                              $member_fund_balance = "£ ". $team->member_fund_balance;
+                              $member_fund_balance = get_currency_symbol(). $team->member_fund_balance;
                           }
                       }
                       echo "<tr class='info'>";
