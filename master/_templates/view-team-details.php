@@ -114,7 +114,7 @@
                           }
                       }
                       echo "<tr class='info'>";
-                      echo "<td>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</td>";
+                      echo "<td><a style='text-decoration: none' data-toggle=\"tooltip\" title=".$member_json[0]->email."&nbsp;>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</a></td>";
                       echo "<td>" . format_date($member_json[0]->dob,"DM") . "</td>";
                       echo "<td style='text-align: center'>". get_currency_symbol() . $member_fund_balance . "</td>";
                       if ($is_admin)
@@ -165,9 +165,11 @@
     });
 
 $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({ trigger: "click"});
     $('button[data-toggle=modal]').click(function(){
         var member_id = $(this).data('id');
         $(".modal-body #member_id").val( member_id );
+        document.cookie="member_id=" + member_id;
     });
 });
 
@@ -241,4 +243,5 @@ function leave_team(team_id,member_id){
             </div>
         </div>
     </div>
+
 </div>
