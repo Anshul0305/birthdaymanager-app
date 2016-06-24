@@ -78,7 +78,7 @@
                         echo "<tr class='info'>";
                         echo "<td>" . $json[$i]->first_name . " " . $json[$i]->last_name . "</td>";
                         echo "<td>" . $json[$i]->email . "</td>";
-                        echo "<td>" . date("d-m-Y", strtotime($json[$i]->dob)) . "</td>";
+                        echo "<td>" . format_date($json[$i]->dob,"DM") . "</td>";
                         $is_member = false;
                         foreach ($json[$i]->teams as $team) {
                             if ($team->id == $team_id) {
