@@ -89,7 +89,7 @@
               $date = "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year], $mydate[hours]:$mydate[minutes]";
 
               ?>
-            <p class="monday"><?php echo $date. "<br>Your Timezone is: ". date_default_timezone_get();?></p>
+            <p class="monday"><?php echo $date?></p>
           </div>
         </div>
         <div class="clearfix"> </div>
