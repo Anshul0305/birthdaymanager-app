@@ -86,7 +86,7 @@
               <?php
               date_default_timezone_set(get_timezone($_SESSION["country_code"]));
               $mydate=getdate(date("U"));
-              $date = "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year], $mydate[hours]:$mydate[minutes]";
+              $date = "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
 
               ?>
             <p class="monday"><?php echo $date?></p>
