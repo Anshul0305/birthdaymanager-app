@@ -160,7 +160,7 @@
 <script>
     $(document).ready(function(){
         $('#myTable').DataTable({
-
+            "pageLength": 50
         });
     });
 
