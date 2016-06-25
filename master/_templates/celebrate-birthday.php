@@ -146,7 +146,6 @@ if(isset($_GET["team-id"])){
     </div>
     <div class="clearfix"> </div>
 </div>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
 <script>
