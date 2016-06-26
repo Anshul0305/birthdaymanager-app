@@ -275,9 +275,8 @@ if(isset($_POST["reset-email"])){
 						}
 					}
 					?>
-					<h3><?php echo $_SESSION["country"];?></h3>
 					<h1>Birthday Manager</h1>
-					<h2 class="subtitle">Always believe something wonderful is about to happen...</h2>
+					<h2 class="subtitle">Make group birthday celebrations more joyful and convenient...</h2>
 <!--					<form class="form-inline signup" role="form">-->
 <!--					  <div class="form-group">-->
 <!--					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">-->
