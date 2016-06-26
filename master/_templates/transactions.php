@@ -27,6 +27,37 @@ is_member_logged_in();
               $logged_in_member_id = get_logged_in_member_id();
               $endpoint = $api_host."/members/".$logged_in_member_id."/transactions";
               $json = json_decode(file_get_contents($endpoint));
+              $debit=$credit=0;
+
+              for ($i = 0; $i < count($json); $i++) {
+                  if ($json[$i]->transaction_type == "debit") {
+                      $debit += $json[$i]->transaction_amount;
+                  }
+                  else {
+                      $credit += $json[$i]->transaction_amount;
+                  }
+              }
+
+              ?>
+              <table class="table" style="border: 1.5px solid black">
+                  <tbody>
+                  <tr class="active">
+                      <td width="20%"><strong>Total Credit:</strong></td>
+                      <td><?php echo get_currency_symbol(). $credit?></td>
+                  </tr>
+                  <tr class="active">
+                      <td width="20%"><strong>Total Debit:</strong></td>
+                      <td><?php echo get_currency_symbol(). $debit?></td>
+                  </tr>
+                  <tr class="active">
+                      <td width="20%"><strong>Total Balance:</strong></td>
+                      <td><?php echo get_currency_symbol(). ($credit - $debit)?></td>
+                  </tr>
+                  </tbody>
+              </table>
+
+              <?php
+
 
               if(count($json)>0){
                   echo "<table class=\"table\">";
@@ -45,10 +76,12 @@ is_member_logged_in();
                       echo "<tr class='info'>";
                       echo "<td>" . format_date( $json[$i]->transaction_date,"DMY" ) . "</td>";
                       echo "<td>" . ucfirst($json[$i]->transaction_type)  . "</td>";
-                      if ($json[$i]->transaction_type == "debit")
-                      echo "<td>". get_currency_symbol(). " -" . $json[$i]->transaction_amount . "</td>";
-                      else
-                      echo "<td>".get_currency_symbol() . $json[$i]->transaction_amount . "</td>";
+                      if ($json[$i]->transaction_type == "debit") {
+                          echo "<td>" . get_currency_symbol() . " -" . $json[$i]->transaction_amount . "</td>";
+                      }
+                      else {
+                          echo "<td>" . get_currency_symbol() . $json[$i]->transaction_amount . "</td>";
+                      }
                       echo "<td>" . $json[$i]->team_name  . "</td>";
                       if ($json[$i]->birthday_celebration_of != null )
                       echo "<td> Birthday Of " . $json[$i]->birthday_celebration_of  . "</td>";
@@ -60,7 +93,6 @@ is_member_logged_in();
 
                   echo "</tbody>";
                   echo "</table><br>";
-                  echo "<input type=button name=print value=\"Print Page\"onClick=\"window.print()\">";
               }
               else
               {
@@ -68,6 +100,8 @@ is_member_logged_in();
               }
               ?>
 
+
+              <?php  echo "<input type=button name=print value=\"Print Page\"onClick=\"window.print()\">";?>
               <script>
                   function redirect(team_id){
                       location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
