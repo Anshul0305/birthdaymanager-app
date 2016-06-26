@@ -35,6 +35,6 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"/>
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
-
+    <link href="http://blythedolls.neocities.org/img/favicon.ico" rel="icon" type="image/x-icon" />
  
 </head>

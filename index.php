@@ -105,6 +105,7 @@ if(isset($_POST["reset-email"])){
 
 
     <![endif]-->
+	  <link href="http://blythedolls.neocities.org/img/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
 
 
