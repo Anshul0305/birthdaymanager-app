@@ -43,15 +43,15 @@ is_member_logged_in();
                   <tbody>
                   <tr class="active">
                       <td width="20%"><strong>Total Credit:</strong></td>
-                      <td><?php echo get_currency_symbol(). $credit?></td>
+                      <td><?php echo get_currency_symbol(). round($credit,2)?></td>
                   </tr>
                   <tr class="active">
                       <td width="20%"><strong>Total Debit:</strong></td>
-                      <td><?php echo get_currency_symbol(). $debit?></td>
+                      <td><?php echo get_currency_symbol(). round($debit,2)?></td>
                   </tr>
                   <tr class="active">
                       <td width="20%"><strong>Total Balance:</strong></td>
-                      <td><?php echo get_currency_symbol(). ($credit - $debit)?></td>
+                      <td><?php echo get_currency_symbol(). round(($credit - $debit),2)?></td>
                   </tr>
                   </tbody>
               </table>
