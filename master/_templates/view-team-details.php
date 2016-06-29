@@ -14,6 +14,9 @@
     $team_endpoint = $api_host."/teams/".$team_id;
     $json_team = json_decode(file_get_contents($team_endpoint));
 
+    $message_endpoint = $api_host."/teams/".$team_id."/message";
+    $json_message = json_decode(file_get_contents($message_endpoint));
+
     $team_name = $json_team[0]->name;
 
     $fund_amount = $_POST["fund_amount"];
@@ -82,13 +85,54 @@
               <tr class="active">
                   <td width="20%"><strong>Team Fund:</strong></td>
                   <td><?php echo get_currency_symbol(). $json_team[0]->fund_balance?></td>
+                  <td></td>
               </tr>
               <tr class="active">
                   <td><strong>Admin Name:</strong></td>
                   <td><?php echo $json_team[0]->admin_name?></td>
+                  <td></td>
+              </tr>
+              <tr class="active">
+                  <td><strong>Message:</strong></td>
+                  <td><p class="text-message"><?php echo $json_message?></p></td>
+                  <td align="right">
+                      <?php if($is_admin){?>
+                      <a href="#" id="edit" class="btn-warning">Edit Message</a>
+                      <?php } ?>
+                  </td>
               </tr>
               </tbody>
               </table>
+
+
+
+              <script>
+                  $('#edit').click(function() {
+                      var text = $('.text-message').text();
+                      var input = $('<textarea rows="5" id="attribute" type="text" value="' + text + '" />');
+                      input.val(text);
+                      $('.text-message').text('').append(input);
+                      input.select();
+
+                      input.blur(function() {
+                          var text = $('#attribute').val();
+                          text = text.replace(/\n\r?/g, "<br>");
+                          $('#attribute').parent().html(text);
+                          $('#attribute').remove();
+
+                          $.ajax({
+                              type: "POST",
+                              url: "<?php echo get_api_host()?>"+"/team-message",
+                              crossDomain: true,
+                              data: 'team_id='+'<?php echo $json_team[0]->id?>'+'&message='+text,
+                              success: function(data){
+                                  alert(data);
+                              }
+                          });
+                      });
+                  });
+
+              </script>
 
               <?php
 
