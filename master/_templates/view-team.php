@@ -23,7 +23,7 @@ is_member_logged_in();
                   echo "<tr>";
                   echo "<th>Team Name</th>";
                   echo "<th>Total Members</th>";
-                  echo "<th>My Fund Balance</th>";
+                  echo "<th>Team Fund Balance</th>";
                   echo "<th style='text-align: center'>Action</th>";
                   echo "</tr>";
                   echo "</thead>";
@@ -33,10 +33,12 @@ is_member_logged_in();
                   for ($i = 0; $i < count($json[0]->teams); $i++) {
                       if ($json[0]->teams[$i]->is_admin == "true") {
                           $admin_count++;
+                          $team_endpoint = $api_host."/teams/".$json[0]->teams[$i]->id;
+                          $team_json = json_decode(file_get_contents($team_endpoint));
                           echo "<tr class='info'>";
                           echo "<td>" . $json[0]->teams[$i]->name . "</td>";
                           echo "<td>" . count($json[0]->teams[$i]->members) . "</td>";
-                          echo "<td>".get_currency_symbol() . $json[0]->teams[$i]->member_fund_balance . "</td>";
+                          echo "<td>".get_currency_symbol() . $team_json[0]->fund_balance . "</td>";
                           echo "<td style='text-align: center'> <button onclick='redirect(".$json[0]->teams[$i]->id .")' class='btn-info'>View Details</button>&nbsp;&nbsp;<button onclick='delete_team(".$json[0]->teams[$i]->id .")' class='btn-danger'>Delete Team</button></td>";
                           echo "</tr>";
                       }
