@@ -126,7 +126,7 @@
                       $member_json = json_decode(file_get_contents($member_endpoint));
                       $teams_list = $member_json[0]->teams;
 
-                      $member_fund_balance = "Team Deleted!";
+                      $member_fund_balance = "Left Team!";
                       foreach ($teams_list as $team) {
                           if ($team->id == $json_celebrations[0]->team_id) {
                               $member_fund_balance = get_currency_symbol(). $team->member_fund_balance;
