@@ -60,7 +60,10 @@
                 $head_color = array("red1","tiles_blue1", "fb1", "tw1");
                 $body_color = array("red","blue1", "fb2","tw2");
 
+                $count = 0;
+
                 foreach($json_birthday as $birthday){
+                    $count++;
                     $index = rand(0,3);
                     echo '<div class="col-md-6 col_1_of_2 span_1_of_2">';
                     echo '<a class="tiles_info" title="'.$birthday->first_name.' '.$birthday->last_name.'\'s Birthday">';
@@ -71,6 +74,9 @@
                     echo '</a>';
                     echo '</div>';
                 }
+              if($count == 0){
+                echo "<div style='text-align: center'>No Upcoming Birthday!</div>";
+              }
               ?>
            <div class="clearfix"> </div>
            </div>
