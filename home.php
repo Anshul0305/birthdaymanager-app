@@ -57,6 +57,10 @@
                   include("master/_templates/transactions.php");
               }
               break;
+              case "profile-settings":{
+                  include("master/_templates/profile.php");
+              }
+              break;
               default:{
                   include("master/_templates/blank.php");
               }

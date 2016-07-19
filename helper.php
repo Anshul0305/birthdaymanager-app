@@ -19,7 +19,12 @@ switch($action){
     
 }
 
-function format_date($date,$type){
+/**
+ * @param $date
+ * @param $type
+ * @return bool|string
+ */
+function format_date($date, $type){
     switch($type){
         case "DM":{
             return date("d M", strtotime($date));
@@ -27,6 +32,18 @@ function format_date($date,$type){
         break;
         case "DMY":{
             return date("d M Y", strtotime($date));
+        }
+        break;
+        case "dm":{
+            return date("d-m", strtotime($date));
+        }
+        break;
+        case "dmy":{
+            return date("d-m-Y", strtotime($date));
+        }
+        break;
+        case "ymd":{
+            return date("Y-m-d", strtotime($date));
         }
         break;
     }

@@ -21,7 +21,7 @@ $json = json_decode(file_get_contents($endpoint));
             <li class="dropdown-menu-header text-center">
                 <strong>Settings</strong>
             </li>
-            <li class="m_2"><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+            <li class="m_2"><a href="profile-settings"><i class="fa fa-user"></i> Profile</a></li>
             <li class="m_2"><a href="#"><i class="fa fa-wrench"></i> Settings</a></li>
 <!--            <li class="m_2"><a href="#"><i class="fa fa-usd"></i> Payments <span class="label label-default">42</span></a></li>-->
 <!--            <li class="m_2"><a href="#"><i class="fa fa-file"></i> Projects <span class="label label-primary">42</span></a></li>-->
