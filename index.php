@@ -278,7 +278,7 @@ if(isset($_POST["reset-email"])){
 					<h1>Birthday Manager</h1>
 					<h2 class="subtitle">Make group birthday celebrations more joyful and convenient...</h2>
 					<br>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/nThCMMtklrY" frameborder="0" allowfullscreen></iframe>
+					<iframe width="100%" height="315" src="https://www.youtube.com/embed/nThCMMtklrY" frameborder="0" allowfullscreen></iframe>
 <!--					<form class="form-inline signup" role="form">-->
 <!--					  <div class="form-group">-->
 <!--					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">-->
