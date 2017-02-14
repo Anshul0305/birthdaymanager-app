@@ -188,7 +188,7 @@ if(isset($_POST["reset-email"])){
 					
 					<p class="fieldset">
 						<label class="image-replace cd-username" >Date of Birth</label>
-						<input class="full-width has-padding has-border" id="signup-official-dob" name="signup-official-dob" type="text" placeholder="Date of Birth">
+						<input class="full-width has-padding has-border" id="signup-official-dob" name="signup-official-dob" type="text" placeholder="Date of Birth" readonly="true">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
