@@ -38,8 +38,15 @@
               }
               else{
                   echo "<tr class='warning'>";
-                  echo "<td colspan='4'>You are not part of any Team. Please <a href='http://"?><?php echo get_website_host()?><?php get_website_relative_path()?><?php echo "/create-team'>Create</a> or <a href='http://"?><?php echo get_website_host()?><?php get_website_relative_path()?><?php echo "/search-teams'> Join</a> a Team!</td>";
+                  echo "<td colspan='4'>You are not part of any Team. </td>";
                   echo "</tr>";
+
+                  echo "<tr class='warning'>";
+                  echo "<td colspan='4'> <a class=\"btn-success1 btn\" href='http://"?><?php echo get_website_host()?><?php get_website_relative_path()?><?php echo "/create-team' >Create a New Team </a> <br></br> <a href='http://"?><?php echo get_website_host()?><?php get_website_relative_path()?><?php echo "/search-teams' class=\"btn-success1 btn\"> Join an Existing Team</a></td>";
+                  echo "</tr>";
+
+
+
               }
 
 
