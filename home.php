@@ -15,9 +15,10 @@
         <div class="graphs">
 
           <?php
-          include("master/widgets.php");
+
           switch($page){
               case "dashboard":{
+                  include("master/widgets.php");
                   include("master/_templates/dashboard.php");
               }
               break;
