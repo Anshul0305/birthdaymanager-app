@@ -63,7 +63,10 @@ function is_member_logged_in(){
 function is_member_admin($member_id, $team_id){
     $endpoint = get_api_host()."/teams/".$team_id;
     $json = json_decode(file_get_contents($endpoint));
-    return $json[0]->admin_id == $member_id?true:false;
+    foreach ($json[0]->team_admin as $team_admin){
+       if ($team_admin->admin_id == $member_id) return true;
+    }
+    return false;
 }
 
 function is_member_of_given_team($member_id, $team_id){

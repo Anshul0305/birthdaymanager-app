@@ -88,8 +88,13 @@
                   <td></td>
               </tr>
               <tr class="active">
-                  <td><strong>Admin Name:</strong></td>
-                  <td><?php echo $json_team[0]->admin_name?></td>
+                  <td><strong>Admin Name(s):</strong></td>
+                  <td><?php
+                      foreach ($json_team[0]->team_admin as $team_admin) {
+                          echo $team_admin->admin_name."</br>";
+                      }
+                      ?>
+                  </td>
                   <td></td>
               </tr>
               <tr class="active">
@@ -158,7 +163,10 @@
                           }
                       }
                       echo "<tr class='info'>";
-                      echo "<td><a style='text-decoration: none' data-toggle=\"tooltip\" title=".$member_json[0]->email."&nbsp;>" . $member_json[0]->first_name . " " . $member_json[0]->last_name . "</a></td>";
+
+                      $full_name =  $member_json[0]->first_name . " " . $member_json[0]->last_name ;
+                      echo "<td><a style='text-decoration: none' data-toggle=\"tooltip\" title=".$member_json[0]->email."&nbsp;>" . $full_name . " </a></td>";
+
                       echo "<td>" . format_date($member_json[0]->dob,"DM") . "</td>";
                       echo "<td style='text-align: center'>". get_currency_symbol() . $member_fund_balance . "</td>";
                       if ($is_admin)
