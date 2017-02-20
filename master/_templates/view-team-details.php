@@ -263,7 +263,7 @@ function leave_team(team_id,member_id){
     }
     function revoke_admin(team_id,admin_id){
         if(confirm("Are You Sure You Want To Revoke Admin Access of this Team Member! \n\n")){
-            $.post('<?php echo  get_api_host()."/team-admin"?>',
+            $.post('<?php echo  get_api_host()."/revoke-admin"?>',
                 {
                     team_id: team_id,
                     team_admin_id: admin_id
