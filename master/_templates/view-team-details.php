@@ -165,6 +165,7 @@
                       echo "<tr class='info'>";
 
                       $full_name =  $member_json[0]->first_name . " " . $member_json[0]->last_name ;
+
                       echo "<td><a style='text-decoration: none' data-toggle=\"tooltip\" title=".$member_json[0]->email."&nbsp;>" . $full_name . " </a></td>";
 
                       echo "<td>" . format_date($member_json[0]->dob,"DM") . "</td>";
@@ -172,14 +173,23 @@
                       if ($is_admin)
                           if($member_json[0]->id == $logged_in_member_id){
                               echo "<td style='text-align: center'> 
-                                    <button style='width: 65%;' class='btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='" . $member_json[0]->id . "' >Add Fund</button>
+                                    <button style='width: 65%;' class='btn btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='" . $member_json[0]->id . "' >Add Fund</button>
                                     &nbsp;";
                           }else {
-                              echo "<td style='text-align: center'> 
-                                    <button class='btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='" . $member_json[0]->id . "' >Add Fund</button>
-                                    &nbsp;
-                                    <button class='btn-danger' onclick='leave_team(" . $json_team[0]->id . "," . $member_json[0]->id . ")'>Remove Member</button>
+                              if(is_member_admin($member_json[0]->id,$team_id)){
+                                  echo "<td style='text-align: center'> 
+                                    <button class='btn btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='" . $member_json[0]->id . "' >Add Fund</button>&nbsp;
+                                    <button class='btn btn-info' onclick='revoke_admin(" . $json_team[0]->id . "," . $member_json[0]->id . ")'>Revoke Admin</button>&nbsp;
+                                    <button class='btn btn-danger' onclick='leave_team(" . $json_team[0]->id . "," . $member_json[0]->id . ")'>Remove</button>
                                 </td>";
+
+                              }else{
+                                  echo "<td style='text-align: center'> 
+                                    <button class='btn btn-primary' data-toggle=\"modal\" data-target=\"#myModal\" data-id='" . $member_json[0]->id . "' >Add Fund</button>&nbsp;
+                                    <button class='btn btn-info' onclick='make_admin(" . $json_team[0]->id . "," . $member_json[0]->id . ")'>Make Admin</button>&nbsp;
+                                    <button class='btn btn-danger' onclick='leave_team(" . $json_team[0]->id . "," . $member_json[0]->id . ")'>Remove</button>
+                                </td>";
+                              }
                           }
                       echo "</tr>";
                   }
@@ -226,18 +236,43 @@ $(document).ready(function(){
 });
 
 function leave_team(team_id,member_id){
-    if(confirm("Are You Sure You Want To Remove This Member From The Team! \n\nIf This Member has any Remaining Fund, Please Make Sure to Return it to The Team Member!")){
-        $.post('<?php echo  get_api_host()."/leave-team"?>',
-            {
-                team_id: team_id,
-                member_id: member_id
-            });
-        alert("Member Removed From Team Successfully!");
-        location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
-    }else{
+        if(confirm("Are You Sure You Want To Remove This Member From The Team! \n\nIf This Member has any Remaining Fund, Please Make Sure to Return it to The Team Member!")){
+            $.post('<?php echo  get_api_host()."/leave-team"?>',
+                {
+                    team_id: team_id,
+                    member_id: member_id
+                });
+            alert("Member Removed From Team Successfully!");
+            location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
+        }else{
 
+        }
     }
-}
+
+    function make_admin(team_id,admin_id){
+        if(confirm("Are You Sure You Want To Make this Team Member Admin! \n\n")){
+            $.post('<?php echo  get_api_host()."/team-admin"?>',
+                {
+                    team_id: team_id,
+                    team_admin_id: admin_id
+                });
+            location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
+        }else{
+
+        }
+    }
+    function revoke_admin(team_id,admin_id){
+        if(confirm("Are You Sure You Want To Revoke Admin Access of this Team Member! \n\n")){
+            $.post('<?php echo  get_api_host()."/team-admin"?>',
+                {
+                    team_id: team_id,
+                    team_admin_id: admin_id
+                });
+            location.href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>/view-team-details?team-id="+team_id;
+        }else{
+
+        }
+    }
 </script>
 
 <div class="container">
