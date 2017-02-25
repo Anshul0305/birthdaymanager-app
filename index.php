@@ -86,7 +86,9 @@ if(isset($_POST["reset-email"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/img/favicon.png">
+	<meta name="google-signin-client_id" content="58409882003-e6lo8hvchgbpf0s9iotm826j4ghutplt.apps.googleusercontent.com">
+
+	  <link rel="shortcut icon" href="assets/img/favicon.png">
 
     <title>Birthday Manager</title>
 
@@ -114,6 +116,7 @@ if(isset($_POST["reset-email"])){
   <script src="assets/js/main.js"></script>
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -129,7 +132,7 @@ if(isset($_POST["reset-email"])){
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right main-nav">
 			 <li><a class="cd-signin" data-toggle="collapse" data-target=".navbar-collapse" href="#" style="width: 80px">Sign in</a></li>
-            <li><a class="cd-signup" data-toggle="collapse" data-target=".navbar-collapse" href="#" style="width: 85px">Sign up</a></li>
+            <li><a id="sign-up" class="cd-signup" data-toggle="collapse" data-target=".navbar-collapse" href="#" style="width: 85px">Sign up</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -145,8 +148,16 @@ if(isset($_POST["reset-email"])){
 			</ul>
 
 			<div id="cd-login"> <!-- log in form -->
-				<form class="cd-form" method="POST" action="<?php echo json_decode(file_get_contents("env.json"))->website_relative_path.'/index.php'?>"/>
-					<p class="fieldset">
+				<form class="cd-form" method="POST" action="<?php echo json_decode(file_get_contents("env.json"))->website_relative_path.'/index.php'?>">
+
+				<p class="fieldset">
+					Sign in with Google:
+				<div style="width: 100%" align="middle" class="g-signin2" data-onsuccess="onSignIn"></div>
+
+				</p>
+				</br>
+				<p>Or Enter Your Username and Password:</p>
+				<p class="fieldset">
 						<label class="image-replace cd-email" for="signin-email">E-mail</label>
 						<input class="full-width has-padding has-border" name="signin-email" id="signin-email" type="email" placeholder="E-mail">
 						<span class="cd-error-message">Error message here!</span>
@@ -167,6 +178,7 @@ if(isset($_POST["reset-email"])){
 					<p class="fieldset">
 						<input class="full-width" type="submit" value="Login">
 					</p>
+
 				</form>
 				
 				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
@@ -237,7 +249,36 @@ if(isset($_POST["reset-email"])){
 			</div> <!-- cd-reset-password -->
 			<a href="#0" class="cd-close-form">Close</a>
 		</div> <!-- cd-user-modal-container -->
-	</div> 
+	</div>
+
+  <script>
+	  function onSignIn(googleUser) {
+		  var profile = googleUser.getBasicProfile();
+		  alert('ID: ' + profile.getId() +  '\nName: ' + profile.getName() + '\nEmail: ' + profile.getEmail() );
+
+		  <?php
+		  $endpoint = $api_host."/members/search?subquery=";
+		  $json = json_decode(file_get_contents($endpoint));
+		  if (empty($json)){
+		  ?>
+			  alert("This account is not registered! Please Sign-up first");
+			  var sign_up_form = document.getElementById('sign-up');
+			  sign_up_form.click();
+			  var first_name = document.getElementById('signup-first-name');
+			  first_name.value=profile.getName().split(" ")[0];
+			  var last_name = document.getElementById('signup-last-name');
+			  last_name.value=profile.getName().split(" ")[1];
+			  var email = document.getElementById('signup-email');
+			  email.value=profile.getEmail();
+		  <?php
+		  }
+		  else{
+			  $_SESSION["member_id"] = $json[0]->id;
+			  echo "location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/dashboard'";
+		  }
+		  ?>
+	  }
+  </script>
 
 	<div id="header">
 		<div class="container">
