@@ -102,7 +102,7 @@
                   <td><p class="text-message"><?php echo $json_message?></p></td>
                   <td align="right">
                       <?php if($is_admin){?>
-                      <a href="#" id="edit" class="btn-warning">Edit Message</a>
+                      <a href="#" id="edit" class="btn btn-warning">Edit Message</a>
                       <?php } ?>
                   </td>
               </tr>
@@ -201,15 +201,15 @@
               }
               ?>
 
-              <div align="middle">
+              <div align="middle"></br>
               <?php
               if($is_admin){ ?>
-                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button>
-                  <button class='btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/celebrate?team-id=".$team_id?>'" >Celebrate Birthday</button>
+                  <button class='btn btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/search-member?team-id=".$team_id?>'" >Add Member</button>
+                  <button class='btn btn-info' onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/celebrate?team-id=".$team_id?>'" >Celebrate Birthday</button>
               <?php
               }
               ?>
-                  <button class='btn-info' data-toggle="modal" data-target="#linkModal">Team Invitation Link</button>
+                  <button class='btn btn-info' data-toggle="modal" data-target="#linkModal">Team Invitation Link</button>
               </div>
 
 
