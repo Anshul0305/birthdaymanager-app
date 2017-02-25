@@ -79,6 +79,70 @@ if(isset($_POST["reset-email"])){
 
 ?>
 <!DOCTYPE html>
+<script>
+
+	function onSignIn(googleUser) {
+		var profile = googleUser.getBasicProfile();
+		function postRefreshPage () {
+			var theForm, newInput1;
+			// Start by creating a <form>
+			theForm = document.createElement('form');
+			theForm.action = '#';
+			theForm.method = 'post';
+
+			newInput1 = document.createElement('input');
+			newInput1.type = 'hidden';
+			newInput1.name = 'google-signin-email';
+			newInput1.value = profile.getEmail();
+
+			// Now put everything together...
+			theForm.appendChild(newInput1);
+
+			// ...and it to the DOM...
+			document.getElementById('hidden_form_container').appendChild(theForm);
+			// ...and submit it
+			theForm.submit();
+		}
+		<?php
+		// Get user email ID in php using Self Post
+
+		if($_POST["google-signin-email"]!="")
+		{
+			// If Google user email id is retrieved, set the session and login the user
+			$endpoint = $api_host."/members/search?subquery=".$_POST["google-signin-email"];
+			$json = json_decode(file_get_contents($endpoint));
+			// If Google user is registered with Birthday manager - Login
+			if ($json[0]->id !="" && $json[0]->id != null){
+				$_SESSION["member_id"] = $json[0]->id;
+
+				// if session is valid, login user
+				if(isset($_SESSION)){
+					echo "location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/dashboard'";
+				}
+			}
+			// If Google user is not registered with Birthday manager - Show Register form with field filled up
+			else
+			{
+				$google_new_user = true;
+				?>
+				var sign_up_form = document.getElementById('sign-up');
+				sign_up_form.click();
+				var first_name = document.getElementById('signup-first-name');
+				first_name.value=profile.getName().split(' ')[0];
+				var last_name = document.getElementById('signup-last-name');
+				last_name.value=profile.getName().split(' ')[1];
+				var email = document.getElementById('signup-email');
+				email.value=profile.getEmail();
+			<?php
+			}
+		}
+		else
+		{
+			echo "postRefreshPage();";
+		}
+		?>
+	}
+</script>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -137,6 +201,8 @@ if(isset($_POST["reset-email"])){
         </div><!--/.nav-collapse -->
       </div>
     </div>
+
+
 	  
 <!-- Modal Signin/Signup Window	   -->
 	  
@@ -187,6 +253,9 @@ if(isset($_POST["reset-email"])){
 
 			<div id="cd-signup"> <!-- sign up form -->
 				<form class="cd-form" id="register" method="POST" action="">
+
+					<?php if ($google_new_user) echo "<p style='color: red;'>This Account is Not Yet Registered! Please Sign Up</p>";?>
+
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-first-name">First Name</label>
 						<input class="full-width has-padding has-border" name="signup-first-name" id="signup-first-name" type="text" placeholder="First Name">
@@ -250,35 +319,11 @@ if(isset($_POST["reset-email"])){
 			<a href="#0" class="cd-close-form">Close</a>
 		</div> <!-- cd-user-modal-container -->
 	</div>
+  <div id="hidden_form_container" style="display:none;"></div>
 
-  <script>
-	  function onSignIn(googleUser) {
-		  var profile = googleUser.getBasicProfile();
-		  alert('ID: ' + profile.getId() +  '\nName: ' + profile.getName() + '\nEmail: ' + profile.getEmail() );
 
-		  <?php
-		  $endpoint = $api_host."/members/search?subquery=";
-		  $json = json_decode(file_get_contents($endpoint));
-		  if (empty($json)){
-		  ?>
-			  alert("This account is not registered! Please Sign-up first");
-			  var sign_up_form = document.getElementById('sign-up');
-			  sign_up_form.click();
-			  var first_name = document.getElementById('signup-first-name');
-			  first_name.value=profile.getName().split(" ")[0];
-			  var last_name = document.getElementById('signup-last-name');
-			  last_name.value=profile.getName().split(" ")[1];
-			  var email = document.getElementById('signup-email');
-			  email.value=profile.getEmail();
-		  <?php
-		  }
-		  else{
-			  $_SESSION["member_id"] = $json[0]->id;
-			  echo "location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/dashboard'";
-		  }
-		  ?>
-	  }
-  </script>
+
+
 
 	<div id="header">
 		<div class="container">

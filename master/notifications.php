@@ -29,8 +29,22 @@ $json = json_decode(file_get_contents($endpoint));
 <!--            <li class="m_2"><a href="#"><i class="fa fa-shield"></i> Lock Profile</a></li>-->
             <li class="m_2"><a href="#" onclick="logout();"><i class="fa fa-lock"></i> Logout</a></li>
 
+            <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
             <script type="text/javascript">
+
                 function logout() {
+                    // google logout
+                    function initSigninV2() {
+                        gapi.auth2.init({
+                            client_id: '58409882003-e6lo8hvchgbpf0s9iotm826j4ghutplt.apps.googleusercontent.com'
+                        }).then(function (authInstance) {
+
+                        });
+                    }
+                    gapi.load('auth2', initSigninV2);
+                    gapi.auth2.getAuthInstance().signOut();
+
+                    // website logout
                     $.get(<?php echo "'http://".get_website_host().json_decode(file_get_contents('./././env.json'))->website_relative_path."/helper.php?action=logout'"?>);
                     location.href = <?php echo "'http://".get_website_host().json_decode(file_get_contents('./././env.json'))->website_relative_path."/'"?>;
                     return false;

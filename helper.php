@@ -6,6 +6,8 @@ $member_id = $_GET["member-id"];
 switch($action){
     case "logout":{
         session_destroy();
+        
+        
     }
     case "delete-team": {
         $ch = curl_init();
