@@ -62,6 +62,11 @@
                   include("master/_templates/profile.php");
               }
               break;
+              case "get-started":{
+                  include("master/_templates/get-started.php");
+              }
+              break;
+
               default:{
                   include("master/_templates/blank.php");
               }

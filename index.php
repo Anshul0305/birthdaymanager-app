@@ -2,6 +2,7 @@
 <?php
 session_start();
 $api_host = get_api_host();
+$logged_in_url =
 
 // Localisation Handler
 $ip_address= $_SERVER['REMOTE_ADDR'];
@@ -258,7 +259,7 @@ if(isset($_POST["reset-email"])){
 						if($register_http_code == 200 && $signup_email!= "" && $signup_password!= ""){
 							echo "<div class=\"alert alert-success\" role=\"alert\">Registered Successfully! logging in...</div>";
 							$_SESSION["member_id"] = json_decode($register_output)->member_id;
-							echo "<script>location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/dashboard'</script>";
+							echo "<script>location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/get-started'</script>";
 						}
 						elseif($register_http_code == 409 && $signup_email!= "" && $signup_password!= "") {
 							echo "<div class=\"alert alert-warning\" role=\"alert\">This user is already registered! Please Try with different email id...</div>";
