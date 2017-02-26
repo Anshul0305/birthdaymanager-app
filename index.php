@@ -405,7 +405,7 @@ if(isset($_POST["reset-email"])){
 		<div class="row">
 			<div class="col-lg-12 col-lg-offset-3">
 <!--					<p class="copyright">Copyright &copy; 2016 - Designed by <a href="http://axlewebtech.com" target="_blank">Axle Web Technologies | </a>-->
-				<p>Copyright &copy; 2016 All Rights Reserved | Designed and Developed by <a href="#" target="_blank">Axle Web Technologies</a> </p>
+				<p>Copyright &copy; 2017 All Rights Reserved | Designed and Developed by <a href="#" target="_blank">Axle Web Technologies</a> </p>
 				<a href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
 			</div>
 		</div>		
