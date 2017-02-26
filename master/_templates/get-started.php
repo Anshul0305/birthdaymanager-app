@@ -19,12 +19,40 @@
 
             $info = curl_getinfo($ch);
             $http_code = $info["http_code"];
+            $team_id = json_decode($server_output)->team_id;
 
-            if($http_code == 200) {
-                echo '<div class="alert alert-success">';
-                echo '<strong>Good Job!</strong> Your Team is Created Successfully!</div>';
+
+            if($http_code == 200)
+            {
+                ?>
+                    <div class="alert alert-success"><strong>Good Job!</strong> Your Team is Created Successfully! Now Invite Your Friends to Join this Team...</div>
+                    <div class="alert alert-info"> To Invite friends, click on the "Team Invitation Link" button and share this unique link with your friends. Anyone signing up with this unique link will directly become member of your team...</div>
+                    <div><button class='btn btn-info' data-toggle="modal" data-target="#linkModal">Team Invitation Link</button></div>
+
+                    <div class="modal fade" id="linkModal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Copy Team Invitation Link</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="focusedinput" class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-12">
+                                                <input type="text" onClick="this.select();" class="form-control1" id="team_link" value=" <?php echo get_team_invitation_link($team_id,$team_name);?> "><br>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
             }
-            else{
+            else
+            {
                 echo '<div class="alert alert-danger">';
                 echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>';
             }
@@ -76,5 +104,7 @@
         }
         ?>
         </div>
+
+
     </div>
 </div>

@@ -6,8 +6,6 @@ $member_id = $_GET["member-id"];
 switch($action){
     case "logout":{
         session_destroy();
-        
-        
     }
     case "delete-team": {
         $ch = curl_init();
@@ -142,4 +140,9 @@ function get_currency_font(){
         }
     }
     return $symbol;
+}
+
+function get_team_invitation_link($team_id,$team_name){
+    $link = json_decode(file_get_contents("env.json"))->website_host."/index.php?team-id=".$team_id."&team-name=". urlencode($team_name);
+    return $link;
 }

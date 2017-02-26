@@ -322,7 +322,7 @@ function leave_team(team_id,member_id){
                         <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label"></label>
                             <div class="col-sm-12">
-                                <input type="text" onClick="this.select();" class="form-control1" id="team_link" value=" <?php echo json_decode(file_get_contents("env.json"))->website_host."/index.php?team-id=" . $team_id . "&team-name=" . urlencode($team_name);?> "><br>
+                                <input type="text" onClick="this.select();" class="form-control1" id="team_link" value=" <?php echo get_team_invitation_link($team_id,$team_name);?> "><br>
                             </div>
                         </div>
                     </form>
