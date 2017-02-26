@@ -20,7 +20,7 @@
             $info = curl_getinfo($ch);
             $http_code = $info["http_code"];
             $team_id = json_decode($server_output)->team_id;
-
+            curl_close($ch);
 
             if($http_code == 200)
             {
@@ -56,7 +56,7 @@
                 echo '<div class="alert alert-danger">';
                 echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>';
             }
-            curl_close($ch);
+
         }
         else{
             echo '<div class="alert alert-danger">';
