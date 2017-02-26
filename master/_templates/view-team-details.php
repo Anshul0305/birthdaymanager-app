@@ -113,13 +113,17 @@
 
               <script>
                   $('#edit').click(function() {
-                      var text = $('.text-message').text();
-                      var input = $('<textarea rows="5" id="attribute" type="text" value="' + text + '" />');
-                      input.val(text);
-                      $('.text-message').text('').append(input);
-                      input.select();
+                      if(this.text=="Edit Message"){
+                          $(this).text("Save Message");
+                          var text = $('.text-message').text();
+                          text = text.replace(/\n\r?/g, "<br>");
+                          var input = $('<textarea rows="5" id="attribute" type="text" value="' + text + '" />');
+                          input.val(text);
+                          $('.text-message').text('').append(input);
+                          input.select();
 
-                      input.blur(function() {
+                      }else{
+                          $(this).text("Edit Message");
                           var text = $('#attribute').val();
                           text = text.replace(/\n\r?/g, "<br>");
                           $('#attribute').parent().html(text);
@@ -134,7 +138,8 @@
                                   alert(data);
                               }
                           });
-                      });
+
+                      }
                   });
 
               </script>
