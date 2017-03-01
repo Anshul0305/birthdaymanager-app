@@ -66,6 +66,14 @@
                   include("master/_templates/get-started.php");
               }
               break;
+              case "invite":{
+                  include("master/_templates/send-invitation.php");
+              }
+              break;
+              case "greeting":{
+                  include("master/_templates/send-greeting.php");
+              }
+              break;
 
               default:{
                   include("master/_templates/blank.php");

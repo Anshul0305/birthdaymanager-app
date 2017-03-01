@@ -8,6 +8,12 @@
                             <a href="#"><i class="fa fa-laptop nav_icon"></i>Celebrations<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                    <a href="greeting">Send Greeting</a>
+                                </li>
+                                <li>
+                                    <a href="invite">Send Invitation</a>
+                                </li>
+                                <li>
                                     <a href="celebrate">Celebrate Birthday</a>
                                 </li>
                                 <li>

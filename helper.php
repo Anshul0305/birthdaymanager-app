@@ -46,12 +46,28 @@ function format_date($date, $type){
             return date("Y-m-d", strtotime($date));
         }
         break;
+        case "time":{
+            return date("h:i a", strtotime($date));
+        }
+        break;
+        case "day":{
+            return date("l", strtotime($date));
+        }
+        break;
+
     }
 
 }
 
 function get_logged_in_member_id(){
     return $_SESSION["member_id"];
+}
+
+function get_logged_in_member_name(){
+    $member_id = $_SESSION["member_id"];
+    $endpoint = get_api_host()."/members/".$member_id;
+    $json = json_decode(file_get_contents($endpoint));
+    return $json[0]->first_name;
 }
 
 function is_member_logged_in(){

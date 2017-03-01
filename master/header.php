@@ -36,5 +36,7 @@
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
     <link href="http://blythedolls.neocities.org/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <script src="https://unpkg.com/flatpickr"></script>
  
 </head>
