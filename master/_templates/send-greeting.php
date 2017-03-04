@@ -229,7 +229,7 @@ if (isset($_POST["message"])){
                                 <button onclick="window.history.back();" class="btn-success1 btn">Go Back</button>
                             </div>
                             <div class="col-sm-3 ">
-                                <button type="submit" class="btn-success1 btn">Send Greeting</button>
+                                <button type="submit" onclick="alert('This feature is coming soon..!');" class="btn-success1 btn">Send Greeting</button>
                             </div>
                         </div>
                     </div>

@@ -1,167 +1,74 @@
 <?php include_once "./././helper.php"?>
 <?php
 is_member_logged_in();
-if(isset($_GET["team-id"])){
-    $team_id = $_GET["team-id"];
+
+// on page load, just show the form
+
+if(isset($_POST["message"])){  // Do all of this only after post not at page load
+
+    $ch = curl_init();
+    $api_host = get_api_host();
+    $logged_in_member_id = get_logged_in_member_id();
+    $endpoint = $api_host."/members/".$logged_in_member_id;
+    $json = json_decode(file_get_contents($endpoint));
+
+    $post_invitation_endpoint = $api_host."/birthday-invitation";
+
+    $message = $_POST["message"];
+    $birthday_of_member_id = $_POST["bday-of"];
+    $location = $_POST["location"];
+    $celebration_date = $_POST["celebration-time"];
+    $celebration_time = $_POST['celebration-time'];
+    $attendees_member_id = $_POST['attendee'];
+
+
+    if(isset($message) && isset($attendees_member_id)){
+        $post_data = "birthday_of_member_id=".$birthday_of_member_id.
+            "&celebration_date=".$celebration_date.
+            "&celebration_time=".$celebration_time.
+            "&birthday_invitation_message=".$message.
+            "&birthday_invitation_location=".$location.
+            "&team_id=".$team_id;
+
+        foreach ($attendees_member_id as $attendee){
+            $post_data = $post_data. "&attendees_member_id[]=".$attendee;
+        }
+
+        if($message!="" && $location !="") {
+            curl_setopt($ch, CURLOPT_URL, $post_invitation_endpoint);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $server_output = curl_exec($ch);
+
+            $info = curl_getinfo($ch);
+            $http_code = $info["http_code"];
+
+            if($http_code = 200) {
+                echo '<div class="alert alert-success">';
+                echo '<strong>Success!</strong> Invitation Sent Successfully!</div>';
+            }
+            else{
+                print_r( $server_output);
+                echo '<div class="alert alert-danger">';
+                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>'.$server_output."ot";
+            }
+            curl_close($ch);
+        }
+        else{
+            echo '<div class="alert alert-danger">';
+            echo '<strong>Oops!</strong> Looks Like You Have Not Entered Some Data!</div>';
+        }
+    }
 }
 ?>
 
-<?php
 
-if(isset($_POST["message"])){
-    $message = $_POST["message"];
-    $name = $_POST["bday-of"];
-    $location = $_POST["location"];
-    $celebration_date = $_POST["celebration-time"];
-
-    ?>
-<!--    HTML-->
-<div class="content_bottom">
-    <div class="col-md-12 span_3">
-        <div class="bs-example1" data-example-id="contextual-table">
-
-        <html>
-        <head>
-            <title>Invitation</title>
-            <meta charset="UTF-8">
-            <meta name="description" content="" />
-            <meta name="keywords" content="" />
-            <script src="http://use.edgefonts.net/berkshire-swash:n4:all.js"></script>
-            <link rel="stylesheet" href="border.css">
-            <style>
-                h1,h2,h3,h4{
-                    font-family: "berkshire-swash";
-                    color: rgb(71, 151, 212);
-                }
-                .frame{
-                    position: relative;
-                    padding: 10px;
-                    text-align: center;
-                    font-family: arial;
-                    color: rgba(0, 0, 0, 0.56);
-                    text-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-                    margin: auto;
-                    width: 300px;
-                    border-radius: 20px;
-                    border: 27px solid;
-                    border-image: url("http://jagocoding.com/files/userdata/dandy/f_14052716243793.png") 27 repeat;
-                    background-color: rgba(0, 0, 0, 0);
-                }
-
-                .foto{
-                    position: absolute;
-                    width: 120px;
-                    top: 20px;
-                    right: -120px;
-                    -ms-transform: rotate(10deg); /* IE 9 */
-                    -webkit-transform: rotate(10deg); /* Chrome, Safari, Opera */
-                    transform: rotate(10deg);
-                    border: 10px solid rgb(254, 168, 167);
-                }
-            </style>
-        </head>
-        <body>
-        <div class="frame">
-            <img src="http://jagocoding.com/files/userdata/dandy/f_14052716754590.jpg" class="foto">
-            <h1>Happy Birthday</h1>
-            <h4>Invitation</h4><br>
-            Hello Friends!<br>
-            <br>Please Join Us<br> At Birthday Celebration of <?php echo $name?><br>
-            <br>
-            Date :  <?php echo format_date($celebration_date,"day").", ".format_date($celebration_date,"DMY")?> <br>
-            Time :  <?php echo format_date($celebration_date,"time")?><br>
-            Location: <?php echo $location?> <br>
-            <br>
-            <?php echo $message?>
-        </div>
-        </body>
-        </html>
-            </br></br>
-            <div>
-                <div class="row">
-                    <div class="col-sm-3 col-sm-offset-3">
-                        <button onclick="window.history.back();" class="btn-success1 btn">Go Back</button>
-                    </div>
-                    <div class="col-sm-3 ">
-                        <button type="submit" class="btn-success1 btn">Send Invitation</button>
-                    </div>
-                </div>
-            </div>
-            </div>
-    </div>
-    <div class="clearfix"> </div>
-</div>
-    
-
-    <?php
-
-}else
-{
-    ?>
         <div class="content_bottom">
             <div class="col-md-12 span_3">
                 <div class="bs-example1" data-example-id="contextual-table">
                     <div style="text-align: center; font-weight: 500; font-size: x-large; color: #0b2c89; background: #06D995 ">Send Invitation</div>
                     </br>
-
-                    <?php
-                    is_member_logged_in();
-                    $ch = curl_init();
-                    $api_host = get_api_host();
-                    $logged_in_member_id = get_logged_in_member_id();
-                    $endpoint = $api_host."/members/".$logged_in_member_id;
-                    $json = json_decode(file_get_contents($endpoint));
-
-                    $post_celebration_endpoint = $api_host."/celebrations";
-
-                    $birthday_of_member_id = $_POST['bday-of'];
-                    $cake_amount = $_POST['cake-amt'];
-                    $other_expense = $_POST['other-exp'];
-                    $celebration_date = $_POST['celebration-date'];
-                    $team_id = $_POST['select-team'];
-                    $attendees_member_id = $_POST['attendee'];
-
-
-                    if(isset($birthday_of_member_id) && isset($attendees_member_id)){
-                        $post_data = "birthday_of_member_id=".$birthday_of_member_id.
-                            "&cake_amount=".$cake_amount.
-                            "&other_expense=".$other_expense.
-                            "&celebration_date=".$celebration_date.
-                            "&team_id=".$team_id;
-
-                        foreach ($attendees_member_id as $attendee){
-                            $post_data = $post_data. "&attendees_member_id[]=".$attendee;
-                        }
-
-                        if($cake_amount!="" && $other_expense !="") {
-                            curl_setopt($ch, CURLOPT_URL, $post_celebration_endpoint);
-                            curl_setopt($ch, CURLOPT_POST, 1);
-                            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                            $server_output = curl_exec($ch);
-
-                            $info = curl_getinfo($ch);
-                            $http_code = $info["http_code"];
-
-                            if($http_code = 200) {
-                                echo '<div class="alert alert-success">';
-                                echo '<strong>Success!</strong> Celebration Added Successfully!</div>';
-                            }
-                            else{
-                                print_r( $server_output);
-                                echo '<div class="alert alert-danger">';
-                                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>'.$server_output."ot";
-                            }
-                            curl_close($ch);
-                        }
-                        else{
-                            echo '<div class="alert alert-danger">';
-                            echo '<strong>Oops!</strong> Looks Like You Have Not Entered Some Data!</div>';
-                        }
-                    }
-
-                    ?>
-
                     <form class="form-horizontal" method="post" action="">
                         <div class="form-group">
                             <label for="selector1" class="col-sm-3 control-label">Select Team</label>
@@ -199,7 +106,7 @@ if(isset($_POST["message"])){
                         <div>
                             <div class="row">
                                 <div class="col-sm-7 col-sm-offset-3">
-                                    <button type="" class="btn-success1 btn">Preview Invitation</button>
+                                    <button type="submit" name="preview" value="preview" class="btn-success1 btn">Send Invitation</button>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +169,7 @@ if(isset($_POST["message"])){
                         data[0].members.forEach(function(entry) {
                             var option = document.createElement("option");
                             option.text = entry.name;
-                            option.value = entry.name;
+                            option.value = entry.id;
                             x.add(option);
                         });
                     }
@@ -289,9 +196,5 @@ if(isset($_POST["message"])){
         });
     </script>
 
-    <?php
 
-}
-
-?>
 
