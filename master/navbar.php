@@ -5,25 +5,7 @@
                             <a href="dashboard"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-laptop nav_icon"></i>Celebrations<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="greeting">Send Greeting</a>
-                                </li>
-                                <li>
-                                    <a href="invite">Send Invitation</a>
-                                </li>
-                                <li>
-                                    <a href="celebrate">Celebrate Birthday</a>
-                                </li>
-                                <li>
-                                    <a href="view-celebration">View Celebrations</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-indent nav_icon"></i>Teams<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-users nav_icon"></i>Teams<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="view-teams">View Teams</a>
@@ -37,6 +19,42 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-envelope nav_icon"></i>Greetings<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="greeting">Send Greeting</a>
+                                </li>
+                                <li>
+                                    <a href="greeting">View Greetings</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-calendar nav_icon"></i>Invitations<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="invite">Send Invitation</a>
+                                </li>
+                                <li>
+                                    <a href="invite">View Invitations</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-thumbs-up nav_icon"></i>Celebrations<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="celebrate">Celebrate Birthday</a>
+                                </li>
+                                <li>
+                                    <a href="view-celebration">View Celebrations</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
 <!--                        <li>-->
 <!--                            <a href="#"><i class="fa fa-envelope nav_icon"></i>Funds<span class="fa arrow"></span></a>-->
 <!--                            <ul class="nav nav-second-level">-->
