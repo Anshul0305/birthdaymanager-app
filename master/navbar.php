@@ -23,10 +23,10 @@
                             <a href="#"><i class="fa fa-envelope nav_icon"></i>Greetings<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="greeting">Send Greeting</a>
+                                    <a href="greetings">Send Greeting</a>
                                 </li>
                                 <li>
-                                    <a href="greeting">View Greetings</a>
+                                    <a href="greetings">View Greetings</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

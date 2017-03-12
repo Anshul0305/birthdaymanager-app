@@ -70,7 +70,7 @@
                   include("master/_templates/send-invitation.php");
               }
               break;
-              case "greeting":{
+              case "greetings":{
                   include("master/_templates/send-greeting.php");
               }
               break;

@@ -1,9 +1,15 @@
 <?php include_once "./././helper.php"?>
 <?php
 is_member_logged_in();
-if(isset($_GET["team-id"])){
-    $team_id = $_GET["team-id"];
-}
+$api_host = get_api_host();
+$logged_in_member_id = get_logged_in_member_id();
+$greeting_card_id = $_GET["greeting-card-id"];
+
+$endpoint = $api_host."/greeting-card/".$greeting_card_id;
+$json = json_decode(file_get_contents($endpoint));
+
+$receiver_name = $json->receiver_name;
+
 ?>
 <style>
     @import url(http://fonts.googleapis.com/css?family=Nobile:400italic,700italic);
@@ -275,7 +281,86 @@ if (isset($_POST["message"])){
         </script>
     <?php
 
-}else{
+}else if (isset($_GET["greeting-card-id"])){
+
+    ?>
+
+    <!--// Greeting Card-->
+    <div class="content_bottom">
+        <div class="col-md-12 span_3">
+            <div class="bs-example1" data-example-id="contextual-table">
+                <div id="card">
+                    <div id="card-inside">
+                        <div class="wrap">
+                            <p>Hi <?php echo $receiver_name ?>,</p>
+                            <p><?php echo "Greeting card from API" ?></p>
+                            <p class="signed"> <?php echo get_logged_in_member_name();?> </p>
+
+                        </div>
+                    </div>
+
+                    <div id="card-front">
+                        <div class="wrap">
+                            <h1 style="font-family: 'Brush Script MT',cursive">Happy Birthday <?php echo $receiver_name?>!</h1>
+                        </div>
+                        <button id="open">&gt;</button>
+                        <button id="close">&lt;</button>
+                    </div>
+                </div>
+                </br>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/greetings"?>'" class="btn-success1 btn">Send a Greeting Card</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"> </div>
+
+    </div>
+    <script>
+        (function() {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var card = $('card'),
+                openB = $('open'),
+                closeB = $('close'),
+                timer = null;
+            console.log('wat', card);
+            openB.addEventListener('click', function () {
+                card.setAttribute('class', 'open-half');
+                if (timer) clearTimeout(timer);
+                timer = setTimeout(function () {
+                    card.setAttribute('class', 'open-fully');
+                    timer = null;
+                }, 1000);
+            });
+
+            closeB.addEventListener('click', function () {
+                card.setAttribute('class', 'close-half');
+                if (timer) clearTimerout(timer);
+                timer = setTimeout(function () {
+                    card.setAttribute('class', '');
+                    timer = null;
+                }, 1000);
+            });
+
+        }());
+    </script>
+
+    <?php
+}
+
+else
+{
 
     ?>
 <!--        //html js-->
