@@ -9,7 +9,6 @@ $endpoint = $api_host."/greeting-card/".$greeting_card_id;
 $json = json_decode(file_get_contents($endpoint));
 
 $receiver_name = $json->receiver_name;
-
 ?>
 <style>
     @import url(http://fonts.googleapis.com/css?family=Nobile:400italic,700italic);
@@ -285,17 +284,45 @@ if (isset($_POST["message"])){
 
     ?>
 
-    <!--// Greeting Card-->
+    <!--// View Greeting Card-->
+
+
+
     <div class="content_bottom">
         <div class="col-md-12 span_3">
             <div class="bs-example1" data-example-id="contextual-table">
                 <div id="card">
                     <div id="card-inside">
                         <div class="wrap">
-                            <p>Hi <?php echo $receiver_name ?>,</p>
-                            <p><?php echo "Greeting card from API" ?></p>
-                            <p class="signed"> <?php echo get_logged_in_member_name();?> </p>
+                            <?php
+                            if(count($json->greeting_sender)>1){
+                            ?>
+                            <ul class="pagination">
+                                <?php
+                                $j = 0;
+                                foreach ($json->greeting_sender as $sender){ $j++;?>
+                                <li><a style="cursor: hand" onclick="show('<?php echo "Page".$j;?>');"><?php echo $j;?></a></li>
+                                <?php } ?>
+                            </ul>
+                            <div class="page" style="">There are multiple messages in this card, please click the numbers above to view the messages from individual team members!</div>
 
+                            <?php
+                            $i = 0;
+                            foreach ($json->greeting_sender as $sender){ $i++;?>
+                                <div id='<?php echo "Page".$i;?>' class="page" style="display:none">
+                                    <p><?php echo $sender->message ?></p>
+                                    <p class="signed"> <?php echo "Regards,";?> </br> <?php echo $sender->sender_name;?> </p>
+                                    <p></br></p>
+                                </div>
+                            <?php
+                            }}else{
+                            ?>
+                            <p><?php echo $json->greeting_sender[0]->message ?></p>
+                            <p class="signed"> <?php echo "Regards,";?> </br> <?php echo $json->greeting_sender[0]->sender_name;?> </p>
+                            <p></br></p>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
 
@@ -325,6 +352,19 @@ if (isset($_POST["message"])){
 
     </div>
     <script>
+        function show(elementID) {
+            var ele = document.getElementById(elementID);
+            if (!ele) {
+                alert("no such element");
+                return;
+            }
+            var pages = document.getElementsByClassName('page');
+            for(var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+            ele.style.display = 'block';
+        }
+
         (function() {
             function $(id) {
                 return document.getElementById(id);

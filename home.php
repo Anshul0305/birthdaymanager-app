@@ -71,7 +71,7 @@
               }
               break;
               case "greetings":{
-                  include("master/_templates/send-greeting.php");
+                  include("master/_templates/greeting-card.php");
               }
               break;
 
