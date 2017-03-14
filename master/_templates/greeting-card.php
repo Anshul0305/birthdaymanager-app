@@ -5,22 +5,29 @@ $api_host = get_api_host();
 $logged_in_member_id = get_logged_in_member_id();
 $greeting_card_id = $_GET["greeting-card-id"];
 
-$endpoint = $api_host."/greeting-card/".$greeting_card_id;
-$json = json_decode(file_get_contents($endpoint));
+$greeting_endpoint = $api_host."/greeting-card/".$greeting_card_id;
+$greeting_json = json_decode(file_get_contents($greeting_endpoint));
+$receiver_name = $greeting_json->receiver_name;
 
-$receiver_name = $json->receiver_name;
+// Post params
+$greeting_receiver_id = $_POST["bday-of"];
+$member_endpoint = $api_host."/members/".$greeting_receiver_id;
+$member_json = json_decode(file_get_contents($member_endpoint));
+$greeting_receiver_name = $member_json[0]->first_name;
+$message = $_POST["message"];
 ?>
+
 <style>
-    @import url(http://fonts.googleapis.com/css?family=Nobile:400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Nobile:400italic,700italic);
     @import url(http://fonts.googleapis.com/css?family=Dancing+Script);
     * {
-        box-sizing: border-box;
+    box-sizing: border-box;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
     }
     body {
-        background: #E5E5E5;
-    }
+    background: #E5E5E5;
+}
 
     #card-front {
         color: #FFDFDF;
@@ -31,7 +38,7 @@ $receiver_name = $json->receiver_name;
     }
 
     .wrap {
-        padding: 1.5em 2.5em;
+    padding: 1.5em 2.5em;
         height: 100%;
     }
     #card-front, #card-inside {
@@ -83,15 +90,15 @@ $receiver_name = $json->receiver_name;
     }
 
     p {
-        margin-top: 1em;
+    margin-top: 1em;
     }
 
     p:first-child {
-        margin-top: 0;
+    margin-top: 0;
     }
 
     p.signed {
-        margin-top: 1.5em;
+    margin-top: 1.5em;
         text-align: center;
         font-family: 'Dancing Script', sans-serif;
         font-size: 1.5em;
@@ -100,9 +107,9 @@ $receiver_name = $json->receiver_name;
     #card-front {
         background-color: #FF5555;
         background-image: linear-gradient(top, #FF5555 0%, #FF7777 100%);
-        background-image: -moz-linear-gradient(top, #FF5555 0%, #FF7777 100%);
-        background-image: -webkit-linear-gradient(top, #FF5555 0%, #FF7777 100%);
-        transform-origin: left;
+    background-image: -moz-linear-gradient(top, #FF5555 0%, #FF7777 100%);
+    background-image: -webkit-linear-gradient(top, #FF5555 0%, #FF7777 100%);
+    transform-origin: left;
         -moz-transform-origin: left;
         -webkit-transform-origin: left;
         transition:         transform 1s linear;
@@ -185,7 +192,7 @@ $receiver_name = $json->receiver_name;
     }
 
     footer {
-        max-width: 500px;
+    max-width: 500px;
         margin: 40px auto;
         font-family: 'Nobile', sans-serif;
         font-size: 14px;
@@ -195,33 +202,25 @@ $receiver_name = $json->receiver_name;
     }
 </style>
 
-
-
 <?php
-$name = $_POST["bday-of"];
-$message = $_POST["message"];
 
-if (isset($_POST["message"])){
+if (isset($_POST["message"])){ ?>
 
-    ?>
-<!--        //html js-->
-    <!--// Greeting Card-->
+    <!--// Greeting Card Preview-->
         <div class="content_bottom">
             <div class="col-md-12 span_3">
                 <div class="bs-example1" data-example-id="contextual-table">
                     <div id="card">
                         <div id="card-inside">
                             <div class="wrap">
-                                <p>Hi <?php echo $name ?>,</p>
+                                <p>Hi <?php echo $greeting_receiver_name ?>,</p>
                                 <p><?php echo $message ?></p>
-                                <p class="signed"> <?php echo get_logged_in_member_name();?> </p>
-
+                                <p class="signed">  <?php echo "Regards,";?> </br> <?php echo get_logged_in_member_name();?> </p>
                             </div>
                         </div>
-
                         <div id="card-front">
                             <div class="wrap">
-                                <h1 style="font-family: 'Brush Script MT',cursive">Happy Birthday <?php echo $name?>!</h1>
+                                <h1 style="font-family: 'Brush Script MT',cursive">Happy Birthday <?php echo $greeting_receiver_name?>!</h1>
                             </div>
                             <button id="open">&gt;</button>
                             <button id="close">&lt;</button>
@@ -234,25 +233,21 @@ if (isset($_POST["message"])){
                                 <button onclick="window.history.back();" class="btn-success1 btn">Go Back</button>
                             </div>
                             <div class="col-sm-3 ">
-                                <button type="submit" onclick="alert('This feature is coming soon..!');" class="btn-success1 btn">Send Greeting</button>
+                                <button type="submit" id="sendButton" onclick="send_greeting()" class="btn-success1 btn">Send Greeting</button>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
-
             <div class="clearfix"> </div>
 
         </div>
         <script>
+            // Card Opening/Closing Function
             (function() {
                 function $(id) {
                     return document.getElementById(id);
                 }
-
                 var card = $('card'),
                     openB = $('open'),
                     closeB = $('close'),
@@ -266,7 +261,6 @@ if (isset($_POST["message"])){
                         timer = null;
                     }, 1000);
                 });
-
                 closeB.addEventListener('click', function () {
                     card.setAttribute('class', 'close-half');
                     if (timer) clearTimerout(timer);
@@ -275,83 +269,105 @@ if (isset($_POST["message"])){
                         timer = null;
                     }, 1000);
                 });
-
             }());
         </script>
-    <?php
+        <script>
+            // Card Sending Function
+            function send_greeting(){
+                $("#sendButton").text('Sending...');
+                var form = new FormData();
+                form.append("receiver_id", '<?php echo $greeting_receiver_id?>');
+                form.append("sender_id", '<?php echo $logged_in_member_id?>');
+                form.append("greeting_card_message", '<?php echo $message?>');
+                form.append("greeting_card_mail_subject", "Subject");
+                form.append("send_date", <?php echo date("Y");?>);
 
-}else if (isset($_GET["greeting-card-id"])){
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": '<?php echo get_api_host(). "/greeting-card" ?>',
+                    "method": "POST",
+                    "processData": false,
+                    "contentType": false,
+                    "mimeType": "multipart/form-data",
+                    "data": form
+                }
+                $.ajax(settings).done(function () {
+                    $("#sendButton").text('Greeting Sent');
+                });
+            }
+        </script>
 
-    ?>
+<?php } else if (isset($_GET["greeting-card-id"])){ ?>
 
-    <!--// View Greeting Card-->
+    <!--// View Sent Greeting Card-->
+        <div class="content_bottom">
+                <div class="col-md-12 span_3">
+                    <div class="bs-example1" data-example-id="contextual-table">
+                        <div id="card">
+                            <div id="card-inside">
+                                <div class="wrap">
+                                    <?php
+                                    // Show multiple messages in one greeting card
+                                    if(count($greeting_json->greeting_sender)>1){
+                                    ?>
+                                    <ul class="pagination">
+                                        <?php
+                                        $j = 0;
+                                        foreach ($greeting_json->greeting_sender as $sender){ $j++;?>
+                                        <li><a style="cursor: hand" onclick="show('<?php echo "Page".$j;?>');"><?php echo $j;?></a></li>
+                                        <?php } ?>
+                                    </ul>
+                                    <div class="page" style="">There are multiple messages in this card, please click the numbers above to view the messages from individual team members!</div>
 
-
-
-    <div class="content_bottom">
-        <div class="col-md-12 span_3">
-            <div class="bs-example1" data-example-id="contextual-table">
-                <div id="card">
-                    <div id="card-inside">
-                        <div class="wrap">
-                            <?php
-                            if(count($json->greeting_sender)>1){
-                            ?>
-                            <ul class="pagination">
-                                <?php
-                                $j = 0;
-                                foreach ($json->greeting_sender as $sender){ $j++;?>
-                                <li><a style="cursor: hand" onclick="show('<?php echo "Page".$j;?>');"><?php echo $j;?></a></li>
-                                <?php } ?>
-                            </ul>
-                            <div class="page" style="">There are multiple messages in this card, please click the numbers above to view the messages from individual team members!</div>
-
-                            <?php
-                            $i = 0;
-                            foreach ($json->greeting_sender as $sender){ $i++;?>
-                                <div id='<?php echo "Page".$i;?>' class="page" style="display:none">
-                                    <p><?php echo $sender->message ?></p>
-                                    <p class="signed"> <?php echo "Regards,";?> </br> <?php echo $sender->sender_name;?> </p>
+                                    <?php
+                                    $i = 0;
+                                    foreach ($greeting_json->greeting_sender as $sender){ $i++;?>
+                                        <div id='<?php echo "Page".$i;?>' class="page" style="display:none">
+                                            <p>Hi <?php echo $greeting_json->receiver_name ?>,</p>
+                                            <p><?php echo $sender->message ?></p>
+                                            <p class="signed"> <?php echo "Regards,";?> </br> <?php echo $sender->sender_name;?> </p>
+                                            <p></br></p>
+                                        </div>
+                                    <?php
+                                    }}else{
+                                    ?>
+                                    <p>Hi <?php echo $greeting_json->receiver_name ?>,</p>
+                                    <p><?php echo $greeting_json->greeting_sender[0]->message ?></p>
+                                    <p class="signed"> <?php echo "Regards,";?> </br> <?php echo $greeting_json->greeting_sender[0]->sender_name;?> </p>
                                     <p></br></p>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
-                            <?php
-                            }}else{
-                            ?>
-                            <p><?php echo $json->greeting_sender[0]->message ?></p>
-                            <p class="signed"> <?php echo "Regards,";?> </br> <?php echo $json->greeting_sender[0]->sender_name;?> </p>
-                            <p></br></p>
-                            <?php
-                            }
-                            ?>
+                            </div>
+
+                            <div id="card-front">
+                                <div class="wrap">
+                                    <h1 style="font-family: 'Brush Script MT',cursive">Happy Birthday <?php echo $receiver_name?>!</h1>
+                                </div>
+                                <button id="open">&gt;</button>
+                                <button id="close">&lt;</button>
+                            </div>
                         </div>
+                        </br>
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/greetings"?>'" class="btn-success1 btn">Send a Greeting Card</button>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
 
-                    <div id="card-front">
-                        <div class="wrap">
-                            <h1 style="font-family: 'Brush Script MT',cursive">Happy Birthday <?php echo $receiver_name?>!</h1>
-                        </div>
-                        <button id="open">&gt;</button>
-                        <button id="close">&lt;</button>
-                    </div>
-                </div>
-                </br>
-                <div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/greetings"?>'" class="btn-success1 btn">Send a Greeting Card</button>
-                        </div>
-                    </div>
                 </div>
 
+                <div class="clearfix"> </div>
 
             </div>
-
-        </div>
-
-        <div class="clearfix"> </div>
-
-    </div>
-    <script>
+        <script>
         function show(elementID) {
             var ele = document.getElementById(elementID);
             if (!ele) {
@@ -364,6 +380,8 @@ if (isset($_POST["message"])){
             }
             ele.style.display = 'block';
         }
+
+        // Card Opening/Closing Function
 
         (function() {
             function $(id) {
@@ -396,78 +414,14 @@ if (isset($_POST["message"])){
         }());
     </script>
 
-    <?php
-}
+<?php } else { ?>
 
-else
-{
-
-    ?>
-<!--        //html js-->
-        <!--// Form-->
+    <!--// Show Greeting Form-->
         <div class="content_bottom">
             <div class="col-md-12 span_3">
                 <div class="bs-example1" data-example-id="contextual-table">
                     <div style="text-align: center; font-weight: 500; font-size: x-large; color: #0b2c89; background: #06D995 ">Send Greeting Card</div>
                     </br>
-
-                    <?php
-                    is_member_logged_in();
-                    $ch = curl_init();
-                    $api_host = get_api_host();
-                    $logged_in_member_id = get_logged_in_member_id();
-                    $endpoint = $api_host."/members/".$logged_in_member_id;
-                    $json = json_decode(file_get_contents($endpoint));
-
-                    $post_celebration_endpoint = $api_host."/celebrations";
-
-                    $birthday_of_member_id = $_POST['bday-of'];
-                    $cake_amount = $_POST['cake-amt'];
-                    $other_expense = $_POST['other-exp'];
-                    $celebration_date = $_POST['celebration-date'];
-                    $team_id = $_POST['select-team'];
-                    $attendees_member_id = $_POST['attendee'];
-
-
-                    if(isset($birthday_of_member_id) && isset($attendees_member_id)){
-                        $post_data = "birthday_of_member_id=".$birthday_of_member_id.
-                            "&cake_amount=".$cake_amount.
-                            "&other_expense=".$other_expense.
-                            "&celebration_date=".$celebration_date.
-                            "&team_id=".$team_id;
-
-                        foreach ($attendees_member_id as $attendee){
-                            $post_data = $post_data. "&attendees_member_id[]=".$attendee;
-                        }
-
-                        if($cake_amount!="" && $other_expense !="") {
-                            curl_setopt($ch, CURLOPT_URL, $post_celebration_endpoint);
-                            curl_setopt($ch, CURLOPT_POST, 1);
-                            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                            $server_output = curl_exec($ch);
-
-                            $info = curl_getinfo($ch);
-                            $http_code = $info["http_code"];
-
-                            if($http_code = 200) {
-                                echo '<div class="alert alert-success">';
-                                echo '<strong>Success!</strong> Celebration Added Successfully!</div>';
-                            }
-                            else{
-                                print_r( $server_output);
-                                echo '<div class="alert alert-danger">';
-                                echo '<strong>Oops!</strong> An Error Occurred! Please Try Again...</div>'.$server_output."ot";
-                            }
-                            curl_close($ch);
-                        }
-                        else{
-                            echo '<div class="alert alert-danger">';
-                            echo '<strong>Oops!</strong> Looks Like You Have Not Entered Some Data!</div>';
-                        }
-                    }
-
-                    ?>
 
                     <form class="form-horizontal" method="post" action="">
                         <div class="form-group">
@@ -508,20 +462,19 @@ else
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <link href="http://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
         <script>
-            $(function() {
-                $("#celebration-date").datepicker({
-                    changeMonth: true,
-                    dateFormat: "yy-mm-dd"
-                });
+        $(function() {
+            $("#celebration-date").datepicker({
+                changeMonth: true,
+                dateFormat: "yy-mm-dd"
             });
-            $(function() {
-                $("#celebration-time").flatpickr({
-                    enableTime: true
-                });
+        });
+        $(function() {
+            $("#celebration-time").flatpickr({
+                enableTime: true
             });
+        });
 
-        </script>
-
+    </script>
         <script type = "text/javascript" language = "javascript">
         // Populate Team Dropdown
         $(document).ready( function(){
@@ -555,7 +508,7 @@ else
                         data[0].members.forEach(function(entry) {
                             var option = document.createElement("option");
                             option.text = entry.name;
-                            option.value = entry.name;
+                            option.value = entry.id;
                             x.add(option);
                         });
                     }
@@ -581,10 +534,8 @@ else
             });
         });
     </script>
-    <?php
 
-}
-?>
+<?php } ?>
 
 
 

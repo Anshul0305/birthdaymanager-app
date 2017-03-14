@@ -15,7 +15,6 @@
         <div class="graphs">
 
           <?php
-
           switch($page){
               case "dashboard":{
                   include("master/widgets.php");
@@ -80,7 +79,6 @@
               }
               break;
           }
-
           include("master/footer.php");
           ?>
 		</div>
