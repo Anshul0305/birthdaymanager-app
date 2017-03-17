@@ -322,9 +322,6 @@ if(isset($_POST["reset-email"])){
   <div id="hidden_form_container" style="display:none;"></div>
 
 
-
-
-
 	<div id="header">
 		<div class="container">
 			<div class="row">
@@ -364,47 +361,124 @@ if(isset($_POST["reset-email"])){
 						}
 					}
 					?>
-<!--					<h1>Birthday Manager</h1>-->
 					<h2 class="subtitle">Make group birthday celebrations more joyful and convenient...</h2>
 					<br>
 					<iframe width="100%" height="315" src="https://www.youtube.com/embed/nThCMMtklrY" frameborder="0" allowfullscreen></iframe>
-<!--					<form class="form-inline signup" role="form">-->
-<!--					  <div class="form-group">-->
-<!--					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">-->
-<!--					  </div>-->
-<!--					  <button type="submit" class="btn btn-theme">Subscribe Us</button>-->
-<!--					</form>					-->
+					<div style="margin-top: 50px;">
+						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">How it works</button></div>
+						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">FAQ</button></div>
+						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">Pricing</button></div>
+					</div>
 				</div>
-				<div class="col-lg-4 col-lg-offset-2">
-					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-					  <ol class="carousel-indicators">
-						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-					  </ol>					
-					  <!-- slides -->
-					  <div class="carousel-inner">
-						<div class="item active">
-						  <img src="assets/img/slide-4.png" alt="">
-						</div>
-						<div class="item">
-						  <img src="assets/img/slide-5.png" alt="">
-						</div>
-						<div class="item">
-						  <img src="assets/img/slide-6.png" alt="">
-						</div>
-					  </div>
-					</div>		
-				</div>
-				
 			</div>
 		</div>
 	</div>
+
+  <style>
+	  body { background:#efefef;}
+	  .plans {padding: 0 !important;}
+	  .plans h5 {background: darkred ;padding: 10px 10px;color: #fff;font-size: 16px;text-transform: uppercase;  letter-spacing: 1px;font-weight: bold;}
+	  .panel-pricing {-moz-transition: all .3s ease;-o-transition: all .3s ease;-webkit-transition: all .3s ease;}
+	  .panel-pricing:hover {box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);}
+	  .panel-pricing .panel-heading {padding:13px 10px;color:#fdfdfd;background-color:#ed1c24;border-color:#ed1c24;}
+	  .panel-pricing .panel-heading .fa {margin-top: 10px;font-size: 58px;}
+	  .panel-pricing .list-group-item {color: #777777;border-bottom: 1px solid rgba(250, 250, 250, 0.5);}
+	  .panel { border:0px solid !important;}
+	  .panel-pricing .panel-body {font-size:40px;padding:10px;margin:0px;border-bottom: 1px solid #cfcfcf;}
+	  .panel-footer { border:0px solid !important;background-color:#fff !important;}
+	  .panel-pricing .panel-heading h3 {margin: 0;padding: 10px; color:white}
+	  p.p-title { font-size:18px;text-align: center;text-transform: capitalize;}
+	  p.p-time { font-size:18px;text-align: center;text-transform: capitalize;}
+	  p.p-price { font-size:18px;text-align: center;text-transform: capitalize;color: #ed1c24;font-weight: bold;}
+	  p.p-tax { font-size:18px;text-align: center;text-transform: capitalize;}
+	  .sub-btn {background: #ed1c24;color: #fff;border-radius: 0px;padding: 5px 8px;}
+	  .sub-btn:hover, .sub-btn:focus { color:#fff; text-decoration:none;}
+  </style>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  type="text/css" rel="stylesheet" media="all">
+
+<!--  <div class="container-fluid">-->
+<!--	  <div class="plans col-md-12 col-sm-12 col-xs-12 text-center">-->
+<!--		  <h5>Features</h5>-->
+<!--	  </div>-->
+<!--  </div><!--container-fluid close-->-->
+
+  <section>
+	  <div class="container">
+		  <div class="row">
+			  <!-- item -->
+			  <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+				  <div class="panel panel-pricing">
+					  <div class="panel-heading">
+						  <i class="fa fa-calendar"></i>
+						  <h3>Invitations</h3>
+					  </div><!--panel-heading close-->
+					  <div class="panel-body text-center">
+						  <p class="p-title">Send Invitations for birthday party</p><!--p-title close-->
+						  <p class="p-time">Get RSVP from members</p><!--p-time close-->
+					  </div><!--panel-body text-center close-->
+<!--					  <div class="panel-body text-center">-->
+<!--						  <p class="p-price">₦ 50.00 </p><!--p-price close-->
+<!--						  <p class="p-tax">All inclusive</p><!--p-tax close-->
+<!--					  </div><!--panel-body text-center close-->
+					  <div class="panel-footer">
+						  <a class="btn sub-btn" href="#">Learn More</a>
+					  </div>
+				  </div><!--panel panel-pricing close-->
+			  </div><!--col-md-4 col-sm-4 col-xs-12 text-center close-->
+
+
+			  <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+				  <div class="panel panel-pricing">
+					  <div class="panel-heading">
+						  <i class="fa fa-envelope"></i>
+						  <h3>Greeting Cards</h3>
+					  </div><!--panel-heading close-->
+					  <div class="panel-body text-center">
+						  <p class="p-title">Send beautiful birthday cards</p><!--p-title close-->
+						  <p class="p-time">Surprise your teammates</p><!--p-time close-->
+					  </div><!--panel-body text-center close-->
+<!--					  <div class="panel-body text-center">-->
+<!--						  <p class="p-price">₦ 150.00 </p><!--p-price close-->
+<!--						  <p class="p-tax">All inclusive</p><!--p-tax close-->
+<!--					  </div><!--panel-body text-center close-->
+					  <div class="panel-footer">
+						  <a class="btn sub-btn" href="#">Learn More</a>
+					  </div>
+				  </div><!--panel panel-pricing close-->
+			  </div><!--col-md-4 col-sm-4 col-xs-12 text-center close-->
+
+
+
+			  <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+				  <div class="panel panel-pricing">
+					  <div class="panel-heading">
+						  <i class="fa fa-money "></i>
+						  <h3>Split Expenses</h3>
+					  </div><!--panel-heading close-->
+					  <div class="panel-body text-center">
+						  <p class="p-title">Split the expense on celebrations</p><!--p-title close-->
+						  <p class="p-time">Easily manage the contributions</p><!--p-time close-->
+					  </div><!--panel-body text-center close-->
+<!--					  <div class="panel-body text-center">-->
+<!--						  <p class="p-price">₦ 400.00 </p><!--p-price close-->
+<!--						  <p class="p-tax">All inclusive</p><!--p-tax close-->
+<!--					  </div><!--panel-body text-center close-->
+					  <div class="panel-footer">
+						  <a class="btn sub-btn" href="#">Learn More</a>
+					  </div>
+				  </div><!--panel panel-pricing close-->
+			  </div><!--col-md-4 col-sm-4 col-xs-12 text-center close-->
+
+		  </div><!--row close-->
+	  </div><!--container close-->
+  </section><!--section close-->
+
+
 	<div id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-lg-offset-3">
-<!--					<p class="copyright">Copyright &copy; 2016 - Designed by <a href="http://axlewebtech.com" target="_blank">Axle Web Technologies | </a>-->
 				<p>Copyright &copy; 2017 All Rights Reserved | Designed and Developed by <a href="#" target="_blank">Axle Web Technologies</a> </p>
 				<a href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
 			</div>
@@ -412,9 +486,6 @@ if(isset($_POST["reset-email"])){
 	</div>	
 	</div>
 	<link href="http://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
-
-
-
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script>
@@ -427,9 +498,6 @@ if(isset($_POST["reset-email"])){
 			});
 		});
 	</script>
-
-
-
     <script src="assets/js/bootstrap.min.js"></script>
 
   </body>
