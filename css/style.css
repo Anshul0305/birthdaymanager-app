@@ -262,7 +262,19 @@ ul.nav.navbar-nav.navbar-right {
 }
 .sidebar-nav.navbar-collapse {
   margin: 2em 0 0 0;
+  display: none;
 }
+.sidebar-nav.navbar-collapse.in,
+.sidebar-nav.navbar-collapse.collapsing {
+  display: block;
+}
+
+@media(min-width: 768px){
+  .sidebar-nav.navbar-collapse{
+    display: block;
+  }
+}
+
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
   background-color:rgba(231, 231, 231, 0) !important;
 }
