@@ -191,7 +191,7 @@ if(isset($_POST["reset-email"])){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>">Birthday Manager - Beta</a>
+          <a class="navbar-brand" href="http://<?php echo get_website_host()?><?php echo get_website_relative_path()?>">Birthday Manager</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right main-nav">
@@ -377,10 +377,10 @@ if(isset($_POST["reset-email"])){
   <style>
 	  body { background:#efefef;}
 	  .plans {padding: 0 !important;}
-	  .plans h5 {background: darkred ;padding: 10px 10px;color: #fff;font-size: 16px;text-transform: uppercase;  letter-spacing: 1px;font-weight: bold;}
+	  .plans h5 {background: #C1282D ;padding: 10px 10px;color: #fff;font-size: 16px;text-transform: uppercase;  letter-spacing: 1px;font-weight: bold;}
 	  .panel-pricing {-moz-transition: all .3s ease;-o-transition: all .3s ease;-webkit-transition: all .3s ease;}
 	  .panel-pricing:hover {box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);}
-	  .panel-pricing .panel-heading {padding:13px 10px;color:#fdfdfd;background-color:#ed1c24;border-color:#ed1c24;}
+	  .panel-pricing .panel-heading {padding:13px 10px;color:#fdfdfd;background-color:#C1282D;border-color:#ed1c24;}
 	  .panel-pricing .panel-heading .fa {margin-top: 10px;font-size: 58px;}
 	  .panel-pricing .list-group-item {color: #777777;border-bottom: 1px solid rgba(250, 250, 250, 0.5);}
 	  .panel { border:0px solid !important;}
@@ -401,7 +401,8 @@ if(isset($_POST["reset-email"])){
 <!--	  <div class="plans col-md-12 col-sm-12 col-xs-12 text-center">-->
 <!--		  <h5>Features</h5>-->
 <!--	  </div>-->
-<!--  </div><!--container-fluid close-->-->
+<!--  </div><!--container-fluid close-->
+  </br>
 
   <section>
 	  <div class="container">
