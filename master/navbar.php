@@ -26,7 +26,7 @@
                                     <a href="greetings">Send Greeting</a>
                                 </li>
                                 <li>
-                                    <a href="greetings">View Greetings</a>
+                                    <a href="view-greetings">View Greetings</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

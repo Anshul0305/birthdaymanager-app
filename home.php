@@ -70,9 +70,13 @@
               }
               break;
               case "greetings":{
-                  include("master/_templates/greeting-card.php");
+                  include("master/_templates/send-greeting-card.php");
               }
               break;
+              case "view-greetings":{
+                  include("master/_templates/view-greeting-cards.php");
+              }
+                  break;
 
               default:{
                   include("master/_templates/blank.php");
