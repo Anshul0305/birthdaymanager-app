@@ -293,7 +293,9 @@ if (isset($_POST["message"])){ ?>
                     "data": form
                 }
                 $.ajax(settings).done(function () {
+                    alert('Greeting card sent successfully!');
                     $("#sendButton").text('Greeting Sent');
+                    $("#sendButton").prop("disabled", true);
                 });
             }
         </script>
@@ -482,12 +484,10 @@ if (isset($_POST["message"])){ ?>
                 function(data) {
                     var select_team = document.getElementById("select-team");
                     data[0].teams.forEach(function(entry) {
-                        if(entry.is_admin == "true"){
                             var option = document.createElement("option");
                             option.text = entry.name;
                             option.value = entry.id;
                             select_team.add(option);
-                        }
                     });
                 });
         });
