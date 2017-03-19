@@ -293,8 +293,8 @@ if (isset($_POST["message"])){ ?>
                     "data": form
                 }
                 $.ajax(settings).done(function () {
-                    alert('Greeting card sent successfully!');
                     $("#sendButton").text('Greeting Sent');
+                    alert('Greeting card sent successfully!');
                     $("#sendButton").prop("disabled", true);
                 });
             }
