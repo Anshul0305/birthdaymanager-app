@@ -355,7 +355,10 @@ if (isset($_POST["message"])){ ?>
                         </br>
                         <div>
                             <div class="row">
-                                <div class="col-sm-6 col-sm-offset-3">
+                                <div class="col-sm-3 col-sm-offset-3">
+                                    <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/view-greetings"?>'" class="btn-success1 btn">View All Greeting Cards</button>
+                                </div>
+                                <div class="col-sm-3 ">
                                     <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/greetings"?>'" class="btn-success1 btn">Send a Greeting Card</button>
                                 </div>
                             </div>

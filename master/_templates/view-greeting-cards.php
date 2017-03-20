@@ -1,6 +1,10 @@
 <?php include_once "./././helper.php"?>
 <?php
 is_member_logged_in();
+$api_host = get_api_host();
+$logged_in_member_id = get_logged_in_member_id();
+$endpoint = $api_host."/members/".$logged_in_member_id."/greetings";
+$json = json_decode(file_get_contents($endpoint));
 ?>
 
 <style>
@@ -138,22 +142,96 @@ is_member_logged_in();
                 <div class="well">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1">
-                            <h3>Show the received greeting cards here</h3>
+                            <div class="container">
+                                <div class="row col-md-6 col-md-offset-2 custyle">
+                                    <table id="receivedTable" class="table table-striped custab">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>From</th>
+                                            <th>Date Received</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($json->received_greetings as $greeting_id){
+                                            $greeting_endpoint = $api_host."/greeting-card/".$greeting_id;
+                                            $greeting_json = json_decode(file_get_contents($greeting_endpoint));
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i++?></td>
+                                                <td><?php
+                                                    $text = "";
+                                                    foreach ($greeting_json->greeting_sender as $sender){
+                                                        $text .= $sender->sender_name.", ";
+                                                    }
+                                                    echo substr($text, 0, -2);
+                                                    ?>
+                                                </td>
+                                                <td><?php echo $greeting_json->send_date ?></td>
+                                                <td class="text-center"><a class="btn btn-info btn-xs" href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/greetings?greeting-card-id=<?php echo $greeting_id?>"><span class="glyphicon glyphicon-eye-open"></span> View greeting card</a></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade in" id="tab2">
-                            <h3>Show the sent greeting cards here</h3>
+                            <div class="container">
+                                <div class="row col-md-6 col-md-offset-2 custyle">
+                                    <table id="sentTable" class="table table-striped custab">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>To</th>
+                                            <th>Date Sent</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($json->sent_greetings as $greeting_id){
+                                            $greeting_endpoint = $api_host."/greeting-card/".$greeting_id;
+                                            $greeting_json = json_decode(file_get_contents($greeting_endpoint));
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i++?></td>
+                                                <td><?php echo $greeting_json->receiver_name ?></td>
+                                                <td><?php echo $greeting_json->send_date ?></td>
+                                                <td class="text-center"><a class="btn btn-info btn-xs" href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/greetings?greeting-card-id=<?php echo $greeting_id?>"><span class="glyphicon glyphicon-eye-open"></span> View greeting card</a></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade in" id="tab3">
-                            <h3>Show the team cards to be signed here </h3>
+                            <h3>Sorry! This feature is coming soon... </h3>
                         </div>
                     </div>
                 </div>
-
-
         </div>
     </div>
     <div class="clearfix"> </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#receivedTable').DataTable({
+            "pageLength": 10
+        });
+    });
+    $(document).ready(function(){
+        $('#sentTable').DataTable({
+            "pageLength": 10
+        });
+    });
+</script>
 
 
 
