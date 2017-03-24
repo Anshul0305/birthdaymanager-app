@@ -12,7 +12,7 @@ $email = $member_json[0]->email;
 
 $post_first_name = $_POST["first-name"];
 $post_last_name = $_POST["last-name"];
-$post_dob = $_POST["dob"];
+$post_dob = date('Y-m-d', strtotime($_POST["dob"]));
 $post_email = $_POST["email"];
 
 $ch = curl_init();
@@ -62,10 +62,9 @@ if(isset($post_first_name) && isset($post_last_name) && isset($post_dob) && isse
 <script>
     $(function() {
         $("#dob").datepicker({
-            yearRange: "1950:+nn",
             changeMonth: true,
-            changeYear: true,
-            dateFormat: "dd-mm-yy"
+            changeYear: false,
+            dateFormat: "dd MM"
         });
     });
 </script>
@@ -97,7 +96,7 @@ if(isset($post_first_name) && isset($post_last_name) && isset($post_dob) && isse
                 <div class="form-group">
                     <label for="focusedinput" class="col-sm-2 control-label">Date of Birth</label>
                     <div class="col-sm-8">
-                        <label><input type="text" name="dob" id="dob" value="<?php echo format_date($dob, "dmy") ?>"></label>
+                        <label><input type="text" name="dob" id="dob" value="<?php echo format_date($dob, "DF") ?>"></label>
                     </div>
                 </div>
                 <div>

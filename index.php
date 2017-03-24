@@ -38,7 +38,7 @@ if(isset($_POST["signup-email"])) {
 	$last_name = $_POST["signup-last-name"];
 	$signup_email = $_POST["signup-email"];
 	$signup_password = $_POST["signup-password"];
-	$official_dob = $_POST["signup-official-dob"];
+	$official_dob = date('Y-m-d', strtotime($_POST["signup-official-dob"]));
 	$team_id = $_GET["team-id"];
 	$team_name = $_GET["team-name"];
 	if (isset($team_id)) {
@@ -493,9 +493,8 @@ if(isset($_POST["reset-email"])){
 		$(function() {
 			$("#signup-official-dob").datepicker({
 				changeMonth: true,
-				changeYear: true,
-				yearRange: "1950:+nn",
-				dateFormat: "yy-mm-dd"
+				changeYear: false,
+				dateFormat: "dd MM"
 			});
 		});
 	</script>

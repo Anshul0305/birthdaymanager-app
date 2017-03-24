@@ -30,6 +30,10 @@ function format_date($date, $type){
             return date("d M", strtotime($date));
         }
         break;
+        case "DF":{
+            return date("d F", strtotime($date));
+        }
+        break;
         case "DMY":{
             return date("d M Y", strtotime($date));
         }
