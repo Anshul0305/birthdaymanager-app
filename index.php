@@ -127,12 +127,21 @@ if(isset($_POST["reset-email"])){
 				?>
 				var sign_up_form = document.getElementById('sign-up');
 				sign_up_form.click();
+
+				// get the fields
 				var first_name = document.getElementById('signup-first-name');
-				first_name.value=profile.getName().split(' ')[0];
 				var last_name = document.getElementById('signup-last-name');
-				last_name.value=profile.getName().split(' ')[1];
 				var email = document.getElementById('signup-email');
+
+				// populate the value from google response
+				first_name.value=profile.getName().split(' ')[0];
+				last_name.value=profile.getName().split(' ')[1];
 				email.value=profile.getEmail();
+
+				// hide those fields from form
+				first_name.style.display = 'none';
+				last_name.style.display = 'none';
+				email.style.display = 'none';
 			<?php
 			}
 		}
@@ -256,7 +265,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 			<div id="cd-signup"> <!-- sign up form -->
 				<form class="cd-form" id="register" method="POST" action="">
 
-					<?php if ($google_new_user) echo "<p style='color: red;'>This Account is Not Yet Registered! Please Sign Up</p>";?>
+					<?php if ($google_new_user) echo "<p style='color: red;'>Nearly there! Please provide few more details to complete sign up...</p>";?>
 
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-first-name">First Name</label>
