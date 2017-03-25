@@ -148,13 +148,15 @@ if(isset($_POST["reset-email"])){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Online birthday manager can help you organise the group birthday celebrations. It helps you split the expense during birthday celebrations. You can also send invitations and greeting cards.">
+    <meta name="author" content="Axle Web Technology">
+	<meta name="keywords" content="birthday, celebration, party, greeting, online, reminder, birthday reminders, reminder service, free birthday reminder, birthday reminder service, email reminders, cell phone reminders,
+free email reminders, RSS, birthday cards, gift suggestions, greeting card, paper greeting card, egreetings, ecards, anniversary reminder, calendars, gift suggestions, paper cards">
 	<meta name="google-signin-client_id" content="58409882003-e6lo8hvchgbpf0s9iotm826j4ghutplt.apps.googleusercontent.com">
 
-	  <link rel="shortcut icon" href="assets/img/favicon.png">
+	<link rel="shortcut icon" href="assets/img/favicon.png">
 
-    <title>Birthday Manager</title>
+    <title>Online Birthday Manager</title>
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -368,6 +370,8 @@ if(isset($_POST["reset-email"])){
 						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">How it works</button></div>
 						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">FAQ</button></div>
 						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">Pricing</button></div>
+						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">Blogs</button></div>
+						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">Contact us</button></div>
 					</div>
 				</div>
 			</div>
