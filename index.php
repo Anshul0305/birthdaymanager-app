@@ -289,11 +289,6 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
-<!--					<p class="fieldset">-->
-<!--						<input type="checkbox" id="accept-terms">-->
-<!--						<label for="accept-terms">I agree to the <a href="#">Terms</a></label>-->
-<!--					</p>-->
-
 					<p class="fieldset">
 						<input class="full-width has-padding" type="submit" value="Create account">
 					</p>
@@ -366,12 +361,12 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 					<h2 class="subtitle">Make group birthday celebrations more joyful and convenient...</h2>
 					<br>
 					<iframe width="100%" height="315" src="https://www.youtube.com/embed/nThCMMtklrY" frameborder="0" allowfullscreen></iframe>
-					<div style="margin-top: 50px;">
-						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">How it works</button></div>
-						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">FAQ</button></div>
-						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">Pricing</button></div>
-						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">Blogs</button></div>
-						<div style="float: left;margin:5px"><button type="submit" class="btn btn-theme">Contact us</button></div>
+					<div style="margin-top: 20px;">
+						<div style="float: left;margin:5px"><a type="submit" href="pages/how-it-works.htm" class="btn btn-theme">How it works</a></div>
+						<div style="float: left;margin:5px"><a type="submit" href="pages/faq.htm" class="btn btn-theme">FAQ</a></div>
+						<div style="float: left;margin:5px"><a type="submit" href="pages/pricing.htm" class="btn btn-theme">Pricing</a></div>
+						<div style="float: left;margin:5px"><a type="submit" class="btn btn-theme">Blogs</a></div>
+						<div style="float: left;margin:5px;margin-bottom: 20px"><a type="submit" href="pages/contact-us.htm" class="btn btn-theme">Contact us</a></div>
 					</div>
 				</div>
 			</div>
@@ -427,7 +422,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 <!--						  <p class="p-tax">All inclusive</p><!--p-tax close-->
 <!--					  </div><!--panel-body text-center close-->
 					  <div class="panel-footer">
-						  <a class="btn sub-btn" href="#">Learn More</a>
+						  <a class="btn sub-btn" href="./pages/how-it-works.htm">Learn More</a>
 					  </div>
 				  </div><!--panel panel-pricing close-->
 			  </div><!--col-md-4 col-sm-4 col-xs-12 text-center close-->
@@ -448,7 +443,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 <!--						  <p class="p-tax">All inclusive</p><!--p-tax close-->
 <!--					  </div><!--panel-body text-center close-->
 					  <div class="panel-footer">
-						  <a class="btn sub-btn" href="#">Learn More</a>
+						  <a class="btn sub-btn" href="./pages/how-it-works.htm">Learn More</a>
 					  </div>
 				  </div><!--panel panel-pricing close-->
 			  </div><!--col-md-4 col-sm-4 col-xs-12 text-center close-->
@@ -470,7 +465,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 <!--						  <p class="p-tax">All inclusive</p><!--p-tax close-->
 <!--					  </div><!--panel-body text-center close-->
 					  <div class="panel-footer">
-						  <a class="btn sub-btn" href="#">Learn More</a>
+						  <a class="btn sub-btn" href="./pages/how-it-works.htm">Learn More</a>
 					  </div>
 				  </div><!--panel panel-pricing close-->
 			  </div><!--col-md-4 col-sm-4 col-xs-12 text-center close-->
@@ -483,7 +478,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 	<div id="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12 col-lg-offset-3">
+			<div class="col-lg-9 col-lg-offset-3">
 				<p>Copyright &copy; 2017 All Rights Reserved | Designed and Developed by <a href="#" target="_blank">Axle Web Technologies</a> </p>
 				<a href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
 			</div>
