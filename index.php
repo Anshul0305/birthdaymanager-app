@@ -374,7 +374,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 						<div style="float: left;margin:5px"><a type="submit" href="pages/how-it-works.htm" class="btn btn-theme">How it works</a></div>
 						<div style="float: left;margin:5px"><a type="submit" href="pages/faq.htm" class="btn btn-theme">FAQ</a></div>
 						<div style="float: left;margin:5px"><a type="submit" href="pages/pricing.htm" class="btn btn-theme">Pricing</a></div>
-						<div style="float: left;margin:5px"><a type="submit" class="btn btn-theme">Blogs</a></div>
+						<div style="float: left;margin:5px"><a type="submit" href="http://blogs.onlinebirthdaymanager.com" class="btn btn-theme" target="_blank">Blogs</a></div>
 						<div style="float: left;margin:5px;margin-bottom: 20px"><a type="submit" href="pages/contact-us.htm" class="btn btn-theme">Contact us</a></div>
 					</div>
 				</div>
