@@ -359,7 +359,7 @@ if (isset($_POST["message"])){ ?>
                                     <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/view-greetings"?>'" class="btn-success1 btn">View All Greeting Cards</button>
                                 </div>
                                 <div class="col-sm-3 ">
-                                    <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/greetings"?>'" class="btn-success1 btn">Send Another Greeting Card</button>
+                                    <button onclick="location.href='<?php echo "http://". get_website_host()?><?php echo get_website_relative_path(). "/greetings"?>'" class="btn-success1 btn">Send A New Greeting Card</button>
                                 </div>
                             </div>
                         </div>
