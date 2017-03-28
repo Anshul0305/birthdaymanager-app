@@ -155,6 +155,7 @@ $json = json_decode(file_get_contents($endpoint));
                                         </thead>
                                         <?php
                                         $i = 1;
+                                        if(count($json->received_greetings)>0){
                                         foreach ($json->received_greetings as $greeting_id){
                                             $greeting_endpoint = $api_host."/greeting-card/".$greeting_id;
                                             $greeting_json = json_decode(file_get_contents($greeting_endpoint));
@@ -173,6 +174,8 @@ $json = json_decode(file_get_contents($endpoint));
                                                 <td class="text-center"><a class="btn btn-info btn-xs" href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/greetings?greeting-card-id=<?php echo $greeting_id?>"><span class="glyphicon glyphicon-eye-open"></span> View greeting card</a></td>
                                             </tr>
                                         <?php
+                                        }}else{
+                                            echo "<tr><td></td><td>You haven't recieved any greeting card yet.</td></tr>";
                                         }
                                         ?>
                                     </table>
@@ -193,6 +196,7 @@ $json = json_decode(file_get_contents($endpoint));
                                         </thead>
                                         <?php
                                         $i = 1;
+                                        if(count($json->sent_greetings)>0){
                                         foreach ($json->sent_greetings as $greeting_id){
                                             $greeting_endpoint = $api_host."/greeting-card/".$greeting_id;
                                             $greeting_json = json_decode(file_get_contents($greeting_endpoint));
@@ -204,6 +208,8 @@ $json = json_decode(file_get_contents($endpoint));
                                                 <td class="text-center"><a class="btn btn-info btn-xs" href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/greetings?greeting-card-id=<?php echo $greeting_id?>"><span class="glyphicon glyphicon-eye-open"></span> View greeting card</a></td>
                                             </tr>
                                             <?php
+                                        }}else{
+                                            echo "<tr><td></td><td>You haven't sent any greeting card yet.</td></tr>";
                                         }
                                         ?>
                                     </table>
