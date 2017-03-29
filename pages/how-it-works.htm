@@ -2,6 +2,9 @@
 
 <html lang="en">
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="assets/img/favicon.png">
 	<title>Online Birthday Manager</title>
 	<link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -144,6 +147,22 @@
 
 		z-index:1032;
 	}
+
+	@media (min-width:700px){
+		img.how-it-works-image{
+			width:50%;
+		}
+	}
+	@media (max-width:700px){
+		img.how-it-works-image{
+			width:100%;
+		}
+	}
+
+	@media (min-width: 760px) {
+		a.whatsapp { display: none; }
+	}
+
 
 </style>
 
@@ -290,7 +309,7 @@
 
 					<div style="margin-top:10px;">
 						<a href="#" data-toggle="modal" data-target="#lightbox">
-							<img src="http://onlinebirthdaymanager.com/images/home/create-team.png" width=620 height=297>
+							<img class="how-it-works-image" src="http://onlinebirthdaymanager.com/images/home/create-team.png">
 						</a>
 					</div><br><br>
 
@@ -308,7 +327,7 @@
 					To send an invitation, click on "Send Invitation" button <br>
 					<div style="margin-top:10px;">
 						<a href="#" data-toggle="modal" data-target="#lightbox">
-							<img src="http://onlinebirthdaymanager.com/images/home/send-invitations.png" width=620 >
+							<img class="how-it-works-image" src="http://onlinebirthdaymanager.com/images/home/send-invitations.png" >
 						</a>
 					</div>
 					<br>
@@ -331,7 +350,7 @@
 					To send a greeting card, click on "Send Greeting" button <br>
 					<div style="margin-top:10px;">
 						<a href="#" data-toggle="modal" data-target="#lightbox">
-							<img src="http://onlinebirthdaymanager.com/images/home/greeting-card.png" width=620 >
+							<img class="how-it-works-image" src="http://onlinebirthdaymanager.com/images/home/greeting-card.png" >
 						</a>
 					</div>
 					<br><br>
@@ -343,7 +362,7 @@
 					</ul>
 					<div style="margin-top:10px;">
 						<a href="#" data-toggle="modal" data-target="#lightbox">
-							<img src="http://onlinebirthdaymanager.com/images/home/greeting-card-preview.gif" width=620 >
+							<img class="how-it-works-image" src="http://onlinebirthdaymanager.com/images/home/greeting-card-preview.gif" >
 						</a>
 					</div>
 				</div>
@@ -424,7 +443,7 @@
 		<div class="row">
 			<div class="col-lg-9 col-lg-offset-3">
 				<p>Copyright &copy; 2017 All Rights Reserved | Designed and Developed by <a href="#" target="_blank">Axle Web Technologies</a> </p>
-				<a href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
+				<a style="margin-left: 35%" class="whatsapp" href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
 			</div>
 		</div>
 	</div>
