@@ -79,6 +79,12 @@ if(isset($_POST["reset-email"])){
 
 ?>
 <!DOCTYPE html>
+
+<style>
+	@media (min-width: 760px) {
+		a.whatsapp { display: none; }
+	}
+</style>
 <script>
 
 	function onSignIn(googleUser) {
@@ -489,7 +495,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 		<div class="row">
 			<div class="col-lg-9 col-lg-offset-3">
 				<p>Copyright &copy; 2017 All Rights Reserved | Designed and Developed by <a href="#" target="_blank">Axle Web Technologies</a> </p>
-				<a href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
+				<a style="margin-left: 35%" class="whatsapp" href="whatsapp://send?text=Try%20Birthday%20Manager%20Now!+http%3a%2f%2fonlinebirthdaymanager.com%2f">Share on Whatsapp</a></p>
 			</div>
 		</div>		
 	</div>	
