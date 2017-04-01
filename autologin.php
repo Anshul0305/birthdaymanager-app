@@ -17,6 +17,7 @@ $ch = curl_init();
 $login_endpoint = $api_host."/autologin";
 $signin_email = $_GET["signin-email"];
 $signin_code = $_GET["signin-code"];
+$destination = $_GET["destination"];
 $signin_post_data = "email=".$signin_email."&reset_code=".$signin_code;
 
 if(isset($signin_email)&&isset($signin_code)){
@@ -33,7 +34,8 @@ if(isset($signin_email)&&isset($signin_code)){
 if(isset($signin_email)&&isset($signin_code)) {
 	if ($login_http_code == 200 && $signin_email != "" && $signin_code != "") {
 		$_SESSION["member_id"] = json_decode($login_output)->member_id;
-		echo "<script>location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/dashboard'</script>";
+		if(!isset($destination)){$destination="dashboard";} // If no destination is given, redirect to dashboard
+		echo "<script>location.href = 'http://".get_website_host(). json_decode(file_get_contents("env.json"))->website_relative_path."/".$destination."'</script>";
 	} else {
 		echo "<div class=\"alert alert-danger\" role=\"alert\">Sorry! This link is expired or invalid.</div>";
 	}
