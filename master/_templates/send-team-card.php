@@ -7,16 +7,21 @@ $greeting_card_id = $_GET["greeting-card-id"];
 
 $greeting_endpoint = $api_host."/greeting-card/".$greeting_card_id;
 $greeting_json = json_decode(file_get_contents($greeting_endpoint));
-$receiver_name = $greeting_json->receiver_name;
 
 // Post params
 $team_id = $_POST["select-team"];
 $greeting_receiver_id = $_POST["bday-of"];
 $member_endpoint = $api_host."/members/".$greeting_receiver_id;
 $member_json = json_decode(file_get_contents($member_endpoint));
-$greeting_receiver_name = $member_json[0]->first_name;
 $greeting_card_message = $_POST["message"];
 $message_for_team = $_POST["message-for-team"];
+
+if(isset($greeting_card_id)){
+    $greeting_receiver_name = $greeting_json->receiver_name;
+}
+else{
+    $greeting_receiver_name = $member_json[0]->first_name;
+}
 
 ?>
 
@@ -352,7 +357,7 @@ if (isset($_POST["message"])){ ?>
                 <form class="form-horizontal" method="post" action="">
                     <div class="alert alert-warning" role="alert">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        Please write some message for <?php echo $receiver_name?>.</div>
+                        Please write some message for <?php echo $greeting_receiver_name?>.</div>
                     <div class="form-group">
                         <label for="focusedinput" class="col-sm-3 control-label">Greeting Message</label>
                         <div class="col-sm-7">
