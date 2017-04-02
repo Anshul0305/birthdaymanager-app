@@ -73,6 +73,10 @@
                   include("master/_templates/send-greeting-card.php");
               }
               break;
+              case "team-greetings":{
+                  include("master/_templates/send-team-card.php");
+              }
+                  break;
               case "view-greetings":{
                   include("master/_templates/view-greeting-cards.php");
               }

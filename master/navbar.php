@@ -23,7 +23,10 @@
                             <a href="#"><i class="fa fa-envelope nav_icon"></i>Greetings<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="greetings">Send Greeting</a>
+                                    <a href="greetings">Personal Greeting</a>
+                                </li>
+                                <li>
+                                    <a href="team-greetings">Team Greeting</a>
                                 </li>
                                 <li>
                                     <a href="view-greetings">View Greetings</a>
