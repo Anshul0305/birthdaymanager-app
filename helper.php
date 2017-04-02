@@ -1,7 +1,9 @@
 <?php
-$action = $_GET["action"];
-$team_id = $_GET["team-id"];
-$member_id = $_GET["member-id"];
+
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+$team_id = isset($_GET['team-id']) ? $_GET['team-id'] : '';
+$member_id = isset($_GET['member-id']) ? $_GET['member-id'] : '';
+
 
 switch($action){
     case "logout":{
