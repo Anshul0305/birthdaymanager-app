@@ -200,6 +200,54 @@ $message = $_POST["message"];
         color: #888;
         text-align: center;
     }
+
+ol.pagination_list {
+    list-style-type: none;
+    position: relative;
+    top: 0;
+    margin: 25px 0 0 25px;
+}
+
+ol.pagination_list li {
+    -moz-border-radius:40px 40px 40px 40px;
+    -webkit-border-radius: 40px;
+    border-radius: 40px 40px 40px 40px;
+    -moz-box-shadow:1px 2px 4px grey;
+    -webkit-box-shadow:1px 2px 4px grey;
+    box-shadow:1px 2px 4px grey; /* Opera 10.5, IE 9 */
+    background: #B3C2CC;
+    background:-moz-linear-gradient(center bottom , #E9EDF6, #A9BAC5) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, left top, left bottom, from(#A9BAC5), to(#E9EDF6));
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#e9edf6', EndColorStr='#a9bac5'); /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#e9edf6', EndColorStr='#a9bac5')"; /* IE8 */
+    border-color:#FFFFFF #E7EBEE #E7EBEE #FFFFFF;
+    border-style:solid;
+    border-width:1px;
+    color:grey;
+    display:inline-block;
+    font-family:verdana;
+    font-size:10px;
+    font-weight:bold;
+    margin:0 0 20px 17px;
+    padding:3px 5px;
+    text-shadow:1px 1px 2px #FFFFFF;
+}
+
+ol.pagination_list li:hover {
+    cursor:pointer;
+    color:#222;
+}
+
+ol.pagination_list li:active {
+    color: #708296;
+    border-color: lightgrey;
+    text-shadow:1px 1px 2px #FFFFFF;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+}
+
+
 </style>
 
 <?php
@@ -313,14 +361,14 @@ if (isset($_POST["message"])){ ?>
                                     // Show multiple messages in one greeting card
                                     if(count($greeting_json->greeting_sender)>1){
                                     ?>
-                                    <ul class="pagination">
-                                        <?php
-                                        $j = 0;
-                                        foreach ($greeting_json->greeting_sender as $sender){ $j++;?>
-                                        <li><a style="cursor: hand" onclick="show('<?php echo "Page".$j;?>');"><?php echo $j;?></a></li>
-                                        <?php } ?>
-                                    </ul>
-                                    <div class="page" style="">There are multiple messages in this card, please click the numbers above to view the messages from individual team members!</div>
+                                    <ol class="pagination_list">
+                                    <?php
+                                    $j = 0;
+                                    foreach ($greeting_json->greeting_sender as $sender){ $j++; ?>
+                                    <li><a style="cursor: hand" onclick="show('<?php echo "Page".$j;?>');"><?php echo $j?></a></li>
+                                    <?php } ?>
+                                    </ol>
+                                    <div class="page" style="">Click the numbers above to view the messages!</div>
 
                                     <?php
                                     $i = 0;
