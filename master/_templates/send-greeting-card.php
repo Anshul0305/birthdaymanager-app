@@ -262,7 +262,7 @@ if (isset($_POST["message"])){ ?>
                         <div id="card-inside">
                             <div class="wrap">
                                 <p>Hi <?php echo $greeting_receiver_name ?>,</p>
-                                <p><?php echo $message ?></p>
+                                <p><?php echo $string = trim(preg_replace('/\s+/',' ',trim(preg_replace('/\n+/', '<br>', $message)))); ?></p>
                                 <p class="signed">  <?php echo "Regards,";?> </br> <?php echo get_logged_in_member_name();?> </p>
                             </div>
                         </div>
@@ -326,7 +326,7 @@ if (isset($_POST["message"])){ ?>
                 var form = new FormData();
                 form.append("receiver_id", '<?php echo $greeting_receiver_id?>');
                 form.append("sender_id", '<?php echo $logged_in_member_id?>');
-                form.append("greeting_card_message", '<?php echo $message?>');
+                form.append("greeting_card_message", '<?php echo $string = trim(preg_replace('/\s+/',' ',trim(preg_replace('/\n+/', '<br>', $message))));?>');
                 form.append("greeting_card_mail_subject", "Subject");
                 form.append("send_date", <?php echo date("Y");?>);
 

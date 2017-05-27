@@ -222,7 +222,7 @@ if (isset($_POST["message"])){ ?>
                         <div id="card-inside">
                             <div class="wrap">
                                 <p>Hi <?php echo $greeting_receiver_name ?>,</p>
-                                <p><?php echo $greeting_card_message ?></p>
+                                <p><?php echo $string = trim(preg_replace('/\s+/',' ',trim(preg_replace('/\n+/', '<br>', $greeting_card_message)))); ?></p>
                                 <p class="signed">  <?php echo "Regards,";?> </br> <?php echo get_logged_in_member_name();?> </p>
                             </div>
                         </div>
@@ -298,7 +298,7 @@ if (isset($_POST["message"])){ ?>
                 form.append("receiver_id", '<?php echo $greeting_receiver_id?>');
                 form.append("sender_id", '<?php echo $logged_in_member_id?>');
                 form.append("team_id", '<?php echo $team_id?>');
-                form.append("greeting_card_message", '<?php echo $greeting_card_message?>');
+                form.append("greeting_card_message", '<?php echo $string = trim(preg_replace('/\s+/',' ',trim(preg_replace('/\n+/', '<br>', $greeting_card_message))));?>');
                 form.append("greeting_card_mail_subject", "Subject");
                 form.append("send_date", <?php echo date("d-m-Y");?>);
                 form.append("message_for_team", '<?php echo $message_for_team?>');
@@ -324,7 +324,7 @@ if (isset($_POST["message"])){ ?>
                 $("#sendButton").text('Sending...');
                 var form = new FormData();
                 form.append("sender_id", '<?php echo $logged_in_member_id?>');
-                form.append("greeting_card_message", '<?php echo $greeting_card_message?>');
+                form.append("greeting_card_message", '<?php echo $string = trim(preg_replace('/\s+/',' ',trim(preg_replace('/\n+/', '<br>', $greeting_card_message))));?>');
                 form.append("greeting_card_id", '<?php echo $greeting_card_id?>');
 
                 var settings = {
