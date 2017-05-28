@@ -328,7 +328,7 @@ if (isset($_POST["message"])){ ?>
                 form.append("sender_id", '<?php echo $logged_in_member_id?>');
                 form.append("greeting_card_message", '<?php echo $string = trim(preg_replace('/\s+/',' ',trim(preg_replace('/\n+/', '<br>', $message))));?>');
                 form.append("greeting_card_mail_subject", "Subject");
-                form.append("send_date", <?php echo date("Y");?>);
+                form.append("send_date", '<?php echo date("Y-m-d");?>');
 
                 var settings = {
                     "async": true,

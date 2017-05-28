@@ -170,7 +170,7 @@ $json = json_decode(file_get_contents($endpoint));
                                                     echo substr($text, 0, -2);
                                                     ?>
                                                 </td>
-                                                <td><?php echo $greeting_json->send_date ?></td>
+                                                <td><?php echo date("d-m-Y",strtotime($greeting_json->send_date)); ?></td>
                                                 <td class="text-center"><a class="btn btn-info btn-xs" href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/greetings?greeting-card-id=<?php echo $greeting_id?>"><span class="glyphicon glyphicon-eye-open"></span> View greeting card</a></td>
                                             </tr>
                                         <?php
@@ -204,7 +204,7 @@ $json = json_decode(file_get_contents($endpoint));
                                             <tr>
                                                 <td><?php echo $i++?></td>
                                                 <td><?php echo $greeting_json->receiver_name ?></td>
-                                                <td><?php echo $greeting_json->send_date ?></td>
+                                                <td><?php echo date("d-m-Y",strtotime($greeting_json->send_date)); ?></td>
                                                 <td class="text-center"><a class="btn btn-info btn-xs" href="http://<?php echo get_website_host()?>/<?php echo get_website_relative_path()?>/greetings?greeting-card-id=<?php echo $greeting_id?>"><span class="glyphicon glyphicon-eye-open"></span> View greeting card</a></td>
                                             </tr>
                                             <?php

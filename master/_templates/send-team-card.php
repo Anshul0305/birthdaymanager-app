@@ -15,6 +15,7 @@ $member_endpoint = $api_host."/members/".$greeting_receiver_id;
 $member_json = json_decode(file_get_contents($member_endpoint));
 $greeting_card_message = $_POST["message"];
 $message_for_team = $_POST["message-for-team"];
+$delivery_date = $_POST["delivery-date"];
 
 if(isset($greeting_card_id)){
     $greeting_receiver_name = $greeting_json->receiver_name;
@@ -300,7 +301,7 @@ if (isset($_POST["message"])){ ?>
                 form.append("team_id", '<?php echo $team_id?>');
                 form.append("greeting_card_message", '<?php echo $string = trim(preg_replace('/\s+/',' ',trim(preg_replace('/\n+/', '<br>', $greeting_card_message))));?>');
                 form.append("greeting_card_mail_subject", "Subject");
-                form.append("send_date", <?php echo date("d-m-Y");?>);
+                form.append("send_date", '<?php echo $delivery_date;?>');
                 form.append("message_for_team", '<?php echo $message_for_team?>');
 
                 var settings = {
