@@ -190,6 +190,7 @@ free email reminders, RSS, birthday cards, gift suggestions, greeting card, pape
 
     <![endif]-->
 	  <link href="http://blythedolls.neocities.org/img/favicon.ico" rel="icon" type="image/x-icon" />
+	  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="623ceb93-442b-457d-aa59-d0ed5fd22954";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.im/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
   </head>
 
 
